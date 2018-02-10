@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>10</x>
+      <y>120</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>240</x>
+      <y>80</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Add Class Schedule</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>50</x>
+      <y>110</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;60.0;190.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>70</x>
+      <y>180</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;160.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>240</x>
+      <y>180</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Save class schedule
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>250</x>
+      <y>300</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Edit Class Schedule
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>220</y>
+      <w>220</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;200.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>10</y>
+      <w>410</w>
+      <h>410</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>70</x>
+      <y>470</y>
+      <w>390</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>Use case name: Add Class schedule
+
+Summary: App User creates a new class schedule
+
+Actors: Application User
+
+Dependency: none
+
+Pre-condition: the application should be in the Home-screen
+
+Description:
+1.User presses add schedule button on the home-screen.
+2. The application prompts the user to enter the course name, enter the building name and the starting and ending time of the class.
+3. The application allows the user to add more courses in the same schedule.
+
+Alternatives:
+2a. If the user enters a building name which doesn’t match with the name of building in a set array, application will show error message saying no building of such name found.
+
+Post-Condition: The user has entered all the courses, their building names and start and end times for each course.
+
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>500</x>
+      <y>470</y>
+      <w>390</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>Use case name: Save Class schedule
+
+Summary: App User saves a created class schedule
+
+Actors: Application User
+
+Dependency: none
+
+Pre-condition: the user has entered the course name, building and the starting and ending times of all classes in a schedule.
+
+Description:
+1.User presses the save schedule button.
+2. The Application prompts the user to set the schedule to a specific day or multiple days of the week.
+Alternatives:
+2a. If the schedule saved for a specific day overlaps with regards to time with another schedule on the same day, the application displays an error message.
+
+Post-Condition: The class schedule is saved.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>980</x>
+      <y>470</y>
+      <w>390</w>
+      <h>450</h>
+    </coordinates>
+    <panel_attributes>Use case name: Edit Class schedule
+
+Summary: App User edits a previously saved class schedule.
+
+Actors: Application User
+
+Dependency: Add Class Schedule Use Case
+
+Pre-condition: the schedule list in the application is not empty.
+
+Description:
+1. The user presses edit schedule button on the home screen.
+2. The application prompts the user to select a schedule from the list of previously saved schedules.
+3. The user selects the schedule that needs to be edited.
+4. The user will be able to edit one or more of the class; the course name, building name and the start and end time.
+Alternatives:
+4a. If the user enters a building name which doesn’t match with the name of building in a set array, application will show error message saying no building of such name found.
+
+Post-Condition: The user has edited a previously save class schedule.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
