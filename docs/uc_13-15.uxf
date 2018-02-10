@@ -1,11 +1,12 @@
+
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
   <zoom_level>10</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>120</x>
-      <y>210</y>
+      <x>100</x>
+      <y>160</y>
       <w>80</w>
       <h>120</h>
     </coordinates>
@@ -16,8 +17,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>270</x>
-      <y>190</y>
+      <x>250</x>
+      <y>140</y>
       <w>180</w>
       <h>40</h>
     </coordinates>
@@ -27,8 +28,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>210</x>
-      <y>130</y>
+      <x>190</x>
+      <y>80</y>
       <w>410</w>
       <h>230</h>
     </coordinates>
@@ -38,8 +39,8 @@
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>270</x>
-      <y>290</y>
+      <x>250</x>
+      <y>240</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
@@ -49,8 +50,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>250</y>
+      <x>160</x>
+      <y>200</y>
       <w>90</w>
       <h>60</h>
     </coordinates>
@@ -60,8 +61,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>200</y>
+      <x>160</x>
+      <y>150</y>
       <w>90</w>
       <h>50</h>
     </coordinates>
@@ -71,8 +72,8 @@
   <element>
     <id>Text</id>
     <coordinates>
-      <x>20</x>
-      <y>370</y>
+      <x>0</x>
+      <y>320</y>
       <w>460</w>
       <h>280</h>
     </coordinates>
@@ -98,8 +99,8 @@ style=wordwrap</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>530</x>
-      <y>370</y>
+      <x>510</x>
+      <y>320</y>
       <w>400</w>
       <h>280</h>
     </coordinates>
@@ -118,3 +119,4 @@ style=wordwrap</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
+
