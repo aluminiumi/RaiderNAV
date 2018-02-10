@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>190</x>
+      <y>240</y>
+      <w>80</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>App User</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>400</x>
+      <y>190</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>All Routes</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>550</x>
+      <y>270</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Shortest Route</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>400</x>
+      <y>360</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Recalculate Location</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>230</y>
+      <w>170</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;50.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>270</y>
+      <w>170</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;150.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>270</y>
+      <w>310</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;290.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>160</y>
+      <w>30</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>450</y>
+      <w>470</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>160</y>
+      <w>30</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>150</y>
+      <w>470</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>550</y>
+      <w>510</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>-
+UseCase Name: Recalculate Location 
+Actor:App User
+Dependency: Timer 
+Precondition:Timer recalls the user location automatically
+
+Description:
+1)User starts their route towards the destination
+2)Current location is retrieved fromt the GPS
+3)Every 3-5 seconds, the time sends an input to the GPS to recalculate location
+4)Current location is constantly displayed to the user on the map</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>550</y>
+      <w>310</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>-
+UseCase Name: All Routes 
+Actor:App User
+Dependency: Which daily schedule is displaying 
+Precondition:
+
+Description: 
+1) User presses a button to get all the routes
+2) The GPS gets all the routes for that day
+3) All the routes are displayed on one map</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>550</y>
+      <w>440</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>-
+UseCase Name: Shortest Route 
+Actor:App User
+Dependency: Location of the user and destination
+Precondition:
+
+Description: 
+1)The user determines which destination they are going to
+2)GPS takes the destination and finds the shortes route from the user</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
