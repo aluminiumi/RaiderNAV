@@ -33,11 +33,11 @@ android:
 
 env:
   matrix:
-    - ANDROID_TARGET=android-24  ANDROID_ABI=armeabi-v7a
+    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
 
 before_script:
   # Create and start emulator
-  #- android list sdk --extended --no-ui --all
+  - android list sdk --extended --no-ui --all
   #- echo "y" | android update sdk -a --no-ui --filter sys-img-$ANDROID_ABI-$ANDROID_TARGET,sys-img-x86_64-$ANDROID_TARGET
   #- android list targets
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
