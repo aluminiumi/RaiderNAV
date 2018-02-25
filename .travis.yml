@@ -1,0 +1,49 @@
+language: android
+jdk: oraclejdk8
+sudo: true
+
+android:
+  components:
+    # Uncomment the lines below if you want to
+    # use the latest revision of Android SDK Tools
+    - tools
+    - platform-tools
+
+    # The BuildTools version used by your project
+    #- build-tools-26.0.3
+    #- build-tools-25.0.3
+    - build-tools-24.0.3
+
+    # The SDK version used to compile your project
+    - $ANDROID_TARGET
+
+    # Additional components
+    #- extra-google-google_play_services
+    #- extra-google-m2repository
+    #- extra-android-m2repository
+    #- addon-google_apis-google-25
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    #- sys-img-armeabi-v7a-google_apis-25
+    #- sys-img-x86_64-google_apis-25
+    - sys-img-$ANDROID_ABI-$ANDROID_TARGET
+    #- sys-img-x86_64-$ANDROID_TARGET
+    #- sys-img-armeabi-v7a-android-17
+
+env:
+  matrix:
+    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
+
+before_script:
+  # Create and start emulator
+  - android list sdk --extended --no-ui --all
+  #- echo "y" | android update sdk -a --no-ui --filter sys-img-$ANDROID_ABI-$ANDROID_TARGET,sys-img-x86_64-$ANDROID_TARGET
+  #- android list targets
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
+#script: ./gradlew connectedAndroidTest
+script: ./gradlew androidTest
