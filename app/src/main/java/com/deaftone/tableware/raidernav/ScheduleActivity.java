@@ -1,7 +1,6 @@
 package com.deaftone.tableware.raidernav;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,6 +19,8 @@ import java.io.FileOutputStream;
 public class ScheduleActivity extends AppCompatActivity {
     final String schedulefile = "schedulefile";
     String fileContents = "Initial text";
+    GsonBuilder builder;
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class ScheduleActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final TextView tv = findViewById(R.id.savedText);
+        builder = new GsonBuilder();
+        gson = builder.create();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +80,15 @@ public class ScheduleActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.savedText);
 
         try {
+            ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", 930, 1050);
+            ScheduleEntryList sel = new ScheduleEntryList("tuethur-spring18");
+            sel.addEntry(se);
+            ScheduleEntryListList sell = new ScheduleEntryListList();
+            sell.addEntry(sel);
+            //gson.toJson(se);
             outputStream = openFileOutput(schedulefile, Context.MODE_PRIVATE);
-            outputStream.write(input.getBytes());
+            //outputStream.write(input.getBytes());
+            outputStream.write(gson.toJson(sell).getBytes());
             outputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
