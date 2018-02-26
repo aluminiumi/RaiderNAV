@@ -4,16 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <!-- include
-        android:id="@android:id/list"
-        layout="@layout/list" / -->
-
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:entries="@drawable/common_google_signin_btn_icon_dark_normal_background"
         android:scrollbars="vertical"
         android:visibility="visible" />
 
@@ -21,18 +16,23 @@
         android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:layout_toStartOf="@+id/check"
+        android:layout_toLeftOf="@+id/check"
+        android:text=" "
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:visibility="visible"></TextView>
+        android:visibility="visible" />
 
     <CheckBox
         android:id="@+id/check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="4px"
-        android:layout_marginRight="10px"
-        android:visibility="visible"></CheckBox>
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="visible" />
 
 </RelativeLayout>
 

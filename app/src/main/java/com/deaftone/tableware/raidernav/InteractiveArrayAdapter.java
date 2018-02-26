@@ -38,6 +38,7 @@ public class InteractiveArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view = null;
+
         if (convertView == null) {
             LayoutInflater inflator = context.getLayoutInflater();
             view = inflator.inflate(R.layout.rowbuttonlayout, null);
@@ -47,12 +48,7 @@ public class InteractiveArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
             viewHolder.text.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    */
                     context.startActivityForResult(new Intent(context.getApplicationContext(),ScheduleEntryListActivity.class).putExtra("index", position), 0);
-                    //tv.setText(fh.readFile());
-                    //tv.setText(fileContents);
                 }
             });
             viewHolder.checkbox = (CheckBox) view.findViewById(R.id.check);
@@ -75,13 +71,10 @@ public class InteractiveArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
             ((ViewHolder) view.getTag()).checkbox.setTag(list.get(position));
         }
         ViewHolder holder = (ViewHolder) view.getTag();
-        //System.out.println("getview: list.get(position): "+list.get(position).toString());
-        //System.out.println("getview: list.get(position).getName(): "+list.get(position).getName());
-        //System.out.println("getview: list.get(position).isEnabled(): "+list.get(position).isEnabled());
+
         holder.text.setText(list.get(position).getName());
         holder.checkbox.setChecked(list.get(position).isEnabled());
-        //System.out.println(holder.text.getText());
-        //System.out.println(holder.checkbox.isChecked());
+
         return view;
     }
 
