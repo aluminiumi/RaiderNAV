@@ -94,12 +94,7 @@ public class ScheduleHandler {
             initializeSchedule(false);
         }
         String filecontents = filehandler.readFile();
-        if(filecontents.equals("[]")) {
-            System.out.println("loadmaster: invalid contents found. Initializing.");
-            initializeSchedule(true);
-            filecontents = filehandler.readFile();
-        }
-        if(filecontents.charAt(0) != '[') {
+        if(filecontents.equals("[]") || filecontents.charAt(0) != '[') {
             System.out.println("loadmaster: invalid contents found. Initializing.");
             initializeSchedule(true);
             filecontents = filehandler.readFile();
