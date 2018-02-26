@@ -6,6 +6,8 @@
 
     <string name="name_button_gotoschedules">View Schedules</string>
 
+    <string name="name_button_createschedule">Create New Schedule</string>
+    <string name="name_button_deleteschedule">Delete Schedule</string>
     <string name="name_button_loadschedule">Load Schedule</string>
     <string name="name_button_saveschedule">Save Schedule</string>
 
