@@ -46,16 +46,6 @@
         android:textColor="@android:color/holo_red_dark"/ -->
 
     <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/name_button_saveschedule"
-        app:layout_anchor="@+id/include2"
-        app:layout_anchorGravity="left|center" />
-
-    <Button
         android:id="@+id/loadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,17 +65,6 @@
         android:text="@string/name_button_createschedule"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="left" />
-
-    <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginVertical="65dp"
-        android:text="@string/name_button_deleteschedule"
-        app:layout_anchor="@+id/include2"
-        app:layout_anchorGravity="right" />
 
     <!-- android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

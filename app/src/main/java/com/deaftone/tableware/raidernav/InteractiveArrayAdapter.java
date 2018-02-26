@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import static android.app.Activity.RESULT_OK;
+
 public class InteractiveArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
 
-    private final List<ScheduleEntryList> list;
+    public List<ScheduleEntryList> list;
     private final Activity context;
 
     public InteractiveArrayAdapter(Activity context, List<ScheduleEntryList> list) {
@@ -32,15 +36,25 @@ public class InteractiveArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = null;
         if (convertView == null) {
-            System.out.println("getview: convertview is null");
             LayoutInflater inflator = context.getLayoutInflater();
             view = inflator.inflate(R.layout.rowbuttonlayout, null);
             //view = inflator.inflate(R.layout.activity_schedule, null);
             final ViewHolder viewHolder = new ViewHolder();
             viewHolder.text = (TextView) view.findViewById(R.id.label);
+            viewHolder.text.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    */
+                    context.startActivityForResult(new Intent(context.getApplicationContext(),ScheduleEntryListActivity.class).putExtra("index", position), 0);
+                    //tv.setText(fh.readFile());
+                    //tv.setText(fileContents);
+                }
+            });
             viewHolder.checkbox = (CheckBox) view.findViewById(R.id.check);
             viewHolder.checkbox
                     .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -57,18 +71,36 @@ public class InteractiveArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
             view.setTag(viewHolder);
             viewHolder.checkbox.setTag(list.get(position));
         } else {
-            System.out.println("getview: convertview is not null");
             view = convertView;
             ((ViewHolder) view.getTag()).checkbox.setTag(list.get(position));
         }
         ViewHolder holder = (ViewHolder) view.getTag();
-        System.out.println("getview: list.get(position): "+list.get(position).toString());
-        System.out.println("getview: list.get(position).getName(): "+list.get(position).getName());
-        System.out.println("getview: list.get(position).isEnabled(): "+list.get(position).isEnabled());
+        //System.out.println("getview: list.get(position): "+list.get(position).toString());
+        //System.out.println("getview: list.get(position).getName(): "+list.get(position).getName());
+        //System.out.println("getview: list.get(position).isEnabled(): "+list.get(position).isEnabled());
         holder.text.setText(list.get(position).getName());
         holder.checkbox.setChecked(list.get(position).isEnabled());
-        System.out.println(holder.text.getText());
-        System.out.println(holder.checkbox.isChecked());
+        //System.out.println(holder.text.getText());
+        //System.out.println(holder.checkbox.isChecked());
         return view;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                // A contact was picked.  Here we will just display it
+                // to the user.
+                System.out.println(RESULT_OK);
+                //startActivity(new Intent(Intent.ACTION_VIEW, data));
+            }
+        }
+        this.notifyDataSetChanged();
+    }
+
+    @Override
+    public void notifyDataSetChanged(){
+        //this.list = null;
+        super.notifyDataSetChanged();
     }
 }

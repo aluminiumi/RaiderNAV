@@ -47,6 +47,8 @@ public class ScheduleHandler {
 
     public void generateAnotherRandomSchedule() {
         ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", 930, 1050);
+        se.setActiveOnDay(2);
+        se.setActiveOnDay(4);
         ScheduleEntryList sel = new ScheduleEntryList("tuethur-spring18");
         sel.addEntry(se);
         addScheduleToMasterList(sel);
@@ -59,6 +61,31 @@ public class ScheduleHandler {
     public void addScheduleToMasterList(ScheduleEntryList sel) {
         masterList.add(sel);
         saveMasterListToFile();
+    }
+
+    public void removeScheduleFromMasterList(ScheduleEntryList sel) {
+        masterList.remove(sel);
+        saveMasterListToFile();
+    }
+
+    public void removeScheduleFromMasterList(int i) {
+        masterList.remove(i);
+        saveMasterListToFile();
+    }
+
+    public void replaceScheduleInMasterList(int i, ScheduleEntryList sel) {
+        masterList.set(i, sel);
+        //masterList.remove(i);
+        //masterList.add(sel);
+        saveMasterListToFile();
+    }
+
+    public ScheduleEntryList getScheduleFromMasterList(int i) {
+        return masterList.get(i);
+    }
+
+    public void reloadMaster() {
+        loadMasterListFromFile();
     }
 
     private void loadMasterListFromFile() {
@@ -94,12 +121,5 @@ public class ScheduleHandler {
 
     public List<ScheduleEntryList> getMasterList() {
         return masterList;
-        /*loadMasterListFromFile();
-        if(masterList == null) {
-            initializeSchedule(false);
-            System.out.println("Reinitializing master list.");
-            loadMasterListFromFile();
-        }
-        return masterList;*/
     }
 }
