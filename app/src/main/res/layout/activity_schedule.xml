@@ -29,21 +29,11 @@
         android:id="@+id/include3"
         layout="@layout/rowbuttonlayout"
         android:layout_width="wrap_content"
-        android:layout_height="272dp"
+        android:layout_height="wrap_content"
         android:visibility="visible"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="bottom"
         tools:layout_editor_absoluteY="164dp" />
-
-    <!-- EditText
-        android:id="@+id/savedText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="70dp"
-        android:textStyle="bold"
-        android:inputType="text"
-        android:textColor="@android:color/holo_red_dark"/ -->
 
     <Button
         android:id="@+id/loadButton"
@@ -61,7 +51,6 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:layout_marginVertical="65dp"
         android:text="@string/name_button_createschedule"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="left" />
