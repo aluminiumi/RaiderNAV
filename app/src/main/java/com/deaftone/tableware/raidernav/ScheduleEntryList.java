@@ -34,11 +34,37 @@ public class ScheduleEntryList {
         return classEntries.size();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void enable() {
         enabled = true;
     }
 
     public void disable() {
         enabled = false;
+    }
+
+    public void setEnabled(boolean e) {
+        enabled = e;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public ScheduleSingleEntry[] toArray() {
+        return (ScheduleSingleEntry[]) classEntries.toArray();
+    }
+
+    public String toString() {
+        String output = "";
+        int x;
+        for(x=0; x < classEntries.size()-1; x++) {
+            output += classEntries.get(x).toString()+"\n";
+        }
+        output+=classEntries.get(x).toString();
+        return output;
     }
 }

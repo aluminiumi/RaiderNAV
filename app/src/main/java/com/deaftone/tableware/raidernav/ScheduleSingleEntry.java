@@ -26,4 +26,14 @@ public class ScheduleSingleEntry {
     public void setInactiveOnDay(int day) {
         activeOnDay[day] = false;
     }
+
+    public String toString() {
+        String output = "";
+        output += courseNumber+" "+building+" "+startTime+" "+endTime;
+        for(int x=0; x<7; x++) {
+            output += " "+activeOnDay[x];
+        }
+        //output += "";
+        return output;
+    }
 }
