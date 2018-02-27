@@ -46,11 +46,12 @@ before_script:
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
 
   #start emulator
-  - emulator -avd test -no-skin -no-audio -no-window &
+  #- emulator -avd test -no-skin -no-audio -no-window &
+  - emulator -avd test -no-skin -no-audio -no-window 
   #- android-wait-for-emulator #waits forever, do not use
 
   #wait for emulator to start
-  - sleep 180
+  - sleep 25
   
   #- adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
   
