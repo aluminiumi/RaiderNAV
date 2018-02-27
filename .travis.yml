@@ -33,7 +33,8 @@ android:
 
 env:
   matrix:
-    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
+    #- ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
+    - ANDROID_TARGET=android-12  ANDROID_ABI=armeabi-v7a
 
 before_script:
   - chmod +x gradlew
