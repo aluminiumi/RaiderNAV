@@ -50,5 +50,5 @@ before_script:
 
 #script: ./gradlew connectedAndroidTest
 script: 
-  - ./gradlew connectedTest
+  - ./gradlew connectedCheck
 #script: ./gradlew androidTestImplementation
