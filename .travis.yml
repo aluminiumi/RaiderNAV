@@ -33,9 +33,7 @@ android:
 
 env:
   matrix:
-    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
-    #- ANDROID_TARGET=android-10  ANDROID_ABI=armeabi-v7a 
-    - WAIT_CMD="adb wait-for-device shell getprop init.svc.bootanim"
+    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a WAIT_CMD="adb wait-for-device shell getprop init.svc.bootanim"
 
 before_script:
   - chmod +x gradlew
