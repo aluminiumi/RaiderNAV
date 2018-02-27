@@ -10,9 +10,9 @@ android:
     #- platform-tools
 
     # The BuildTools version used by your project
-    #- build-tools-26.0.3
+    - build-tools-26.0.3
     #- build-tools-25.0.3
-    - build-tools-24.0.3
+    #- build-tools-24.0.3
 
     # The SDK version used to compile your project
     - $ANDROID_TARGET
@@ -33,7 +33,7 @@ android:
 
 env:
   matrix:
-    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a WAIT_CMD="adb wait-for-device shell getprop init.svc.bootanim"
+    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
 
 before_script:
   - chmod +x gradlew
@@ -41,14 +41,16 @@ before_script:
   #- echo "y" | android update sdk -a --no-ui --filter sys-img-$ANDROID_ABI-$ANDROID_TARGET,sys-img-x86_64-$ANDROID_TARGET
   #- android list targets
 
-  # Create and start emulator
+  # create emulator
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+
+  #start emulator
   - emulator -avd test -no-skin -no-audio -no-window &
-  #- android-wait-for-emulator
-  - sleep 90
+  #- android-wait-for-emulator #waits forever, do not use
+
+  #wait for emulator to start
+  - sleep 30
   
-  # Wait for Android to finish booting
-  #- until $WAIT_CMD | grep -m 1 stopped; do echo "Waiting..."; sleep 1; done
   #- adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
   
   #unlock lock screen
