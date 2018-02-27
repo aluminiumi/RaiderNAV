@@ -34,7 +34,7 @@ android:
 env:
   matrix:
     #- ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
-    - ANDROID_TARGET=android-10  ANDROID_ABI=armeabi-v7a
+    - ANDROID_TARGET=android-10  ANDROID_ABI=armeabi-v7a WAIT_CMD="adb wait-for-device shell getprop init.svc.bootanim"
 
 before_script:
   - chmod +x gradlew
@@ -44,8 +44,13 @@ before_script:
   #- android list targets
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+  #- android-wait-for-emulator
+  
+  # Wait for Android to finish booting
+  - until $WAIT_CMD | grep -m 1 stopped; do echo "Waiting..." sleep 1 done
+  #- adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+  
+  #unlock lock screen
   - adb shell input keyevent 82 &
 
 #script: ./gradlew connectedAndroidTest
