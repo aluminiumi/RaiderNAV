@@ -2,7 +2,6 @@ package com.deaftone.tableware.raidernav;
 
 import android.content.Context;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
@@ -12,14 +11,14 @@ import java.io.FileOutputStream;
 
 public class ScheduleFileHandler {
     private final String schedulefile = "schedulefile";
-    String fileContents = "Initial text";
-    Context ctx;
+    private String fileContents = "Initial text";
+    private Context ctx;
 
     ScheduleFileHandler(Context c) {
         ctx = c;
     }
 
-    private void createFile() {
+    /*private void createFile() {
         FileOutputStream outputStream;
         try {
             outputStream = ctx.openFileOutput(schedulefile, Context.MODE_PRIVATE);
@@ -28,7 +27,7 @@ public class ScheduleFileHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void writeFile(String input) {
         FileOutputStream outputStream;
