@@ -47,7 +47,7 @@ before_script:
   #- android-wait-for-emulator
   
   # Wait for Android to finish booting
-  - until $WAIT_CMD | grep -m 1 stopped; do echo "Waiting..."; sleep 1; done
+  - until $WAIT_CMD | grep -m 1 stopped; do echo "Waiting..."; sleep 10; done
   #- adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
   
   #unlock lock screen

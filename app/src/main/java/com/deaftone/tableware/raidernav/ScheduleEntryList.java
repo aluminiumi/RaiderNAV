@@ -8,9 +8,9 @@ import java.util.List;
  */
 
 public class ScheduleEntryList {
-    public boolean enabled;
-    public String name;
-    List<ScheduleSingleEntry> classEntries;
+    private boolean enabled;
+    private String name;
+    private List<ScheduleSingleEntry> classEntries;
 
     ScheduleEntryList(String n) {
         name = n;
