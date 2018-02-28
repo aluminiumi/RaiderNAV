@@ -1,18 +1,19 @@
 language: android
 jdk: oraclejdk8
-sudo: true
+sudo: false
 
 android:
   components:
     # Uncomment the lines below if you want to
     # use the latest revision of Android SDK Tools
-    - tools
-    - platform-tools
+    #- tools
+    #- platform-tools
 
     # The BuildTools version used by your project
     #- build-tools-26.0.3
+    - build-tools-26.0.2
     #- build-tools-25.0.3
-    - build-tools-24.0.3
+    #- build-tools-24.0.3
 
     # The SDK version used to compile your project
     - $ANDROID_TARGET
@@ -33,17 +34,31 @@ android:
 
 env:
   matrix:
-    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a
+    - ANDROID_TARGET=android-15  ANDROID_ABI=armeabi-v7a  QEMU_AUDIO_DRV=none
 
 before_script:
-  # Create and start emulator
-  - android list sdk --extended --no-ui --all
-  #- echo "y" | android update sdk -a --no-ui --filter sys-img-$ANDROID_ABI-$ANDROID_TARGET,sys-img-x86_64-$ANDROID_TARGET
+  - chmod +x gradlew
+  #- android list sdk --extended --no-ui --all
+  - echo "y" | android update sdk -a --no-ui --filter sys-img-$ANDROID_ABI-$ANDROID_TARGET,sys-img-x86_64-$ANDROID_TARGET,android-26
   #- android list targets
+
+  # create emulator
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
+
+  #start emulator
+  #- emulator -avd test -no-skin -no-audio -no-window & #-no-skin and -no-audio are deprecated; do not use
+  - emulator -avd test -no-window &
+
+  #wait for emulator to start
+  #- android-wait-for-emulator #waits forever; do not use
+  - sleep 180
+  
+  #- adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+  
+  #unlock lock screen
   - adb shell input keyevent 82 &
 
 #script: ./gradlew connectedAndroidTest
-script: ./gradlew androidTestImplementation
+script: 
+  - ./gradlew connectedCheck
+#script: ./gradlew androidTestImplementation
