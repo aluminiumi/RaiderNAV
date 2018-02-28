@@ -27,7 +27,7 @@ public class ScheduleSingleEntry {
         return courseNumber;
     }
 
-    public String setBuilding(String b) {
+    public void setBuilding(String b) {
         building = b;
     }
 

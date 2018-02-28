@@ -81,11 +81,13 @@ public class ScheduleHandler {
     }
 
     private void loadMasterListFromFile() {
-        if(!filehandler.fileExists() || filecontents.equals("[]") || filecontents.charAt(0) != '[') {
-            //System.out.println("loadmaster: Schedule file nonexistent. Initializing.");
+        if(!filehandler.fileExists()) {
             initializeSchedule();
         }
         String filecontents = filehandler.readFile();
+        if(filecontents.equals("[]") || filecontents.charAt(0) != '[') {
+            initializeSchedule();
+        }
         //System.out.println("loadmaster: File contents: "+filecontents);
         try {
             Type collectionType = new TypeToken<List<ScheduleEntryList>>() {
