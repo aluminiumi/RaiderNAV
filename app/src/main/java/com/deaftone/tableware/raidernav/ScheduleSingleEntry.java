@@ -5,11 +5,11 @@ package com.deaftone.tableware.raidernav;
  */
 
 public class ScheduleSingleEntry {
-    public String courseNumber;
-    public String building;
-    int startTime;
-    int endTime;
-    boolean activeOnDay[];
+    private String courseNumber;
+    private String building;
+    private int startTime;
+    private int endTime;
+    private boolean activeOnDay[];
 
     ScheduleSingleEntry(String cn, String b, int st, int et) {
         courseNumber = cn;
@@ -19,6 +19,49 @@ public class ScheduleSingleEntry {
         activeOnDay = new boolean[7];
     }
 
+    public void setCourseNumber(String cn) {
+        courseNumber = cn;
+    }
+
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+
+    public void setBuilding(String b) {
+        building = b;
+    }
+
+    public String getBuilding() {
+        return building;
+    }
+
+    public void setStartTime(int st) {
+        startTime = st;
+    }
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public void setEndTime(int et) {
+        endTime = et;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
+
+    public boolean[] getDays() {
+        return activeOnDay;
+    }
+
+    public void setDays(boolean[] days) {
+        for (boolean b : activeOnDay = days) {
+
+        }
+
+    }
+
     public void setActiveOnDay(int day) {
         activeOnDay[day] = true;
     }
@@ -26,6 +69,8 @@ public class ScheduleSingleEntry {
     public void setInactiveOnDay(int day) {
         activeOnDay[day] = false;
     }
+
+    public boolean isActiveOnDay(int day) { return activeOnDay[day]; }
 
     public String toString() {
         String output = "";

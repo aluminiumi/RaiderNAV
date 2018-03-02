@@ -17,7 +17,6 @@ import java.util.List;
 public class ScheduleHandler {
     GsonBuilder builder;
     Gson gson;
-    //ScheduleEntryListList masterList;
     List<ScheduleEntryList> masterList;
     ScheduleFileHandler filehandler;
 
@@ -28,11 +27,10 @@ public class ScheduleHandler {
         loadMasterListFromFile();
     }
 
-    public void initializeSchedule(boolean blind) {
+    public void initializeSchedule() {
         ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", 930, 1050);
         ScheduleEntryList sel = new ScheduleEntryList("tuethur-spring18");
         sel.addEntry(se);
-        //masterList = new ScheduleEntryListList();
         masterList = new ArrayList<ScheduleEntryList>();
         masterList.add(sel);
         List<ScheduleEntryList> l = new ArrayList<ScheduleEntryList>();
@@ -41,8 +39,6 @@ public class ScheduleHandler {
         System.out.println("initsched: "+gson.toJson(sel));
         System.out.println("initsched: "+gson.toJson(l));
         filehandler.writeFile(gson.toJson(l));
-        if(blind)
-            masterList = null;
     }
 
     public void generateAnotherRandomSchedule() {
@@ -84,40 +80,23 @@ public class ScheduleHandler {
         return masterList.get(i);
     }
 
-    public void reloadMaster() {
-        loadMasterListFromFile();
-    }
-
     private void loadMasterListFromFile() {
         if(!filehandler.fileExists()) {
-            System.out.println("loadmaster: Schedule file nonexistent. Initializing.");
-            initializeSchedule(false);
+            initializeSchedule();
         }
         String filecontents = filehandler.readFile();
         if(filecontents.equals("[]") || filecontents.charAt(0) != '[') {
-            System.out.println("loadmaster: invalid contents found. Initializing.");
-            initializeSchedule(true);
-            filecontents = filehandler.readFile();
+            initializeSchedule();
         }
-        System.out.println("loadmaster: File contents: "+filecontents);
+        //System.out.println("loadmaster: File contents: "+filecontents);
         try {
-            //Type collectionType = new TypeToken<Collection<ScheduleEntryListList>>(){}.getType();
-            //Collection<ScheduleEntryListList> enums = gson.fromJson(filecontents, collectionType);
             Type collectionType = new TypeToken<List<ScheduleEntryList>>() {
             }.getType();
-            //System.out.println("loadmaster: JSON contents: "+gson.fromJson(filecontents, collectionType));
             masterList = gson.fromJson(filecontents, collectionType);
-            System.out.println("loadmaster: " + masterList.size() + " schedule loaded.");
-            System.out.println("loadmaster: masterlist: " + masterList.toString());
-            //for(ScheduleEntryList s : masterList) {
-            //    System.out.println(s.toString());
-            //}
-            //System.out.println(e.toString());
-            //masterList = (ScheduleEntryListList) e;
-            //masterList = gson.fromJson(filecontents, collectionType);
-            //masterList = gson.fromJson(filecontents, ScheduleEntryListList.class);
+            //System.out.println("loadmaster: " + masterList.size() + " schedule loaded.");
+            //System.out.println("loadmaster: masterlist: " + masterList.toString());
         } catch (IllegalStateException e) {
-            initializeSchedule(false);
+            initializeSchedule();
         } catch (Exception e) {
             e.printStackTrace();
         }
