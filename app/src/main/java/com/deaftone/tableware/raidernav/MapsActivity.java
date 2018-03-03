@@ -39,8 +39,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // TTU memorial circle: 33.584468, -101.874658
+        LatLng ttu = new LatLng(33.584468, -101.874658);
+        mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(ttu));
     }
 }
