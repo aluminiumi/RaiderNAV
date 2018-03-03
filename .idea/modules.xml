@@ -3,10 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RaiderNAV.iml" filepath="$PROJECT_DIR$/RaiderNAV.iml" />
-<<<<<<< Updated upstream
-=======
-      <module fileurl="file://C:\Users\Sakshyam\Downloads\Raidernav\RaiderNAV\RaiderNAV.iml" filepath="C:\Users\Sakshyam\Downloads\Raidernav\RaiderNAV\RaiderNAV.iml" />
->>>>>>> Stashed changes
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
