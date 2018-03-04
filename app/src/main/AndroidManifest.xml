@@ -55,7 +55,7 @@
             android:name=".ScheduleActivity"
             android:label="@string/title_activity_schedule"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ScheduleEntryListActivity"></activity>
+        <activity android:name=".ScheduleEntryListActivity" />
     </application>
 
 </manifest>
