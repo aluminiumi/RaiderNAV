@@ -50,8 +50,8 @@ before_script:
   - emulator -avd test -no-window &
 
   #wait for emulator to start
-  - android-wait-for-emulator
-  #- sleep 180
+  #- android-wait-for-emulator
+  - sleep 180
   
   #- adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
   
