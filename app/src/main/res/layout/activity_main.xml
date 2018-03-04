@@ -71,7 +71,8 @@
         app:layout_constraintStart_toEndOf="@+id/fab"
         app:layout_constraintTop_toBottomOf="@+id/viewschedulesbutton"
         app:layout_constraintVertical_bias="0.779"
-        app:srcCompat="@android:drawable/ic_menu_manage" />
+        app:srcCompat="@android:drawable/ic_dialog_map" />
+        <!-- app:srcCompat="@android:drawable/ic_menu_manage" / -->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab3"
@@ -88,6 +89,7 @@
         app:layout_constraintStart_toEndOf="@+id/fab2"
         app:layout_constraintTop_toBottomOf="@+id/viewschedulesbutton"
         app:layout_constraintVertical_bias="0.779"
-        app:srcCompat="@drawable/ic_info_black_24dp" />
+        app:srcCompat="@android:drawable/ic_menu_manage" />
+        <!-- app:srcCompat="@drawable/ic_info_black_24dp" / -->
 
 </android.support.constraint.ConstraintLayout>
