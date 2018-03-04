@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab2);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab2);
+        FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
