@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>190</y>
+      <w>330</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+AddressMap
+--
+-Coordinates: HashMap&lt;String,String&gt;
+--
+fetch(String): String
+--
+Responsibilities
+-- Stores building to coordinates mapping</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

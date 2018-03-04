@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="via" created="March 3, 2018 12:13:31 AM CST" modified="March 3, 2018 12:18:52 AM CST" specVersion="2" urnVersion="1.27" nextGlobalID="48">
+  <ucmspec>
+    <scenarioGroups name="ScenarioGroup6" id="6">
+      <scenarios name="ScenarioDef7" id="7"/>
+    </scenarioGroups>
+  </ucmspec>
+  <grlspec>
+    <intElements name="Find classes more easily" id="23" refs="24"/>
+    <intElements name="Softgoal25" id="25"/>
+    <intElements name="Get an A" id="29" type="Goal" refs="30"/>
+    <intElements name="App is popular" id="33" refs="34"/>
+    <intElements name="Maintain control of personal info" id="37" refs="38"/>
+    <intElements name="Not spend money" id="41" type="Goal" refs="42"/>
+    <intElements name="Goal43" id="43" type="Goal"/>
+    <actors name="Team Getana" id="13" contRefs="14"/>
+    <actors name="Actor15" id="15"/>
+    <actors name="Student" id="19" contRefs="20"/>
+    <groups name="StrategiesGroup4" id="4" strategies="5"/>
+    <strategies name="EvaluationStrategy5" id="5" author="via" group="4"/>
+    <impactModel/>
+    <indicatorGroup name="Time" id="8" isRedesignCategory="true"/>
+    <indicatorGroup name="Cost" id="9" isRedesignCategory="true"/>
+    <indicatorGroup name="Quality" id="10" isRedesignCategory="true"/>
+    <indicatorGroup name="Flexibility" id="11" isRedesignCategory="true"/>
+    <featureModel/>
+  </grlspec>
+  <urndef>
+    <specDiagrams xsi:type="grl:GRLGraph" name="Student GRL" id="2">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef24" id="24" x="210" y="404" contRef="20" def="23">
+        <metadata name="_height" value="45"/>
+        <metadata name="_width" value="110"/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef38" id="38" x="378" y="423" contRef="20" def="37">
+        <metadata name="_height" value="56"/>
+        <metadata name="_width" value="146"/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef42" id="42" x="323" y="363" contRef="20" def="41">
+        <metadata name="_height" value="45"/>
+        <metadata name="_width" value="110"/>
+      </nodes>
+      <contRefs xsi:type="grl:ActorRef" name="ActorRef20" id="20" x="89" y="264" width="478" height="369" contDef="19" nodes="24 38 42">
+        <label/>
+      </contRefs>
+    </specDiagrams>
+    <specDiagrams xsi:type="grl:GRLGraph" name="Getana GRL" id="12">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef30" id="30" x="348" y="344" contRef="14" def="29">
+        <metadata name="_height" value="45"/>
+        <metadata name="_width" value="110"/>
+      </nodes>
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef34" id="34" x="599" y="366" contRef="14" def="33">
+        <metadata name="_height" value="45"/>
+        <metadata name="_width" value="110"/>
+      </nodes>
+      <contRefs xsi:type="grl:ActorRef" name="ActorRef14" id="14" x="255" y="223" width="481" height="418" contDef="13" nodes="30 34">
+        <label/>
+      </contRefs>
+    </specDiagrams>
+    <specDiagrams xsi:type="ucm.map:UCMmap" name="Story 1 UCM" id="3"/>
+  </urndef>
+  <metadata name="_Use0to100EvaluationRange" value="false"/>
+</urn:URNspec>
