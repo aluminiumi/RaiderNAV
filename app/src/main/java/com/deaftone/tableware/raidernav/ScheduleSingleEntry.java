@@ -1,5 +1,9 @@
 package com.deaftone.tableware.raidernav;
 
+import java.sql.Array;
+import java.sql.Time;
+import java.util.Arrays;
+
 /**
  * Created by via on 2/25/18.
  */
@@ -7,14 +11,22 @@ package com.deaftone.tableware.raidernav;
 public class ScheduleSingleEntry {
     private String courseNumber;
     private String building;
+    private String [] TimeDrop;
     private int startTime;
     private int endTime;
     private boolean activeOnDay[];
 
-    ScheduleSingleEntry(String cn, String b, int st, int et) {
+    ScheduleSingleEntry(String cn, String b, String [] time, int et) {
         courseNumber = cn;
         building = b;
-        startTime = st;
+        System.out.println("Initializing ScheduleSingleEntry");
+        System.out.println(Arrays.toString(time));
+        TimeDrop=new String[5];
+        for (int x=0;x<time.length; x++){
+            TimeDrop[x]=time[x];
+        }
+        System.out.println(Arrays.toString(TimeDrop));
+        System.out.println("Finished Initilizing!!!");
         endTime = et;
         activeOnDay = new boolean[7];
     }
@@ -35,13 +47,12 @@ public class ScheduleSingleEntry {
         return building;
     }
 
-    public void setStartTime(int st) {
-        startTime = st;
+    public String [] getTimeDrop() {
+        System.out.println("INSIDE GET TIMEDROP");
+        System.out.println(Arrays.toString(TimeDrop));
+        return TimeDrop;
     }
 
-    public int getStartTime() {
-        return startTime;
-    }
 
     public void setEndTime(int et) {
         endTime = et;
