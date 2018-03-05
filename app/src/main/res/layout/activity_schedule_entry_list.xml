@@ -9,7 +9,9 @@
 
     <include
         android:id="@+id/include2"
-        layout="@layout/content_schedule" />
+        layout="@layout/content_schedule"
+        android:layout_height="510dp"
+        tools:layout_editor_absoluteY="1dp" />
 
     <TextView
         android:layout_width="232dp"

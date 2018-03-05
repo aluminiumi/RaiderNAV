@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button=(Button) findViewById(R.id.createSchedule);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CreateScheduleScreen.class));
+                //openCreateScheduleScreen();
+            }
+        });
+
     }
+    /*public void openCreateScheduleScreen(){
+        Intent intent = new Intent(this,CreateScheduleScreen.class);
+        startActivity(intent);
+    }*/
 
 }
