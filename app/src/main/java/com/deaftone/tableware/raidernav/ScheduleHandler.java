@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,8 @@ public class ScheduleHandler {
     }
 
     public void initializeSchedule() {
-        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", 930, 1050);
+        String [] time= {"BOI","SBI","HDFC","PNB","OBC"};
+        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", time, 1050);
         ScheduleEntryList sel = new ScheduleEntryList("tuethur-spring18");
         sel.addEntry(se);
         masterList = new ArrayList<ScheduleEntryList>();
@@ -42,7 +44,8 @@ public class ScheduleHandler {
     }
 
     public void generateAnotherRandomSchedule() {
-        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", 930, 1050);
+        String [] time= {"BOI","SBI","HDFC","PNB","OBC"};
+        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", time, 1050);
         se.setActiveOnDay(2);
         se.setActiveOnDay(4);
         ScheduleEntryList sel = new ScheduleEntryList("tuethur-spring18");
