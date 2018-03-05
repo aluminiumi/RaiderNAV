@@ -4,9 +4,9 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>30</x>
+      <x>10</x>
       <y>60</y>
-      <w>450</w>
+      <w>480</w>
       <h>320</h>
     </coordinates>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
@@ -19,10 +19,10 @@ _:ScheduleHandler_
 --
 +initializeSchedule(): void
 +getMasterList(): List&lt;ScheduleEntryList&gt;
-+addScheduleToMasterList(ScheduleEntryList)
-+removeScheduleFromMasterList(ScheduleEntryList)
-+removeScheduleFromMasterList(index: int)
-+replaceScheduleInMasterList(index: int, ScheduleEntryList)
++addScheduleToMasterList(ScheduleEntryList): void
++removeScheduleFromMasterList(ScheduleEntryList): void
++removeScheduleFromMasterList(index: int): void
++replaceScheduleInMasterList(index: int, ScheduleEntryList): void
 -saveMasterListToFile(): void
 -loadMasterListFromFile(): void
 --
@@ -123,16 +123,16 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
+      <x>480</x>
       <y>190</y>
-      <w>150</w>
+      <w>140</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=0..n
 contains &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
