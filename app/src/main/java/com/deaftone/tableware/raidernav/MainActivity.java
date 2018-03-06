@@ -55,15 +55,16 @@ public class MainActivity extends AppCompatActivity {
         button=(Button) findViewById(R.id.createSchedule);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                opencreateScheduleScreen();
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CreateScheduleScreen.class));
+                //openCreateScheduleScreen();
             }
         });
 
     }
-    public void opencreateScheduleScreen(){
+    /*public void openCreateScheduleScreen(){
         Intent intent = new Intent(this,CreateScheduleScreen.class);
         startActivity(intent);
-    }
+    }*/
 
 }
