@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         vsb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
+                startActivityForResult(new Intent(MainActivity.this,ScheduleActivity.class), 1);
             }
         });
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, CreateScheduleScreen.class));
+                startActivityForResult(new Intent(MainActivity.this, CreateScheduleScreen.class), 2);
                 //openCreateScheduleScreen();
             }
         });
@@ -66,5 +66,26 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,CreateScheduleScreen.class);
         startActivity(intent);
     }*/
+
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        //System.out.println("MainActivity: onActivityResult: Got activity result");
+        System.out.println("MainActivity: onActivityResult: requestCode: "+requestCode+", resultCode: "+resultCode);
+        if (requestCode == 1 || requestCode == 2) {
+            if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
+                // A contact was picked.  Here we will just display it
+                // to the user.
+                //System.out.println(RESULT_OK);
+                startActivityForResult(new Intent(MainActivity.this,ScheduleActivity.class), 1);
+                //startActivity(new Intent(Intent.ACTION_VIEW, data));
+            }
+        }
+
+        //((InteractiveMasterListArrayAdapter) adapter).list = sh.getMasterList();
+        //adapter.notifyDataSetChanged();
+        //finish(); //go back to main activity; can't seem to figure out why list view won't refresh
+        //adapter = new InteractiveMasterListArrayAdapter(this, sh.getMasterList());
+        //setListAdapter(adapter);
+    }
 
 }

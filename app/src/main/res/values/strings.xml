@@ -6,10 +6,13 @@
 
     <string name="name_button_gotoschedules">View Schedules</string>
 
+    <string name="name_button_resetschedule">Reset Schedule</string>
     <string name="name_button_createschedule">Create New Schedule</string>
     <string name="name_button_deleteschedule">Delete Schedule</string>
+    <string name="name_button_deletecourse">Delete Course</string>
     <string name="name_button_loadschedule">Load Schedule</string>
     <string name="name_button_saveschedule">Save Schedule</string>
+    <string name="name_button_savecourse">Save Course</string>
 
     <!-- Strings related to Settings -->
 
@@ -82,4 +85,7 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_schedule_single_entry_list">ScheduleSingleEntryListActivity
+    </string>
+    <string name="title_activity_schedule_single_entry">ScheduleSingleEntryActivity</string>
 </resources>
