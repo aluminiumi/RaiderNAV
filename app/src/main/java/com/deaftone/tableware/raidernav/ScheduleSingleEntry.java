@@ -12,21 +12,22 @@ public class ScheduleSingleEntry {
     private String courseNumber;
     private String building;
     private String [] TimeDrop;
-    private int startTime;
-    private int endTime;
+    private String startTime;
+    private String endTime;
     private boolean activeOnDay[];
 
-    ScheduleSingleEntry(String cn, String b, String [] time, int et) {
+    ScheduleSingleEntry(String cn, String b, String st, String et) {
         courseNumber = cn;
         building = b;
-        System.out.println("Initializing ScheduleSingleEntry");
-        System.out.println(Arrays.toString(time));
+        //System.out.println("Initializing ScheduleSingleEntry");
+        /*System.out.println(Arrays.toString(time));
         TimeDrop=new String[5];
         for (int x=0;x<time.length; x++){
             TimeDrop[x]=time[x];
         }
-        System.out.println(Arrays.toString(TimeDrop));
-        System.out.println("Finished Initilizing!!!");
+        System.out.println(Arrays.toString(TimeDrop));*/
+        //System.out.println("Finished Initilizing!!!");
+        startTime = st;
         endTime = et;
         activeOnDay = new boolean[7];
     }
@@ -53,12 +54,19 @@ public class ScheduleSingleEntry {
         return TimeDrop;
     }
 
+    public String getStartTime() {
+        return startTime;
+    }
 
-    public void setEndTime(int et) {
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String et) {
         endTime = et;
     }
 
-    public int getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 

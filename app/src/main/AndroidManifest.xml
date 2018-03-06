@@ -56,7 +56,11 @@
             android:label="@string/title_activity_schedule"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ScheduleEntryListActivity" />
-        <activity android:name=".CreateScheduleScreen"></activity>
+        <activity android:name=".CreateScheduleScreen" />
+        <activity
+            android:name=".ScheduleSingleEntryActivity"
+            android:label="@string/title_activity_schedule_single_entry"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

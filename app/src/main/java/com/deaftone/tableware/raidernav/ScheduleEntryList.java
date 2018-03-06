@@ -26,6 +26,14 @@ public class ScheduleEntryList {
         classEntries.remove(sse);
     }
 
+    /*public void replaceEntry(ScheduleSingleEntry sse, ScheduleEntryList sse) {
+        classEntries.set
+    }*/
+
+    public void replaceEntry(int index, ScheduleSingleEntry sse) {
+        classEntries.set(index, sse);
+    }
+
     public ScheduleSingleEntry getEntry(int index) {
         return classEntries.get(index);
     }
@@ -58,6 +66,10 @@ public class ScheduleEntryList {
 
     public ScheduleSingleEntry[] toArray() {
         return (ScheduleSingleEntry[]) classEntries.toArray();
+    }
+
+    public List<ScheduleSingleEntry> toArrayList() {
+        return classEntries;
     }
 
     public String toString() {

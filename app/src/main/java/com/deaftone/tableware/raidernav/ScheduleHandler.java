@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Array;
@@ -29,10 +30,14 @@ public class ScheduleHandler {
     }
 
     public void initializeSchedule() {
-        String [] time= {"BOI","SBI","HDFC","PNB","OBC"};
-        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", time, 1050);
+        //String [] time= {"BOI","SBI","HDFC","PNB","OBC"};
+        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", "1000", "1050");
+        ScheduleSingleEntry se2 = new ScheduleSingleEntry("CS4352", "ENGCTR", "1100", "1150");
+        ScheduleSingleEntry se3 = new ScheduleSingleEntry("CS3383", "CIVENG", "1200", "1250");
         ScheduleEntryList sel = new ScheduleEntryList("tuethur-spring18");
         sel.addEntry(se);
+        sel.addEntry(se2);
+        sel.addEntry(se3);
         masterList = new ArrayList<ScheduleEntryList>();
         masterList.add(sel);
         List<ScheduleEntryList> l = new ArrayList<ScheduleEntryList>();
@@ -45,7 +50,9 @@ public class ScheduleHandler {
 
     public void generateAnotherRandomSchedule() {
         String [] time= {"BOI","SBI","HDFC","PNB","OBC"};
-        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", time, 1050);
+        ScheduleSingleEntry se = new ScheduleSingleEntry("CS3365", "LIVERMORE", "1000", "1050");
+        ScheduleSingleEntry se2 = new ScheduleSingleEntry("CS4352", "ENGCTR", "1100", "1150");
+        ScheduleSingleEntry se3 = new ScheduleSingleEntry("CS3383", "CIVENG", "1200", "1250");
         se.setActiveOnDay(2);
         se.setActiveOnDay(4);
         ScheduleEntryList sel = new ScheduleEntryList("tuethur-spring18");
@@ -98,6 +105,8 @@ public class ScheduleHandler {
             masterList = gson.fromJson(filecontents, collectionType);
             //System.out.println("loadmaster: " + masterList.size() + " schedule loaded.");
             //System.out.println("loadmaster: masterlist: " + masterList.toString());
+        } catch (JsonSyntaxException e) {
+            initializeSchedule();
         } catch (IllegalStateException e) {
             initializeSchedule();
         } catch (Exception e) {

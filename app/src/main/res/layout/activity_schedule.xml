@@ -56,6 +56,17 @@
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="left" />
 
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginVertical="105dp"
+        android:text="@string/name_button_resetschedule"
+        app:layout_anchor="@+id/include2"
+        app:layout_anchorGravity="left" />
+
     <!-- android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

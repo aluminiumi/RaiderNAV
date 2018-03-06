@@ -18,12 +18,12 @@ import android.widget.TextView;
 
 import static android.app.Activity.RESULT_OK;
 
-public class InteractiveArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
+public class InteractiveMasterListArrayAdapter extends ArrayAdapter<ScheduleEntryList> {
 
     public List<ScheduleEntryList> list;
     private final Activity context;
 
-    public InteractiveArrayAdapter(Activity context, List<ScheduleEntryList> list) {
+    public InteractiveMasterListArrayAdapter(Activity context, List<ScheduleEntryList> list) {
         //super(context, R.layout.rowbuttonlayout, list);
         super(context, R.layout.activity_schedule, list);
         this.context = context;
