@@ -45,7 +45,7 @@ public class ScheduleEntryListActivity extends AppCompatActivity implements Adap
         lv.setAdapter(adapter);
 
 
-        //TODO: fix hardcoded indexing to be dynamic
+        //TODO: figure out vanishing entry problem
         //tv.setText(sel.getEntry(0).getCourseNumber());
         //dv.setText(sel.getEntry(0).getBuilding());
 

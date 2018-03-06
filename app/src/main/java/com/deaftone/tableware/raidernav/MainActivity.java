@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         //System.out.println("MainActivity: onActivityResult: Got activity result");
         System.out.println("MainActivity: onActivityResult: requestCode: "+requestCode+", resultCode: "+resultCode);
         if (requestCode == 1 || requestCode == 2) {
-            if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
+            if (resultCode == RESULT_OK) {
                 // A contact was picked.  Here we will just display it
                 // to the user.
                 //System.out.println(RESULT_OK);
