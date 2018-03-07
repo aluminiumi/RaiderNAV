@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -76,7 +75,7 @@ public class ScheduleEntryListActivity extends Activity implements AdapterView.O
         createCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(getApplicationContext(), CreateScheduleScreen.class), 2);
+                startActivityForResult(new Intent(getApplicationContext(), AddCourseActivity.class).putExtra("index", index), 2);
 
                 if (getParent() == null) {
                     setResult(Activity.RESULT_OK, getIntent());

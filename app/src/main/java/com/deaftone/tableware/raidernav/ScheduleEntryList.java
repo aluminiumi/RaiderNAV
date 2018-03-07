@@ -12,7 +12,11 @@ public class ScheduleEntryList {
     private String name;
     private List<ScheduleSingleEntry> classEntries;
 
-    ScheduleEntryList(String n) {
+    public ScheduleEntryList() {
+        classEntries = new ArrayList<ScheduleSingleEntry>();
+    }
+
+    public ScheduleEntryList(String n) {
         name = n;
         enabled = false;
         classEntries = new ArrayList<ScheduleSingleEntry>();

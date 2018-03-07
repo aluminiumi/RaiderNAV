@@ -89,21 +89,12 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
-                //fh.writeFile(tv.getText().toString());
-                //sel.setName(tv.getText());
-                //TODO: input times from their fields
                 ScheduleSingleEntry newsse = new ScheduleSingleEntry(
                         tv.getText().toString(),
                         dv.getText().toString(),
                         st.getText().toString(),
                         et.getText().toString());
                 replaceEntry(index, entryindex, newsse);
-                //updateScheduleName(index, tv.getText().toString(), sel);
-                //sh.replaceScheduleInMasterList(index, sel);
 
                 if (getParent() == null) {
                     setResult(Activity.RESULT_OK, getIntent());

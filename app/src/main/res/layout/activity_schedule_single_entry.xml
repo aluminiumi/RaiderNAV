@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context="com.deaftone.tableware.raidernav.Activities.CreateScheduleScreen">
+    tools:context="com.deaftone.tableware.raidernav.Activities.AddCourseActivity">
 
     <TextView
         android:id="@+id/scheduleName"
