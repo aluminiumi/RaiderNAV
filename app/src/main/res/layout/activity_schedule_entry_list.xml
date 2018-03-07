@@ -10,14 +10,15 @@
     <include
         android:id="@+id/include2"
         layout="@layout/content_schedule"
+        android:layout_width="match_parent"
         android:layout_height="510dp"
         tools:layout_editor_absoluteY="1dp" />
 
     <include
         android:id="@+id/include3"
         layout="@layout/courserowtoplayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="visible"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="top"
@@ -26,14 +27,14 @@
     <include
         android:id="@+id/include3"
         layout="@layout/courserowlayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:visibility="visible"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="bottom"
         tools:layout_editor_absoluteY="164dp" />
 
-    <Button
+    <!-- Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,8 +44,28 @@
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="left|bottom"
         tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="311dp" />
+        tools:layout_editor_absoluteY="311dp" / -->
 
+    <Button
+     android:id="@+id/createCourseButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_centerHorizontal="true"
+     android:layout_marginVertical="67dp"
+     android:text="@string/name_button_createcourse"
+     app:layout_anchor="@+id/include2"
+     app:layout_anchorGravity="left|bottom"
+     tools:layout_editor_absoluteX="171dp"
+     tools:layout_editor_absoluteY="311dp" />
+
+    <Button
+        android:id="@+id/renameScheduleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/name_button_renameschedule"
+        app:layout_anchor="@+id/include3"
+        app:layout_anchorGravity="bottom|center" />
 
     <Button
         android:id="@+id/deleteButton"
@@ -53,7 +74,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginVertical="65dp"
         android:elevation="0dp"
-        android:text="@string/name_button_deletecourse"
+        android:text="@string/name_button_deleteschedule"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="right|bottom"
         tools:layout_editor_absoluteX="157dp"
@@ -61,7 +82,10 @@
 
     <ListView
         android:id="@+id/courses_list_view"
-        android:layout_width="wrap_content"
-        android:layout_height="322dp"></ListView>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="64dp"
+        tools:layout_editor_absoluteY="29dp"
+        tools:layout_height="222dp" />
 
 </android.support.design.widget.CoordinatorLayout>

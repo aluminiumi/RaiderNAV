@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ttu_will_rogers"
     tools:context="com.deaftone.tableware.raidernav.MainActivity">
 
-    <Button
+    <!-- Button
         android:id="@+id/createSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,23 +21,22 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.318" />
+        app:layout_constraintVertical_bias="0.318" / -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/image_credit"/>
 
     <Button
         android:id="@+id/viewschedulesbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="View/Edit Schedule"
+        android:layout_marginBottom="352dp"
+        android:layout_marginEnd="176dp"
+        android:text="@string/name_button_gotoschedules"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createSchedule"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

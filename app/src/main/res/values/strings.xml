@@ -4,7 +4,8 @@
     <string name="title_activity_schedule">RaiderNAV</string>
     <string name="title_activity_settings">Settings</string>
 
-    <string name="name_button_gotoschedules">View Schedules</string>
+    <string name="image_credit">Photo credit: O\'Jay Barbee</string>
+    <string name="name_button_gotoschedules">My Schedules</string>
 
     <string name="name_button_resetschedule">Reset Schedule</string>
     <string name="name_button_createschedule">Create New Schedule</string>
@@ -12,7 +13,9 @@
     <string name="name_button_deletecourse">Delete Course</string>
     <string name="name_button_loadschedule">Load Schedule</string>
     <string name="name_button_saveschedule">Save Schedule</string>
+    <string name="name_button_renameschedule">Rename Schedule</string>
     <string name="name_button_savecourse">Save Course</string>
+    <string name="name_button_createcourse">Create Course</string>
 
     <!-- Strings related to Settings -->
 

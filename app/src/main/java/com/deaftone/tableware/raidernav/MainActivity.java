@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Not yet implemented!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button=(Button) findViewById(R.id.createSchedule);
+        /*button=(Button) findViewById(R.id.createSchedule);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(MainActivity.this, CreateScheduleScreen.class), 2);
                 //openCreateScheduleScreen();
             }
-        });
+        });*/
 
     }
     /*public void openCreateScheduleScreen(){
