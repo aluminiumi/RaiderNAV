@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ttu_will_rogers"
-    tools:context="com.deaftone.tableware.raidernav.MainActivity">
+    tools:context="com.deaftone.tableware.raidernav.Activities.MainActivity">
 
     <!-- Button
         android:id="@+id/createSchedule"

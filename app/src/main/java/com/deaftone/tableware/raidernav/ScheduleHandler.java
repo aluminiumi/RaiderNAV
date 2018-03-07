@@ -22,7 +22,7 @@ public class ScheduleHandler {
     List<ScheduleEntryList> masterList;
     ScheduleFileHandler filehandler;
 
-    ScheduleHandler(Context c) {
+    public ScheduleHandler(Context c) {
         builder = new GsonBuilder();
         gson = builder.create();
         filehandler = new ScheduleFileHandler(c);

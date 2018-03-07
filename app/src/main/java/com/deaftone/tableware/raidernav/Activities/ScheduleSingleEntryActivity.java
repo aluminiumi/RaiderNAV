@@ -1,4 +1,4 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,6 +14,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.deaftone.tableware.raidernav.R;
+import com.deaftone.tableware.raidernav.ScheduleEntryList;
+import com.deaftone.tableware.raidernav.ScheduleHandler;
+import com.deaftone.tableware.raidernav.ScheduleSingleEntry;
 
 public class ScheduleSingleEntryActivity extends AppCompatActivity {
 

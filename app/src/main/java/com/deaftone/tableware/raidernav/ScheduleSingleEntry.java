@@ -16,7 +16,7 @@ public class ScheduleSingleEntry {
     private String endTime;
     private boolean activeOnDay[];
 
-    ScheduleSingleEntry(String cn, String b, String st, String et, boolean[] days) {
+    public ScheduleSingleEntry(String cn, String b, String st, String et, boolean[] days) {
         courseNumber = cn;
         building = b;
         startTime = st;
@@ -27,7 +27,7 @@ public class ScheduleSingleEntry {
         }
     }
 
-    ScheduleSingleEntry(String cn, String b, String st, String et) {
+    public ScheduleSingleEntry(String cn, String b, String st, String et) {
         courseNumber = cn;
         building = b;
         startTime = st;

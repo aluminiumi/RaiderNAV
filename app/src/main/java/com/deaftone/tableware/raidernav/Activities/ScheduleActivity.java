@@ -1,4 +1,4 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.app.Activity;
 import android.app.ListActivity;
@@ -9,6 +9,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+import com.deaftone.tableware.raidernav.InteractiveMasterListArrayAdapter;
+import com.deaftone.tableware.raidernav.R;
+import com.deaftone.tableware.raidernav.ScheduleEntryList;
+import com.deaftone.tableware.raidernav.ScheduleHandler;
 
 //public class ScheduleActivity extends AppCompatActivity {
 public class ScheduleActivity extends ListActivity {

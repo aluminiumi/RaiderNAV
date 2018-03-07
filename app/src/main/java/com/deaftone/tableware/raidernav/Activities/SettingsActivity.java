@@ -1,4 +1,4 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -18,6 +18,8 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+
+import com.deaftone.tableware.raidernav.R;
 
 import java.util.List;
 

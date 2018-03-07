@@ -1,21 +1,30 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
-public class ScheduleEntryListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import com.deaftone.tableware.raidernav.InteractiveSELArrayAdapter;
+import com.deaftone.tableware.raidernav.R;
+import com.deaftone.tableware.raidernav.ScheduleEntryList;
+import com.deaftone.tableware.raidernav.ScheduleHandler;
+import com.deaftone.tableware.raidernav.ScheduleSingleEntry;
+
+//public class ScheduleEntryListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ScheduleEntryListActivity extends Activity implements AdapterView.OnItemSelectedListener {
     TextView tv;
     TextView dv;
     Spinner ST;
@@ -35,7 +44,10 @@ public class ScheduleEntryListActivity extends AppCompatActivity implements Adap
         sh = new ScheduleHandler(getApplicationContext());
         System.out.println("SELActivity: onCreate: index is "+index);
         final ScheduleEntryList sel = sh.getMasterList().get(index);
-        getSupportActionBar().setTitle(sel.getName());
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        if(tb != null) {
+            tb.setTitle(sel.getName());
+        }
         System.out.println("SELActivity: onCreate: sel is "+sel);
         System.out.println("SELActivity: onCreate: sel has "+sel.getEntryCount()+" entries.");
 
@@ -80,8 +92,52 @@ public class ScheduleEntryListActivity extends AppCompatActivity implements Adap
             @Override
             public void onClick(View view) {
                 //TODO: implement
-                Snackbar.make(view, "Not yet implemented!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                // get prompts.xml view
+                LayoutInflater li = LayoutInflater.from(ScheduleEntryListActivity.this);
+                View promptsView = li.inflate(R.layout.prompt, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        ScheduleEntryListActivity.this);
+
+                // set prompts.xml to alertdialog builder
+                alertDialogBuilder.setView(promptsView);
+
+                final EditText userInput = (EditText) promptsView
+                        .findViewById(R.id.editTextDialogUserInput);
+
+                userInput.setText(sel.getName());
+
+                // set dialog message
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        // get user input and set it to result
+                                        // edit text
+                                        updateScheduleName(index, userInput.getText().toString(), sel);
+                                        if (getParent() == null) {
+                                            setResult(Activity.RESULT_OK, getIntent());
+                                        } else {
+                                            getParent().setResult(Activity.RESULT_OK, getIntent());
+                                        }
+                                        finish();
+                                    }
+                                })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                System.out.println("SELActivity: alertDialog created");
+
+                // show it
+                alertDialog.show();
             }
         });
 

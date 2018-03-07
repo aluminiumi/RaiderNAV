@@ -1,4 +1,4 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
