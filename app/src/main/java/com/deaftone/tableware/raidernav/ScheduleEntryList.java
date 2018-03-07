@@ -78,7 +78,8 @@ public class ScheduleEntryList {
         for(x=0; x < classEntries.size()-1; x++) {
             output += classEntries.get(x).toString()+"\n";
         }
-        output+=classEntries.get(x).toString();
+        if(classEntries.size() > 1)
+            output+=classEntries.get(x).toString();
         return output;
     }
 }

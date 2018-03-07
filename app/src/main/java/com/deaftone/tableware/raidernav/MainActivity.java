@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Not yet implemented!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button=(Button) findViewById(R.id.createSchedule);
+        /*button=(Button) findViewById(R.id.createSchedule);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(new Intent(MainActivity.this, CreateScheduleScreen.class), 2);
                 //openCreateScheduleScreen();
             }
-        });
+        });*/
 
     }
     /*public void openCreateScheduleScreen(){
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         //System.out.println("MainActivity: onActivityResult: Got activity result");
         System.out.println("MainActivity: onActivityResult: requestCode: "+requestCode+", resultCode: "+resultCode);
         if (requestCode == 1 || requestCode == 2) {
-            if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
+            if (resultCode == RESULT_OK) {
                 // A contact was picked.  Here we will just display it
                 // to the user.
                 //System.out.println(RESULT_OK);

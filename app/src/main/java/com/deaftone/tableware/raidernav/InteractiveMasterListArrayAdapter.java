@@ -48,6 +48,7 @@ public class InteractiveMasterListArrayAdapter extends ArrayAdapter<ScheduleEntr
             viewHolder.text.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    System.out.println("IMLAA: getView: onClickListener: creating SELActivity and sending position "+position);
                     context.startActivityForResult(new Intent(context.getApplicationContext(),ScheduleEntryListActivity.class).putExtra("index", position), 0);
                 }
             });

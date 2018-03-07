@@ -16,21 +16,26 @@ public class ScheduleSingleEntry {
     private String endTime;
     private boolean activeOnDay[];
 
+    ScheduleSingleEntry(String cn, String b, String st, String et, boolean[] days) {
+        courseNumber = cn;
+        building = b;
+        startTime = st;
+        endTime = et;
+        activeOnDay = new boolean[7];
+        for(int x=0; x<7; x++) {
+            activeOnDay[x] = days[x];
+        }
+    }
+
     ScheduleSingleEntry(String cn, String b, String st, String et) {
         courseNumber = cn;
         building = b;
-        //System.out.println("Initializing ScheduleSingleEntry");
-        /*System.out.println(Arrays.toString(time));
-        TimeDrop=new String[5];
-        for (int x=0;x<time.length; x++){
-            TimeDrop[x]=time[x];
-        }
-        System.out.println(Arrays.toString(TimeDrop));*/
-        //System.out.println("Finished Initilizing!!!");
         startTime = st;
         endTime = et;
         activeOnDay = new boolean[7];
     }
+
+
 
     public void setCourseNumber(String cn) {
         courseNumber = cn;

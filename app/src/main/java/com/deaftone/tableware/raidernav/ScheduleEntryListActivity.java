@@ -27,6 +27,7 @@ public class ScheduleEntryListActivity extends AppCompatActivity implements Adap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_entry_list);
+
         tv = findViewById(R.id.courseText);
         dv = findViewById(R.id.buildingText);
         Bundle extras = getIntent().getExtras();
@@ -45,7 +46,6 @@ public class ScheduleEntryListActivity extends AppCompatActivity implements Adap
         lv.setAdapter(adapter);
 
 
-        //TODO: fix hardcoded indexing to be dynamic
         //tv.setText(sel.getEntry(0).getCourseNumber());
         //dv.setText(sel.getEntry(0).getBuilding());
 
@@ -60,19 +60,11 @@ public class ScheduleEntryListActivity extends AppCompatActivity implements Adap
         //ST.setAdapter(aa);
 
 
-        Button savebutton = (Button) findViewById(R.id.saveButton);
-        savebutton.setOnClickListener(new View.OnClickListener() {
+        Button createCourseButton = (Button) findViewById(R.id.createCourseButton);
+        createCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
-                //fh.writeFile(tv.getText().toString());
-                //sel.setName(tv.getText());
-                //updateScheduleName(index, tv.getText().toString(), sel);
-                //sh.replaceScheduleInMasterList(index, sel);
-                System.out.println("Save: "+adapter.getItem(0));
+                startActivityForResult(new Intent(getApplicationContext(), CreateScheduleScreen.class), 2);
 
                 if (getParent() == null) {
                     setResult(Activity.RESULT_OK, getIntent());
@@ -83,13 +75,26 @@ public class ScheduleEntryListActivity extends AppCompatActivity implements Adap
             }
         });
 
+        Button renameScheduleButton = (Button) findViewById(R.id.renameScheduleButton);
+        renameScheduleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO: implement
+                Snackbar.make(view, "Not yet implemented!", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         Button deletebutton = (Button) findViewById(R.id.deleteButton);
         deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 deleteSchedule(index, sel);
+                if (getParent() == null) {
+                    setResult(Activity.RESULT_OK, getIntent());
+                } else {
+                    getParent().setResult(Activity.RESULT_OK, getIntent());
+                }
                 finish();
                 //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
                 //tv.setText(fh.readFile());

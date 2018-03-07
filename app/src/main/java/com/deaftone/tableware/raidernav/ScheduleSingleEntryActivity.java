@@ -19,6 +19,8 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
 
     TextView tv;
     TextView dv;
+    TextView st;
+    TextView et;
     Spinner ST;
     ScheduleHandler sh;
     ScheduleEntryList sel;
@@ -45,8 +47,10 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_single_entry);
-        tv = findViewById(R.id.courseText);
-        dv = findViewById(R.id.buildingText);
+        tv = findViewById(R.id.courseName);
+        dv = findViewById(R.id.buildingName);
+        st = findViewById(R.id.startTime);
+        et = findViewById(R.id.endTime);
         Bundle extras = getIntent().getExtras();
         final int index = extras.getInt("index");
         final int entryindex = extras.getInt("entryindex");
@@ -60,10 +64,10 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         System.out.println("SSEActivity: onCreate: sel has " + sel.getEntryCount() + " entries.");
         //getSupportActionBar().setTitle(sel.getName());
 
-
-        //TODO: fix hardcoded indexing to be dynamic
         tv.setText(sse.getCourseNumber());
         dv.setText(sse.getBuilding());
+        st.setText(sse.getStartTime());
+        et.setText(sse.getEndTime());
 
         //Spinner ST = (Spinner) findViewById(R.id.spinnerStartTime);
         //ST.setOnItemSelectedListener(this);
@@ -86,10 +90,12 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
                 //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
                 //fh.writeFile(tv.getText().toString());
                 //sel.setName(tv.getText());
-                sse.setCourseNumber(tv.getText().toString());
-                sse.setBuilding(dv.getText().toString());
                 //TODO: input times from their fields
-                ScheduleSingleEntry newsse = new ScheduleSingleEntry(tv.getText().toString(), dv.getText().toString(), "0000", "1111");
+                ScheduleSingleEntry newsse = new ScheduleSingleEntry(
+                        tv.getText().toString(),
+                        dv.getText().toString(),
+                        st.getText().toString(),
+                        et.getText().toString());
                 replaceEntry(index, entryindex, newsse);
                 //updateScheduleName(index, tv.getText().toString(), sel);
                 //sh.replaceScheduleInMasterList(index, sel);

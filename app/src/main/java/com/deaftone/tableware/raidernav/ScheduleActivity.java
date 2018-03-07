@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,12 +19,18 @@ public class ScheduleActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
+
+        Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
+        tb.setTitle("My Schedules");
+
+
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         //final TextView tv = findViewById(R.id.savedText);
         //fh = new ScheduleFileHandler(getApplicationContext());
         sh = new ScheduleHandler(getApplicationContext());
         adapter = new InteractiveMasterListArrayAdapter(this, sh.getMasterList());
+        adapter.setNotifyOnChange(true);
         //adapter.setNotifyOnChange(true);
         setListAdapter(adapter);
 
@@ -37,7 +44,7 @@ public class ScheduleActivity extends ListActivity {
             }
         });*/
 
-        Button loadbutton = (Button) findViewById(R.id.loadButton);
+        /*Button loadbutton = (Button) findViewById(R.id.loadButton);
         loadbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,16 +60,25 @@ public class ScheduleActivity extends ListActivity {
                 //tv.setText(fh.readFile());
                 //tv.setText(fileContents);
             }
-        });
+        });*/
 
         Button createbutton = (Button) findViewById(R.id.createButton);
         createbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sh.generateAnotherRandomSchedule();
+                //adapter.insert(sh.getScheduleFromMasterList(sh.getMasterList().size()-1), 0);
                 adapter.notifyDataSetChanged();
-                Snackbar.make(view, "New schedule created", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "New schedule created", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();*/
+                adapter.notifyDataSetInvalidated();
+                if (getParent() == null) {
+                    setResult(Activity.RESULT_OK, getIntent());
+                } else {
+                    getParent().setResult(Activity.RESULT_OK, getIntent());
+                }
+                finish();
+
             }
         });
 
