@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="64dp">
+
+    <CheckBox
+        android:id="@+id/checkBox_sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:buttonTint="@color/colorPrimary"
+        android:rotation="270"
+        android:text="@string/dayofweek_sunday"
+        android:textColor="@color/colorFont" />
+
+    <CheckBox
+        android:id="@+id/checkBox_monday"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/checkBox_sunday"
+        android:layout_toRightOf="@+id/checkBox_sunday"
+        android:buttonTint="@color/colorPrimary"
+        android:rotation="270"
+        android:text="@string/dayofweek_monday"
+        android:textColor="@color/colorFont" />
+
+    <CheckBox
+        android:id="@+id/checkBox_tuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/checkBox_monday"
+        android:layout_toRightOf="@+id/checkBox_monday"
+        android:buttonTint="@color/colorPrimary"
+        android:rotation="270"
+        android:text="@string/dayofweek_tuesday"
+        android:textColor="@color/colorFont" />
+
+    <CheckBox
+        android:id="@+id/checkBox_wednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/checkBox_tuesday"
+        android:layout_toRightOf="@+id/checkBox_tuesday"
+        android:buttonTint="@color/colorPrimary"
+        android:rotation="270"
+        android:text="@string/dayofweek_wednesday"
+        android:textColor="@color/colorFont" />
+
+    <CheckBox
+        android:id="@+id/checkBox_thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/checkBox_wednesday"
+        android:layout_toRightOf="@+id/checkBox_wednesday"
+        android:buttonTint="@color/colorPrimary"
+        android:rotation="270"
+        android:text="@string/dayofweek_thursday"
+        android:textColor="@color/colorFont" />
+
+    <CheckBox
+        android:id="@+id/checkBox_friday"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/checkBox_thursday"
+        android:layout_toRightOf="@+id/checkBox_thursday"
+        android:buttonTint="@color/colorPrimary"
+        android:rotation="270"
+        android:text="@string/dayofweek_friday"
+        android:textColor="@color/colorFont" />
+
+    <CheckBox
+        android:id="@+id/checkBox_saturday"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:buttonTint="@color/colorPrimary"
+        android:rotation="270"
+        android:text="@string/dayofweek_saturday"
+        android:textColor="@color/colorFont"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_friday" />
+
+</RelativeLayout>
