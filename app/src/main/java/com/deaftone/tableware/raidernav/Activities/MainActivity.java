@@ -54,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button todaysClassesButton = (Button) findViewById(R.id.todaysclassesbutton);
+        todaysClassesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Not implemented yet!", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+            }
+        });
+
         /*button=(Button) findViewById(R.id.createSchedule);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

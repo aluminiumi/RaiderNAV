@@ -145,8 +145,6 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 deleteCourse(index, entryindex);
                 if (getParent() == null) {
                     setResult(Activity.RESULT_OK, getIntent());

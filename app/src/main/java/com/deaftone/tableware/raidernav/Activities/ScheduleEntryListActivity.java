@@ -90,8 +90,7 @@ public class ScheduleEntryListActivity extends Activity implements AdapterView.O
         renameScheduleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: implement
-                // get prompts.xml view
+                // get prompt.xml view
                 LayoutInflater li = LayoutInflater.from(ScheduleEntryListActivity.this);
                 View promptsView = li.inflate(R.layout.prompt, null);
 

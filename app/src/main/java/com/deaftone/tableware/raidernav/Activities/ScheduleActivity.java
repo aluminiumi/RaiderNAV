@@ -1,14 +1,18 @@
 package com.deaftone.tableware.raidernav.Activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.deaftone.tableware.raidernav.InteractiveMasterListArrayAdapter;
 import com.deaftone.tableware.raidernav.R;
@@ -71,18 +75,56 @@ public class ScheduleActivity extends ListActivity {
         createbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sh.generateAnotherRandomSchedule();
-                //adapter.insert(sh.getScheduleFromMasterList(sh.getMasterList().size()-1), 0);
-                adapter.notifyDataSetChanged();
-                /*Snackbar.make(view, "New schedule created", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();*/
-                adapter.notifyDataSetInvalidated();
-                if (getParent() == null) {
-                    setResult(Activity.RESULT_OK, getIntent());
-                } else {
-                    getParent().setResult(Activity.RESULT_OK, getIntent());
-                }
-                finish();
+                // get prompt.xml view
+                LayoutInflater li = LayoutInflater.from(ScheduleActivity.this);
+                View promptsView = li.inflate(R.layout.prompt, null);
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        ScheduleActivity.this);
+
+                // set prompts.xml to alertdialog builder
+                alertDialogBuilder.setView(promptsView);
+
+                final EditText userInput = (EditText) promptsView
+                        .findViewById(R.id.editTextDialogUserInput);
+
+                //userInput.setText();
+                userInput.setHint("Schedule Name (e.g., \"Spring 2018\")");
+
+                // set dialog message
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,int id) {
+                                        // get user input and set it to result
+                                        // edit text
+                                        //sh.generateAnotherRandomSchedule(userInput.getText().toString());
+                                        sh.addScheduleToMasterList(new ScheduleEntryList(userInput.getText().toString()));
+                                        if (getParent() == null) {
+                                            setResult(Activity.RESULT_OK, getIntent());
+                                        } else {
+                                            getParent().setResult(Activity.RESULT_OK, getIntent());
+                                        }
+                                        finish();
+                                    }
+                                })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                System.out.println("SELActivity: alertDialog created");
+
+                // show it
+                alertDialog.show();
+
+
 
             }
         });

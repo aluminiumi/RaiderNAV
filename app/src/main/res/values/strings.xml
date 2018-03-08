@@ -6,6 +6,7 @@
 
     <string name="image_credit">Photo credit: O\'Jay Barbee</string>
     <string name="name_button_gotoschedules">My Schedules</string>
+    <string name="name_button_todaysclasses">Today\'s Classes</string>
 
     <string name="name_button_resetschedule">Reset Schedule</string>
     <string name="name_button_createschedule">Create New Schedule</string>
