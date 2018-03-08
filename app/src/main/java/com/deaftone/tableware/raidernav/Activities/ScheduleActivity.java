@@ -40,6 +40,7 @@ public class ScheduleActivity extends ListActivity {
         sh = new ScheduleHandler(getApplicationContext());
         adapter = new InteractiveMasterListArrayAdapter(this, sh.getMasterList());
         adapter.setNotifyOnChange(true);
+        ((InteractiveMasterListArrayAdapter) adapter).setScheduleHandler(sh);
         //adapter.setNotifyOnChange(true);
         setListAdapter(adapter);
 

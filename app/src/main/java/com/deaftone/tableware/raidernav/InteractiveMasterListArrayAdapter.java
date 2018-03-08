@@ -22,6 +22,7 @@ public class InteractiveMasterListArrayAdapter extends ArrayAdapter<ScheduleEntr
 
     public List<ScheduleEntryList> list;
     private final Activity context;
+    private ScheduleHandler sh;
 
     public InteractiveMasterListArrayAdapter(Activity context, List<ScheduleEntryList> list) {
         //super(context, R.layout.rowbuttonlayout, list);
@@ -53,18 +54,17 @@ public class InteractiveMasterListArrayAdapter extends ArrayAdapter<ScheduleEntr
                 }
             });
             viewHolder.checkbox = (CheckBox) view.findViewById(R.id.check);
-            viewHolder.checkbox
-                    .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
-                        @Override
-                        public void onCheckedChanged(CompoundButton buttonView,
-                                                     boolean isChecked) {
-                            ScheduleEntryList element = (ScheduleEntryList) viewHolder.checkbox
-                                    .getTag();
-                            element.setEnabled(buttonView.isChecked());
-
-                        }
-                    });
+            viewHolder.checkbox.setVisibility(View.VISIBLE);
+            viewHolder.checkbox.setChecked(list.get(position).isEnabled());
+            viewHolder.checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                    ScheduleEntryList element = (ScheduleEntryList) viewHolder.checkbox.getTag();
+                    element.setEnabled(compoundButton.isChecked());
+                    System.out.println("IMLAA: getView: Setting sel " + position + " active to " + compoundButton.isChecked());
+                    sh.saveMasterListToFile();
+                }
+            });
             view.setTag(viewHolder);
             viewHolder.checkbox.setTag(list.get(position));
         } else {
@@ -74,7 +74,6 @@ public class InteractiveMasterListArrayAdapter extends ArrayAdapter<ScheduleEntr
         ViewHolder holder = (ViewHolder) view.getTag();
 
         holder.text.setText(list.get(position).getName());
-        holder.checkbox.setChecked(list.get(position).isEnabled());
 
         return view;
     }
@@ -90,6 +89,10 @@ public class InteractiveMasterListArrayAdapter extends ArrayAdapter<ScheduleEntr
             }
         }
         this.notifyDataSetChanged();
+    }
+
+    public void setScheduleHandler(ScheduleHandler sh) {
+        this.sh = sh;
     }
 
     @Override

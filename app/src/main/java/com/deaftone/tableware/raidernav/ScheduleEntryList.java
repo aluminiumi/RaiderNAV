@@ -11,6 +11,8 @@ public class ScheduleEntryList {
     private boolean enabled;
     private String name;
     private List<ScheduleSingleEntry> classEntries;
+    //private List<ScheduleEntryList> masterList;
+    //private ScheduleHandler mySH;
 
     public ScheduleEntryList() {
         classEntries = new ArrayList<ScheduleSingleEntry>();
@@ -21,6 +23,14 @@ public class ScheduleEntryList {
         enabled = false;
         classEntries = new ArrayList<ScheduleSingleEntry>();
     }
+
+    /*public void setScheduleHandler(ScheduleHandler sh) {
+        mySH = sh;
+    }
+
+    public ScheduleHandler getScheduleHandler() {
+        return mySH;
+    }*/
 
     public void addEntry(ScheduleSingleEntry sse) {
         classEntries.add(sse);
@@ -67,6 +77,14 @@ public class ScheduleEntryList {
     public boolean isEnabled() {
         return enabled;
     }
+
+    /*public void setMasterList(List<ScheduleEntryList> list) {
+        masterList = list;
+    }
+
+    public List<ScheduleEntryList> getMasterList() {
+        return masterList;
+    }*/
 
     public ScheduleSingleEntry[] toArray() {
         return (ScheduleSingleEntry[]) classEntries.toArray();
