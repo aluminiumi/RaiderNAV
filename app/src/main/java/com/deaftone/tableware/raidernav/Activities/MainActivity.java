@@ -1,4 +1,4 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+
+import com.deaftone.tableware.raidernav.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
@@ -52,18 +54,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button todaysClassesButton = (Button) findViewById(R.id.todaysclassesbutton);
+        todaysClassesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Not implemented yet!", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+            }
+        });
+
         /*button=(Button) findViewById(R.id.createSchedule);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(MainActivity.this, CreateScheduleScreen.class), 2);
+                startActivityForResult(new Intent(MainActivity.this, AddCourseActivity.class), 2);
                 //openCreateScheduleScreen();
             }
         });*/
 
     }
     /*public void openCreateScheduleScreen(){
-        Intent intent = new Intent(this,CreateScheduleScreen.class);
+        Intent intent = new Intent(this,AddCourseActivity.class);
         startActivity(intent);
     }*/
 

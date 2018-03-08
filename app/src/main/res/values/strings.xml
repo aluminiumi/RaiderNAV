@@ -6,6 +6,7 @@
 
     <string name="image_credit">Photo credit: O\'Jay Barbee</string>
     <string name="name_button_gotoschedules">My Schedules</string>
+    <string name="name_button_todaysclasses">Today\'s Classes</string>
 
     <string name="name_button_resetschedule">Reset Schedule</string>
     <string name="name_button_createschedule">Create New Schedule</string>
@@ -16,6 +17,14 @@
     <string name="name_button_renameschedule">Rename Schedule</string>
     <string name="name_button_savecourse">Save Course</string>
     <string name="name_button_createcourse">Create Course</string>
+
+    <string name="dayofweek_monday">Mon</string>
+    <string name="dayofweek_tuesday">Tue</string>
+    <string name="dayofweek_wednesday">Wed</string>
+    <string name="dayofweek_thursday">Thur</string>
+    <string name="dayofweek_friday">Fri</string>
+    <string name="dayofweek_saturday">Sat</string>
+    <string name="dayofweek_sunday">Sun</string>
 
     <!-- Strings related to Settings -->
 

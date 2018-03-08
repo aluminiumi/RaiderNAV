@@ -1,4 +1,4 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,10 +10,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.deaftone.tableware.raidernav.R;
+import com.deaftone.tableware.raidernav.ScheduleEntryList;
+import com.deaftone.tableware.raidernav.ScheduleHandler;
+import com.deaftone.tableware.raidernav.ScheduleSingleEntry;
 
 public class ScheduleSingleEntryActivity extends AppCompatActivity {
 
@@ -21,6 +27,13 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
     TextView dv;
     TextView st;
     TextView et;
+    CheckBox monday;
+    CheckBox tuesday;
+    CheckBox wednesday;
+    CheckBox thursday;
+    CheckBox friday;
+    CheckBox saturday;
+    CheckBox sunday;
     Spinner ST;
     ScheduleHandler sh;
     ScheduleEntryList sel;
@@ -51,6 +64,14 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         dv = findViewById(R.id.buildingName);
         st = findViewById(R.id.startTime);
         et = findViewById(R.id.endTime);
+        monday = findViewById(R.id.checkBox_monday);
+        tuesday = findViewById(R.id.checkBox_tuesday);
+        wednesday = findViewById(R.id.checkBox_wednesday);
+        thursday = findViewById(R.id.checkBox_thursday);
+        friday = findViewById(R.id.checkBox_friday);
+        saturday = findViewById(R.id.checkBox_saturday);
+        sunday = findViewById(R.id.checkBox_sunday);
+
         Bundle extras = getIntent().getExtras();
         final int index = extras.getInt("index");
         final int entryindex = extras.getInt("entryindex");
@@ -68,6 +89,14 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         dv.setText(sse.getBuilding());
         st.setText(sse.getStartTime());
         et.setText(sse.getEndTime());
+        boolean days[] = sse.getDays();
+        sunday.setChecked(days[0]);
+        monday.setChecked(days[1]);
+        tuesday.setChecked(days[2]);
+        wednesday.setChecked(days[3]);
+        thursday.setChecked(days[4]);
+        friday.setChecked(days[5]);
+        saturday.setChecked(days[6]);
 
         //Spinner ST = (Spinner) findViewById(R.id.spinnerStartTime);
         //ST.setOnItemSelectedListener(this);
@@ -84,21 +113,24 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                boolean newdays[] = new boolean[7];
+                if(sunday.isChecked()) newdays[0] = true;
+                if(monday.isChecked()) newdays[1] = true;
+                if(tuesday.isChecked()) newdays[2] = true;
+                if(wednesday.isChecked()) newdays[3] = true;
+                if(thursday.isChecked()) newdays[4] = true;
+                if(friday.isChecked()) newdays[5] = true;
+                if(saturday.isChecked()) newdays[6] = true;
 
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-                //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
-                //fh.writeFile(tv.getText().toString());
-                //sel.setName(tv.getText());
-                //TODO: input times from their fields
                 ScheduleSingleEntry newsse = new ScheduleSingleEntry(
                         tv.getText().toString(),
                         dv.getText().toString(),
                         st.getText().toString(),
-                        et.getText().toString());
+                        et.getText().toString(),
+                        newdays
+                );
+
                 replaceEntry(index, entryindex, newsse);
-                //updateScheduleName(index, tv.getText().toString(), sel);
-                //sh.replaceScheduleInMasterList(index, sel);
 
                 if (getParent() == null) {
                     setResult(Activity.RESULT_OK, getIntent());
@@ -113,8 +145,6 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 deleteCourse(index, entryindex);
                 if (getParent() == null) {
                     setResult(Activity.RESULT_OK, getIntent());

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ttu_will_rogers"
-    tools:context="com.deaftone.tableware.raidernav.MainActivity">
+    tools:context="com.deaftone.tableware.raidernav.Activities.MainActivity">
 
     <!-- Button
         android:id="@+id/createSchedule"
@@ -35,6 +35,16 @@
         android:layout_marginBottom="352dp"
         android:layout_marginEnd="176dp"
         android:text="@string/name_button_gotoschedules"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/todaysclassesbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/name_button_todaysclasses"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -22,7 +22,7 @@ public class ScheduleHandler {
     List<ScheduleEntryList> masterList;
     ScheduleFileHandler filehandler;
 
-    ScheduleHandler(Context c) {
+    public ScheduleHandler(Context c) {
         builder = new GsonBuilder();
         gson = builder.create();
         filehandler = new ScheduleFileHandler(c);
@@ -115,11 +115,13 @@ public class ScheduleHandler {
         addScheduleToMasterList(sel);
     }
 
-    private void saveMasterListToFile() {
+    public void saveMasterListToFile() {
         filehandler.writeFile(gson.toJson(masterList));
     }
 
     public void addScheduleToMasterList(ScheduleEntryList sel) {
+        //sel.setScheduleHandler(this);
+        //sel.setMasterList(masterList);
         masterList.add(sel);
         saveMasterListToFile();
     }

@@ -13,6 +13,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/colorPrimary"
         android:textSize="12sp"
         tools:layout_editor_absoluteX="288dp" />
 
@@ -21,9 +22,9 @@
         android:id="@+id/courseText"
         android:layout_width="100dp"
         android:layout_height="53dp"
-        android:textColor="@android:color/holo_red_dark"
-        android:textStyle="bold"
-        android:textSize="12sp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/buildingText"
@@ -33,7 +34,7 @@
         android:layout_toEndOf="@+id/courseText"
         android:layout_toRightOf="@+id/courseText"
         android:textAlignment="textStart"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/colorPrimary"
         android:textSize="12sp"
         android:textStyle="bold" />
 

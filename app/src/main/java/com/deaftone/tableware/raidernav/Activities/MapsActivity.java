@@ -1,8 +1,9 @@
-package com.deaftone.tableware.raidernav;
+package com.deaftone.tableware.raidernav.Activities;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.deaftone.tableware.raidernav.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
