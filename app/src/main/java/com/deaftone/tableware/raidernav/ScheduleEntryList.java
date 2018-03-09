@@ -11,12 +11,26 @@ public class ScheduleEntryList {
     private boolean enabled;
     private String name;
     private List<ScheduleSingleEntry> classEntries;
+    //private List<ScheduleEntryList> masterList;
+    //private ScheduleHandler mySH;
 
-    ScheduleEntryList(String n) {
+    public ScheduleEntryList() {
+        classEntries = new ArrayList<ScheduleSingleEntry>();
+    }
+
+    public ScheduleEntryList(String n) {
         name = n;
         enabled = false;
         classEntries = new ArrayList<ScheduleSingleEntry>();
     }
+
+    /*public void setScheduleHandler(ScheduleHandler sh) {
+        mySH = sh;
+    }
+
+    public ScheduleHandler getScheduleHandler() {
+        return mySH;
+    }*/
 
     public void addEntry(ScheduleSingleEntry sse) {
         classEntries.add(sse);
@@ -24,6 +38,14 @@ public class ScheduleEntryList {
 
     public void removeEntry(ScheduleSingleEntry sse) {
         classEntries.remove(sse);
+    }
+
+    /*public void replaceEntry(ScheduleSingleEntry sse, ScheduleEntryList sse) {
+        classEntries.set
+    }*/
+
+    public void replaceEntry(int index, ScheduleSingleEntry sse) {
+        classEntries.set(index, sse);
     }
 
     public ScheduleSingleEntry getEntry(int index) {
@@ -56,8 +78,20 @@ public class ScheduleEntryList {
         return enabled;
     }
 
+    /*public void setMasterList(List<ScheduleEntryList> list) {
+        masterList = list;
+    }
+
+    public List<ScheduleEntryList> getMasterList() {
+        return masterList;
+    }*/
+
     public ScheduleSingleEntry[] toArray() {
         return (ScheduleSingleEntry[]) classEntries.toArray();
+    }
+
+    public List<ScheduleSingleEntry> toArrayList() {
+        return classEntries;
     }
 
     public String toString() {
@@ -66,7 +100,8 @@ public class ScheduleEntryList {
         for(x=0; x < classEntries.size()-1; x++) {
             output += classEntries.get(x).toString()+"\n";
         }
-        output+=classEntries.get(x).toString();
+        if(classEntries.size() > 1)
+            output+=classEntries.get(x).toString();
         return output;
     }
 }

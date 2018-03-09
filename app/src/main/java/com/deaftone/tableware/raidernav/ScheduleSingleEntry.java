@@ -1,5 +1,9 @@
 package com.deaftone.tableware.raidernav;
 
+import java.sql.Array;
+import java.sql.Time;
+import java.util.Arrays;
+
 /**
  * Created by via on 2/25/18.
  */
@@ -7,17 +11,31 @@ package com.deaftone.tableware.raidernav;
 public class ScheduleSingleEntry {
     private String courseNumber;
     private String building;
-    private int startTime;
-    private int endTime;
+    private String [] TimeDrop;
+    private String startTime;
+    private String endTime;
     private boolean activeOnDay[];
 
-    ScheduleSingleEntry(String cn, String b, int st, int et) {
+    public ScheduleSingleEntry(String cn, String b, String st, String et, boolean[] days) {
+        courseNumber = cn;
+        building = b;
+        startTime = st;
+        endTime = et;
+        activeOnDay = new boolean[7];
+        for(int x=0; x<7; x++) {
+            activeOnDay[x] = days[x];
+        }
+    }
+
+    public ScheduleSingleEntry(String cn, String b, String st, String et) {
         courseNumber = cn;
         building = b;
         startTime = st;
         endTime = et;
         activeOnDay = new boolean[7];
     }
+
+
 
     public void setCourseNumber(String cn) {
         courseNumber = cn;
@@ -35,19 +53,25 @@ public class ScheduleSingleEntry {
         return building;
     }
 
-    public void setStartTime(int st) {
-        startTime = st;
+    public String [] getTimeDrop() {
+        System.out.println("INSIDE GET TIMEDROP");
+        System.out.println(Arrays.toString(TimeDrop));
+        return TimeDrop;
     }
 
-    public int getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setEndTime(int et) {
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(String et) {
         endTime = et;
     }
 
-    public int getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 

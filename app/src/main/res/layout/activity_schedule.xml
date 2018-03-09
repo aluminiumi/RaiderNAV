@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.deaftone.tableware.raidernav.ScheduleActivity">
+    android:background="@color/colorBackground"
+    tools:context="com.deaftone.tableware.raidernav.Activities.ScheduleActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
         app:layout_anchorGravity="bottom"
         tools:layout_editor_absoluteY="164dp" />
 
-    <Button
+    <!-- Button
         android:id="@+id/loadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,17 +43,29 @@
         android:layout_marginTop="10dp"
         android:text="@string/name_button_loadschedule"
         app:layout_anchor="@+id/include2"
-        app:layout_anchorGravity="right|center" />
+        app:layout_anchorGravity="right|center" / -->
 
     <Button
         android:id="@+id/createButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="64dp"
+
         android:text="@string/name_button_createschedule"
         app:layout_anchor="@+id/include2"
         app:layout_anchorGravity="left" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+
+        android:text="@string/name_button_resetschedule"
+        app:layout_anchor="@+id/include2"
+        app:layout_anchorGravity="right|top" />
 
     <!-- android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

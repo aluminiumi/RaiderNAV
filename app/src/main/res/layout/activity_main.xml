@@ -1,65 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.deaftone.tableware.raidernav.MainActivity">
+    android:background="@drawable/ttu_will_rogers"
+    tools:context="com.deaftone.tableware.raidernav.Activities.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/content_main" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <!-- Button
+        android:id="@+id/createSchedule"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Create Schedule"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318" / -->
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab2"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="left|bottom"
-        app:srcCompat="@android:drawable/ic_dialog_map" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="left|top"
-        app:srcCompat="@android:drawable/ic_dialog_info" />
+        android:text="@string/image_credit"/>
 
     <Button
         android:id="@+id/viewschedulesbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="352dp"
+        android:layout_marginEnd="176dp"
         android:text="@string/name_button_gotoschedules"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="right|center" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/todaysclassesbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        android:layout_marginEnd="172dp"
+        android:text="@string/name_button_todaysclasses"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewschedulesbutton"
+        app:layout_constraintVertical_bias="0.779"
+        app:srcCompat="@android:drawable/ic_menu_compass" />
+        <!-- app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal_background" / -->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintStart_toEndOf="@+id/fab"
+        app:layout_constraintTop_toBottomOf="@+id/viewschedulesbutton"
+        app:layout_constraintVertical_bias="0.779"
+        app:srcCompat="@android:drawable/ic_dialog_map" />
+        <!-- app:srcCompat="@android:drawable/ic_menu_manage" / -->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toEndOf="@+id/fab2"
+        app:layout_constraintTop_toBottomOf="@+id/viewschedulesbutton"
+        app:layout_constraintVertical_bias="0.779"
+        app:srcCompat="@android:drawable/ic_menu_manage" />
+        <!-- app:srcCompat="@drawable/ic_info_black_24dp" / -->
+
+</android.support.constraint.ConstraintLayout>
