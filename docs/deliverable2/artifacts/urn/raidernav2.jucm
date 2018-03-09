@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="via" created="March 9, 2018 1:30:08 AM CST" modified="March 9, 2018 1:30:08 AM CST" specVersion="6" urnVersion="1.27" nextGlobalID="1038">
+<urn:URNspec xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grl="http:///grl.ecore" xmlns:ucm.map="http:///ucm/map.ecore" xmlns:urn="http:///urn.ecore" name="URNspec" author="via" created="March 9, 2018 1:30:08 AM CST" modified="March 9, 2018 4:23:09 AM CST" specVersion="8" urnVersion="1.27" nextGlobalID="1040">
   <ucmspec>
     <scenarioGroups name="ScenarioGroup6" id="6">
       <scenarios name="ScenarioDef7" id="7"/>
@@ -7,22 +7,22 @@
   </ucmspec>
   <grlspec>
     <intElements name="Find classes more easily" id="23" linksDest="328 1009" importance="High" importanceQuantitative="75" refs="24 957">
-      <metadata name="_numEval" value="90"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-43"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="Softgoal25" id="25">
       <metadata name="_numEval" value="0"/>
       <metadata name="_qualEval" value="None"/>
     </intElements>
     <intElements name="App is popular" id="33" linksDest="195 196 197 998" importance="Low" importanceQuantitative="25" refs="34 987">
-      <metadata name="_numEval" value="78"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-11"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="Maintain control of personal info" id="37" linksDest="318" importance="Low" importanceQuantitative="25" refs="38 958">
       <metadata name="_numEval" value="-25"/>
       <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
-    <intElements name="Not spend money" id="41" linksDest="93 312" type="Goal" refs="42">
+    <intElements name="Not spend money" id="41" linksDest="312 1039" type="Goal" refs="42">
       <metadata name="_numEval" value="25"/>
       <metadata name="_qualEval" value="WeaklySatisfied"/>
     </intElements>
@@ -38,28 +38,29 @@
       <metadata name="_numEval" value="75"/>
       <metadata name="_qualEval" value="WeaklySatisfied"/>
     </intElements>
-    <intElements name="Walk to classes" id="61" linksSrc="93" type="Task" refs="62">
+    <intElements name="Walk to classes" id="61" linksSrc="1039" type="Task" refs="62">
+      <metadata name="_addAggregate" value="disable"/>
       <metadata name="_numEval" value="0"/>
       <metadata name="_qualEval" value="None"/>
     </intElements>
     <intElements name="implement App on Andriod Studio" id="121" linksDest="492" linksSrc="396 397 427" type="Task" refs="122 989">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="25"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-25"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="implement bare minimum functionalities" id="123" linksDest="396 491" linksSrc="213 408" type="Task" refs="124">
-      <metadata name="_numEval" value="100"/>
-      <metadata name="_qualEval" value="Satisfied"/>
+      <metadata name="_numEval" value="-25"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="implement convenience features" id="125" linksDest="427 493 573 574" linksSrc="228 662 663" type="Task" refs="126 988">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="50"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-93"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="Test App" id="127" linksDest="397" linksSrc="225 436" type="Task" refs="128">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="75"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-25"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="Lectures" id="131" linksSrc="489 490 517" type="Ressource" refs="132">
       <metadata name="_addAggregate" value="disable"/>
@@ -76,28 +77,28 @@
       <metadata name="_qualEval" value="None"/>
     </intElements>
     <intElements name="Get an A" id="141" linksDest="186 462" importance="High" importanceQuantitative="100" refs="142 986">
-      <metadata name="_numEval" value="-15"/>
-      <metadata name="_qualEval" value="WeaklyDenied"/>
+      <metadata name="_numEval" value="71"/>
+      <metadata name="_qualEval" value="WeaklySatisfied"/>
     </intElements>
     <intElements name="Get good grade on the other parts of CS 4365" id="145" linksDest="376 383" linksSrc="186" type="Goal" importance="Medium" importanceQuantitative="60" refs="146 991">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="-56"/>
-      <metadata name="_qualEval" value="WeaklyDenied"/>
+      <metadata name="_numEval" value="87"/>
+      <metadata name="_qualEval" value="WeaklySatisfied"/>
     </intElements>
     <intElements name="App works" id="153" linksDest="213 225" linksSrc="196 469" type="Goal" importance="High" importanceQuantitative="100" refs="154 993">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="75"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-25"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="App is reliable" id="155" linksDest="436" linksSrc="197" importance="Low" importanceQuantitative="25" refs="156">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="18"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-6"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="App is easy to use" id="157" linksDest="228 408" linksSrc="195 1009" importance="Low" importanceQuantitative="25" refs="158 1008">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="50"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-93"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </intElements>
     <intElements name="Discussion" id="177" linksSrc="488 515 516" type="Ressource" refs="178">
       <metadata name="_addAggregate" value="disable"/>
@@ -111,44 +112,43 @@
     </intElements>
     <intElements name="Study for the tests" id="338" linksDest="488 517" linksSrc="375 573" type="Task" refs="339 1007">
       <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="-50"/>
-      <metadata name="_qualEval" value="WeaklyDenied"/>
+      <metadata name="_numEval" value="100"/>
+      <metadata name="_qualEval" value="Satisfied"/>
     </intElements>
     <intElements name="Do homework" id="340" linksDest="489 515" linksSrc="382 574" type="Task" refs="341 990">
-      <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="-25"/>
-      <metadata name="_qualEval" value="WeaklyDenied"/>
-    </intElements>
-    <intElements name="Get good grade on tests" id="364" linksDest="375 663" linksSrc="376" type="Goal" importance="Medium" importanceQuantitative="50" refs="365">
-      <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="-62"/>
-      <metadata name="_qualEval" value="WeaklyDenied"/>
-    </intElements>
-    <intElements name="Get good grade on homeworks" id="366" linksDest="382 662" linksSrc="383" type="Goal" importance="Low" importanceQuantitative="10" refs="367">
-      <metadata name="_addAggregate" value="disable"/>
-      <metadata name="_numEval" value="-43"/>
-      <metadata name="_qualEval" value="WeaklyDenied"/>
-    </intElements>
-    <intElements name="Make good documentation" id="442" linksDest="490 516" linksSrc="479" type="Task" refs="443">
       <metadata name="_addAggregate" value="disable"/>
       <metadata name="_numEval" value="50"/>
       <metadata name="_qualEval" value="WeaklySatisfied"/>
     </intElements>
+    <intElements name="Get good grade on tests" id="364" linksDest="375 663" linksSrc="376" type="Goal" importance="Medium" importanceQuantitative="50" refs="365">
+      <metadata name="_addAggregate" value="disable"/>
+      <metadata name="_numEval" value="90"/>
+      <metadata name="_qualEval" value="WeaklySatisfied"/>
+    </intElements>
+    <intElements name="Get good grade on homeworks" id="366" linksDest="382 662" linksSrc="383" type="Goal" importance="Low" importanceQuantitative="10" refs="367">
+      <metadata name="_addAggregate" value="disable"/>
+      <metadata name="_numEval" value="83"/>
+      <metadata name="_qualEval" value="WeaklySatisfied"/>
+    </intElements>
+    <intElements name="Make good documentation" id="442" linksDest="490 516" linksSrc="479" type="Task" refs="443">
+      <metadata name="_addAggregate" value="disable"/>
+      <metadata name="_numEval" value="25"/>
+      <metadata name="_qualEval" value="WeaklySatisfied"/>
+    </intElements>
     <intElements name="Get good grade on Project" id="452" linksDest="469 479" linksSrc="462" type="Goal" importance="Medium" importanceQuantitative="40" refs="453">
       <metadata name="_addAggregate" value="false"/>
-      <metadata name="_numEval" value="55"/>
+      <metadata name="_numEval" value="12"/>
       <metadata name="_qualEval" value="WeaklySatisfied"/>
     </intElements>
     <actors name="Team Getana" id="13" contRefs="14 985" importance="Low" importanceQuantitative="25">
-      <metadata name="_numEval" value="14"/>
+      <metadata name="_numEval" value="26"/>
       <metadata name="_qualEval" value="WeaklySatisfied"/>
     </actors>
     <actors name="Actor15" id="15"/>
     <actors name="Student" id="19" contRefs="20 964">
-      <metadata name="_numEval" value="52"/>
-      <metadata name="_qualEval" value="WeaklySatisfied"/>
+      <metadata name="_numEval" value="-4"/>
+      <metadata name="_qualEval" value="WeaklyDenied"/>
     </actors>
-    <links xsi:type="grl:Decomposition" name="Decomposition93" id="93" refs="//@urndef/@specDiagrams.0/@connections.0" dest="41" src="61"/>
     <links xsi:type="grl:Contribution" name="Contribution186" id="186" refs="//@urndef/@specDiagrams.2/@connections.0 //@urndef/@specDiagrams.1/@connections.6" dest="141" src="145" contribution="SomePositive" quantitativeContribution="75"/>
     <links xsi:type="grl:Contribution" name="Contribution195" id="195" refs="//@urndef/@specDiagrams.2/@connections.1 //@urndef/@specDiagrams.1/@connections.10" dest="33" src="157"/>
     <links xsi:type="grl:Contribution" name="Contribution196" id="196" refs="//@urndef/@specDiagrams.2/@connections.2 //@urndef/@specDiagrams.1/@connections.7" dest="33" src="153" contribution="SomePositive" quantitativeContribution="50"/>
@@ -156,11 +156,11 @@
     <links xsi:type="grl:Decomposition" name="Decomposition213" id="213" refs="//@urndef/@specDiagrams.2/@connections.4" dest="153" src="123"/>
     <links xsi:type="grl:Decomposition" name="Decomposition225" id="225" refs="//@urndef/@specDiagrams.2/@connections.5" dest="153" src="127"/>
     <links xsi:type="grl:Decomposition" name="Decomposition228" id="228" refs="//@urndef/@specDiagrams.2/@connections.6 //@urndef/@specDiagrams.1/@connections.11" dest="157" src="125"/>
-    <links xsi:type="grl:Contribution" name="Contribution300" id="300" refs="//@urndef/@specDiagrams.0/@connections.1 //@urndef/@specDiagrams.1/@connections.2" dest="49" src="274"/>
-    <links xsi:type="grl:Contribution" name="Contribution301" id="301" refs="//@urndef/@specDiagrams.0/@connections.2 //@urndef/@specDiagrams.1/@connections.3" dest="51" src="274" contribution="SomePositive" quantitativeContribution="75"/>
-    <links xsi:type="grl:Contribution" name="Contribution312" id="312" refs="//@urndef/@specDiagrams.0/@connections.3" dest="41" src="274" correlation="true"/>
-    <links xsi:type="grl:Contribution" name="Contribution318" id="318" refs="//@urndef/@specDiagrams.0/@connections.4 //@urndef/@specDiagrams.1/@connections.1" dest="37" src="274" contribution="Hurt" quantitativeContribution="-25"/>
-    <links xsi:type="grl:Contribution" name="Contribution328" id="328" refs="//@urndef/@specDiagrams.0/@connections.5 //@urndef/@specDiagrams.1/@connections.0" dest="23" src="274" contribution="SomePositive" quantitativeContribution="50"/>
+    <links xsi:type="grl:Contribution" name="Contribution300" id="300" refs="//@urndef/@specDiagrams.0/@connections.0 //@urndef/@specDiagrams.1/@connections.2" dest="49" src="274"/>
+    <links xsi:type="grl:Contribution" name="Contribution301" id="301" refs="//@urndef/@specDiagrams.0/@connections.1 //@urndef/@specDiagrams.1/@connections.3" dest="51" src="274" contribution="SomePositive" quantitativeContribution="75"/>
+    <links xsi:type="grl:Contribution" name="Contribution312" id="312" refs="//@urndef/@specDiagrams.0/@connections.2" dest="41" src="274" correlation="true"/>
+    <links xsi:type="grl:Contribution" name="Contribution318" id="318" refs="//@urndef/@specDiagrams.0/@connections.3 //@urndef/@specDiagrams.1/@connections.1" dest="37" src="274" contribution="Hurt" quantitativeContribution="-25"/>
+    <links xsi:type="grl:Contribution" name="Contribution328" id="328" refs="//@urndef/@specDiagrams.0/@connections.4 //@urndef/@specDiagrams.1/@connections.0" dest="23" src="274" contribution="SomePositive" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" name="Contribution375" id="375" refs="//@urndef/@specDiagrams.2/@connections.7" dest="364" src="338" contribution="SomePositive" quantitativeContribution="50"/>
     <links xsi:type="grl:Contribution" name="Contribution376" id="376" refs="//@urndef/@specDiagrams.2/@connections.8" dest="145" src="364" contribution="SomePositive" quantitativeContribution="75"/>
     <links xsi:type="grl:Contribution" name="Contribution382" id="382" refs="//@urndef/@specDiagrams.2/@connections.9" dest="366" src="340" contribution="SomePositive" quantitativeContribution="75"/>
@@ -188,6 +188,7 @@
     <links xsi:type="grl:Contribution" name="Contribution663" id="663" refs="//@urndef/@specDiagrams.2/@connections.31" dest="364" src="125" contribution="SomeNegative" quantitativeContribution="-75"/>
     <links xsi:type="grl:Contribution" name="Contribution998" id="998" refs="//@urndef/@specDiagrams.1/@connections.8" dest="33" src="274"/>
     <links xsi:type="grl:Contribution" name="Contribution1009" id="1009" refs="//@urndef/@specDiagrams.1/@connections.12" dest="23" src="157" contribution="Make" quantitativeContribution="100"/>
+    <links xsi:type="grl:Contribution" name="Contribution1039" id="1039" refs="//@urndef/@specDiagrams.0/@connections.5" dest="41" src="61"/>
     <groups name="Getana" id="4" strategies="5 675"/>
     <groups name="Student" id="815" strategies="828 829"/>
     <groups name="Combined Strategies" id="1000" strategies="1001 1002 1003 1004"/>
@@ -258,38 +259,37 @@
   <urndef>
     <responsibilities name="Enter Class Location" id="651" respRefs="652"/>
     <specDiagrams xsi:type="grl:GRLGraph" name="Student GRL" id="2">
-      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef24" id="24" x="446" y="208" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.5" def="23">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef24" id="24" x="446" y="208" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.4" def="23">
         <metadata name="_height" value="66"/>
         <metadata name="_width" value="110"/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef38" id="38" x="760" y="298" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.4" def="37">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef38" id="38" x="760" y="298" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.3" def="37">
         <metadata name="_height" value="70"/>
         <metadata name="_width" value="122"/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef42" id="42" x="126" y="330" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.0 //@urndef/@specDiagrams.0/@connections.3" def="41">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef42" id="42" x="126" y="330" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.2 //@urndef/@specDiagrams.0/@connections.5" def="41">
         <metadata name="_height" value="65"/>
         <metadata name="_width" value="110"/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef50" id="50" x="303" y="326" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.1" def="49">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef50" id="50" x="303" y="326" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.0" def="49">
         <metadata name="_width" value="146"/>
         <metadata name="_height" value="45"/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef52" id="52" x="542" y="301" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.2" def="51">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef52" id="52" x="542" y="301" contRef="20" pred="//@urndef/@specDiagrams.0/@connections.1" def="51">
         <metadata name="_height" value="45"/>
         <metadata name="_width" value="148"/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef62" id="62" x="196" y="454" contRef="20" succ="//@urndef/@specDiagrams.0/@connections.0" def="61">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef62" id="62" x="196" y="454" contRef="20" succ="//@urndef/@specDiagrams.0/@connections.5" def="61">
         <metadata name="_width" value="86"/>
         <metadata name="_height" value="45"/>
       </nodes>
-      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef275" id="275" x="417" y="448" contRef="20" succ="//@urndef/@specDiagrams.0/@connections.1 //@urndef/@specDiagrams.0/@connections.2 //@urndef/@specDiagrams.0/@connections.3 //@urndef/@specDiagrams.0/@connections.4 //@urndef/@specDiagrams.0/@connections.5" def="274">
+      <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef275" id="275" x="417" y="448" contRef="20" succ="//@urndef/@specDiagrams.0/@connections.0 //@urndef/@specDiagrams.0/@connections.1 //@urndef/@specDiagrams.0/@connections.2 //@urndef/@specDiagrams.0/@connections.3 //@urndef/@specDiagrams.0/@connections.4" def="274">
         <metadata name="_width" value="135"/>
         <metadata name="_height" value="52"/>
       </nodes>
       <contRefs xsi:type="grl:ActorRef" name="ActorRef20" id="20" x="99" y="107" width="817" height="580" contDef="19" nodes="24 38 42 50 52 62 275">
         <label/>
       </contRefs>
-      <connections xsi:type="grl:LinkRef" source="62" target="42" link="93"/>
       <connections xsi:type="grl:LinkRef" source="275" target="50" link="300">
         <label deltaX="30" deltaY="-30"/>
       </connections>
@@ -305,6 +305,9 @@
       <connections xsi:type="grl:LinkRef" source="275" target="24" link="328">
         <label deltaX="30" deltaY="-30"/>
       </connections>
+      <connections xsi:type="grl:LinkRef" source="62" target="42" link="1039">
+        <label deltaX="30" deltaY="-30"/>
+      </connections>
     </specDiagrams>
     <specDiagrams xsi:type="grl:GRLGraph" name="Combined GRL" id="913">
       <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef957" id="957" x="571" y="407" contRef="964" pred="//@urndef/@specDiagrams.1/@connections.0 //@urndef/@specDiagrams.1/@connections.12" def="23">
@@ -312,7 +315,7 @@
         <metadata name="_width" value="110"/>
       </nodes>
       <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef958" id="958" x="661" y="522" contRef="964" pred="//@urndef/@specDiagrams.1/@connections.1" def="37">
-        <metadata name="_height" value="43"/>
+        <metadata name="_height" value="60"/>
         <metadata name="_width" value="122"/>
       </nodes>
       <nodes xsi:type="grl:IntentionalElementRef" name="IntentionalElementRef960" id="960" x="453" y="479" contRef="964" pred="//@urndef/@specDiagrams.1/@connections.2" def="49">
