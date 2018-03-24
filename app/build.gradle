@@ -30,6 +30,7 @@ android {
 
 dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.akexorcist:googledirectionlibrary:1.0.4'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.google.android.gms:play-services-maps:9.2.0'

@@ -3,12 +3,19 @@ package com.deaftone.tableware.raidernav.Activities;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.model.Direction;
+import com.akexorcist.googledirection.model.Leg;
+import com.akexorcist.googledirection.model.Route;
+import com.akexorcist.googledirection.util.DirectionConverter;
 import com.deaftone.tableware.raidernav.AddressMap;
 import com.deaftone.tableware.raidernav.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,7 +36,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int LOCATION_REQUEST = 500;
     ArrayList<LatLng> listPoints;
 
-    private static final int INITIAL_STROKE_WIDTH_PX = 5;
+    private static final int INITIAL_STROKE_WIDTH_PX = 10;
 
     LatLng singleDestination; //gps coordinates for destination
     String singleDestinationName;
@@ -128,6 +135,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
             mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));
+
+            //String serverKey = Resources.getString(R.string.google_maps_key); .  findViewById(R.string.google_maps_key).toString();
+            final String serverKey = getApplicationContext().getString(R.string.directions_key);
+            //System.out.println(serverKey);
+            LatLng origin = ttu;
+            LatLng destination = singleDestination;
+            GoogleDirection.withServerKey(serverKey)
+                    .from(origin)
+                    .to(destination)
+                    .execute(new DirectionCallback() {
+                        @Override
+                        public void onDirectionSuccess(Direction direction, String rawBody) {
+                            // Do something here
+                            System.out.println("Direction success: "+rawBody);
+                            Route route = direction.getRouteList().get(0);
+                            Leg leg = route.getLegList().get(0);
+                           // List<StepList> sls = leg.getStepList();
+                            ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
+                            PolylineOptions polylineOptions = DirectionConverter.createPolyline(getApplicationContext(), directionPositionList, 5, Color.RED);
+                            mMap.addPolyline(polylineOptions);
+                        }
+
+                        @Override
+                        public void onDirectionFailure(Throwable t) {
+                            // Do something here
+                            System.out.println(t);
+                        }
+                    });
         } else {
             System.out.println("Do not have oneshot destination");
         }
@@ -144,16 +179,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
         }
         //super.onRequestPermissionsResult ( requestCode, permissions, grantResults );
-        // Add a marker in Sydney and move the camera
         // TTU memorial circle: 33.584468, -101.874658
         LatLng ttu = new LatLng(33.584468, -101.874658);
         mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(ttu));
     }
-
-    // Add a marker in Sydney and move the camera}
-    // LatLng sydney = new LatLng(-34, 151);
-    // mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-    // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
 }
