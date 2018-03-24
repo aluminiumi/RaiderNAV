@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import com.akexorcist.googledirection.DirectionCallback;
 import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.constant.TransportMode;
 import com.akexorcist.googledirection.model.Direction;
 import com.akexorcist.googledirection.model.Leg;
 import com.akexorcist.googledirection.model.Route;
@@ -144,6 +145,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             GoogleDirection.withServerKey(serverKey)
                     .from(origin)
                     .to(destination)
+                    .transportMode(TransportMode.WALKING)
                     .execute(new DirectionCallback() {
                         @Override
                         public void onDirectionSuccess(Direction direction, String rawBody) {
