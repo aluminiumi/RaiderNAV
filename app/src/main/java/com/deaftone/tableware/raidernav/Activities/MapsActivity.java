@@ -3,6 +3,7 @@ package com.deaftone.tableware.raidernav.Activities;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 
@@ -27,16 +29,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int LOCATION_REQUEST = 500;
     ArrayList<LatLng> listPoints;
 
+    private static final int INITIAL_STROKE_WIDTH_PX = 5;
+
+    LatLng singleDestination; //gps coordinates for destination
+    String singleDestinationName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
         Bundle extras = getIntent().getExtras();
-        final String destinationName = extras.getString("destinationName");
-        if(destinationName != null) {
-            String destXYstring = AddressMap.fetch(destinationName); //looks like "33.593170, -101.897627"
+        singleDestinationName = extras.getString("destinationName");
+        if(singleDestinationName != null) {
+            String destXYstring = AddressMap.fetch(singleDestinationName); //looks like "33.593170, -101.897627"
             System.out.println(destXYstring);
+            double[] dests = AddressMap.parseXY(destXYstring);
+            singleDestination = new LatLng(dests[0], dests[1]);
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -59,6 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
         mMap.getUiSettings().setZoomControlsEnabled(true); //Yong 03082018
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -70,7 +80,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+
         mMap.setMyLocationEnabled(true);   //Yong 03082018
+
         mMap.setOnMapLongClickListener( new GoogleMap.OnMapLongClickListener()
         {
             @Override
@@ -99,10 +111,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
 
+        });
+
+        if(singleDestination != null) {
+            System.out.println("Creating oneshot destination");
+            LatLng ttu = new LatLng(33.584468, -101.874658);
+
+            //simple line from source to destination; replace with actual directions
+            mMap.addPolyline(new PolylineOptions()
+                    .add(ttu, singleDestination)
+                    .width(INITIAL_STROKE_WIDTH_PX)
+                    .color(Color.BLUE)
+                    .geodesic(true)
+                    .clickable(false));
+
+            mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
+            mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));
+        } else {
+            System.out.println("Do not have oneshot destination");
         }
-
-
-       );
      }
 
     @SuppressLint({"MissingPermissions", "MissingPermission"})

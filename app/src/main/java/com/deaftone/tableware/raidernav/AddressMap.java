@@ -176,6 +176,23 @@ public final class AddressMap
         return result;
     }
 
+    public static double[] getXY(String buildingName) {
+        String temp = fetch(buildingName);
+        String[] temp2 = temp.split(" ");
+        double xy[] = new double[2];
+        xy[0] = Double.parseDouble(temp2[0]);
+        xy[1] = Double.parseDouble(temp2[1]);
+        return xy;
+    }
+
+    public static double[] parseXY(String destination) {
+        String[] temp2 = destination.split(", ");
+        double xy[] = new double[2];
+        xy[0] = Double.parseDouble(temp2[0]);
+        xy[1] = Double.parseDouble(temp2[1]);
+        return xy;
+    }
+
     public static String fetch(String buildingName)
     {
         return Coordinates.get(buildingName);
