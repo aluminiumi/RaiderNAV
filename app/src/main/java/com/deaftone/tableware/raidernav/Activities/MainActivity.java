@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -20,6 +21,7 @@ import com.deaftone.tableware.raidernav.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
+    private String destination;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,30 +43,44 @@ public class MainActivity extends AppCompatActivity {
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         MainActivity.this);
-
-                // set prompts.xml to alertdialog builder
                 alertDialogBuilder.setView(promptsView);
 
                 final TextView tv = (TextView) promptsView.findViewById(R.id.textView1);
                 tv.setText("Where would you like to go?");
 
-                //final EditText userInput = (EditText) promptsView
-                //        .findViewById(R.id.editTextDialogUserInput);
-
                 final Spinner destSpinner = (Spinner) promptsView
                         .findViewById(R.id.destination_spinner);
-                // Create an ArrayAdapter using the string array and a default spinner layout
+
+                // Create an ArrayAdapter using the array and a default spinner layout
                 CharSequence[] destinations = AddressMap.getKeysAsCharSequence();
                 ArrayAdapter<CharSequence> adapter =
                         new ArrayAdapter<CharSequence>
                                 (getApplicationContext(), android.R.layout.simple_spinner_item, destinations);
-                        //.createFromResource(getApplicationContext(), destinations, android.R.layout.simple_spinner_dropdown_item);
-                //ArrayAdapter. .createFromResource(this,
-                        //keys, android.R.layout.simple_spinner_item);
+
                 // Specify the layout to use when the list of choices appears
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
                 // Apply the adapter to the spinner
                 destSpinner.setAdapter(adapter);
+
+                //set spinner behavior for selections
+                destSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                     public void onItemSelected(AdapterView<?> parent, View view,
+                    int pos, long id) {
+                        // An item was selected. You can retrieve the selected item using
+                        // parent.getItemAtPosition(pos)
+                        //System.out.println(pos);
+                        //System.out.println(parent.getItemAtPosition(pos));
+                        setDestination((String) parent.getItemAtPosition(pos));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        // Another interface callback
+                        setDestination((String) parent.getItemAtPosition(0));
+                    }
+                });
 
                 //userInput.setText();
                 //userInput.setHint("Schedule Name (e.g., \"Spring 2018\")");
@@ -78,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
                                         // get user input and set it to result
                                         // edit text
                                         if (getParent() == null) {
-                                            startActivity(new Intent(MainActivity.this,MapsActivity.class));
+                                            startActivity(new Intent(MainActivity.this,MapsActivity.class)
+                                                    .putExtra("destinationName", destination));
                                             //setResult(Activity.RESULT_OK, getIntent());
                                         } else {
                                             //getParent().setResult(Activity.RESULT_OK, getIntent());
@@ -154,6 +171,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,AddCourseActivity.class);
         startActivity(intent);
     }*/
+
+    private void setDestination(String dest) {
+        destination = dest;
+    }
 
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
