@@ -1,6 +1,5 @@
 package com.deaftone.tableware.raidernav.Activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,12 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import com.deaftone.tableware.raidernav.AddressMap;
 
 import com.deaftone.tableware.raidernav.R;
-import com.deaftone.tableware.raidernav.ScheduleEntryList;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AddressMap.initialize();
 
         //the button for single destinations
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -46,8 +48,23 @@ public class MainActivity extends AppCompatActivity {
                 final TextView tv = (TextView) promptsView.findViewById(R.id.textView1);
                 tv.setText("Where would you like to go?");
 
-                final EditText userInput = (EditText) promptsView
-                        .findViewById(R.id.editTextDialogUserInput);
+                //final EditText userInput = (EditText) promptsView
+                //        .findViewById(R.id.editTextDialogUserInput);
+
+                final Spinner destSpinner = (Spinner) promptsView
+                        .findViewById(R.id.destination_spinner);
+                // Create an ArrayAdapter using the string array and a default spinner layout
+                CharSequence[] destinations = AddressMap.getKeysAsCharSequence();
+                ArrayAdapter<CharSequence> adapter =
+                        new ArrayAdapter<CharSequence>
+                                (getApplicationContext(), android.R.layout.simple_spinner_item, destinations);
+                        //.createFromResource(getApplicationContext(), destinations, android.R.layout.simple_spinner_dropdown_item);
+                //ArrayAdapter. .createFromResource(this,
+                        //keys, android.R.layout.simple_spinner_item);
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                // Apply the adapter to the spinner
+                destSpinner.setAdapter(adapter);
 
                 //userInput.setText();
                 //userInput.setHint("Schedule Name (e.g., \"Spring 2018\")");

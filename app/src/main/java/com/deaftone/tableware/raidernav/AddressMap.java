@@ -2,11 +2,11 @@ package com.deaftone.tableware.raidernav;
 
 import java.util.*;
 
-final class AddressMap
+public final class AddressMap
 {
     private static Map<String, String> Coordinates;
 
-    private AddressMap() {
+    public static void initialize() {
             Coordinates = new HashMap<String, String>();
             HashMap<String, String> temp = new HashMap<String, String>();
             temp.put("Administration Building", "33.583427, -101.874702");
@@ -163,11 +163,20 @@ final class AddressMap
             Coordinates = Collections.unmodifiableMap(temp);
     }
 
-    public Set<String> getKeys() {
+    public static Set<String> getKeys() {
         return Coordinates.keySet();
     }
 
-    static String fetch(String buildingName)
+    public static CharSequence[] getKeysAsCharSequence() {
+        Object[] tempkeyset = Coordinates.keySet().toArray();
+        CharSequence[] result = new CharSequence[tempkeyset.length];
+        for(int i = 0; i < tempkeyset.length; i++) {
+            result[i] = (CharSequence) tempkeyset[i];
+        }
+        return result;
+    }
+
+    public static String fetch(String buildingName)
     {
         return Coordinates.get(buildingName);
     }
