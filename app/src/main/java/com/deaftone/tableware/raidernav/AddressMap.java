@@ -2,12 +2,77 @@ package com.deaftone.tableware.raidernav;
 
 import java.util.*;
 
-class AddressMap
+public class AddressMap
 {
     private static final Map<String, String> Coordinates;
     static
     {
-        HashMap<String, String> temp = new HashMap<String, String>();
+        /* Changed to TreeMap so options are listed alphabetically in drop-down menus */
+        TreeMap<String, String> temp = new TreeMap<String, String>();
+        temp.put("ADMIN","33.583427, -101.874702");
+        temp.put("ADMSPT","33.592115, -101.880598");
+        temp.put("AFS","33.582995, -101.888499");
+        temp.put("AGED","33.582791, -101.877213");
+        temp.put("AGRI","33.582891, -101.875945");
+        temp.put("AQUA","33.583524, -101.884366");
+        temp.put("ARCH","33.580655, -101.880654");
+        temp.put("ART","33.580745, -101.879969");
+        temp.put("ART3D","33.585053, -101.885019");
+        temp.put("BIOL","33.585114, -101.878141");
+        temp.put("BIOL LH", "33.584775, -101.877846");
+        temp.put("CASNR","33.582615, -101.878359");
+        temp.put("CDRCAR","33.582761, -101.873286");
+        temp.put("CHEM","33.583898, -101.876273");
+        temp.put("CHEME","33.587339, -101.876316");
+        temp.put("CIVILE","33.586529, -101.873942");
+        temp.put("CRMVST","33.588083, -101.872752");
+        temp.put("DOAK","33.582733, -101.871628");
+        temp.put("EDUC","33.580196, -101.879180");
+        temp.put("ELECE","33.586641, -101.875401");
+        temp.put("ENGCTR","33.587275, -101.875771");
+        temp.put("ENGPHL","33.581556, -101.879243");
+        temp.put("ETLAB","33.587246, -101.873858");
+        temp.put("EXPSC","33.585494, -101.877123");
+        temp.put("FDTECH","33.582616, -101.876385");
+        temp.put("FSHWLD","33.582741, -101.878846");
+        temp.put("FORL","33.580847, -101.878481");
+        temp.put("GODDRD","33.582086, -101.878067");
+        temp.put("GRNHSE" ,"33.584090, -101.886974");
+        temp.put("HOLDEN","33.585557, -101.873720");
+        temp.put("HUMSCI","33.583484, -101.873136");
+        temp.put("ICC","33.588825, -101.886436");
+        temp.put("IMSE","33.587224, -101.876308");
+        temp.put("JONES","33.591052, -101.872893");
+        temp.put("KSM","33.585545, -101.883860");
+        temp.put("LANR","33.578925, -101.887416");
+        temp.put("LAW","33.578906, -101.886683");
+        temp.put("LIBR","33.581388, -101.876108");
+        temp.put("LVRMRC","33.587759, -101.876065");
+        temp.put("MATH","33.584941, -101.876226");
+        temp.put("MCOM","33.581961, -101.880352");
+        temp.put("MLAB","33.583277, -101.889390");
+        temp.put("MEN","33.588382, -101.874667");
+        temp.put("MES","33.587945, -101.874654");
+        temp.put("MSC","33.588987, -101.874729");
+        temp.put("MUSEUM","33.590335, -101.886016");
+        temp.put("MUSIC","33.580847, -101.874541");
+        temp.put("PAVILN","33.582324, -101.876794");
+        temp.put("PLTSCI","33.581800, -101.878556");
+        temp.put("PSYC","33.580502, -101.877124");
+        temp.put("RCOBA","3.587839, -101.879230");
+        temp.put("RGOLF","33.600525, -101.892223");
+        temp.put("SCIENC","33.584463, -101.876990");
+        temp.put("SRC","33.582681, -101.884666");
+        temp.put("SUB","33.581384, -101.874675");
+        temp.put("SWCOLL","33.581907, -101.877143");
+        temp.put("THEATR","33.580176, -101.877829");
+        temp.put("TTFCU","33.579381, -101.891537");
+        temp.put("TPLAZA","33.577454, -101.870168");
+        temp.put("TTPD","33.591777, -101.879786");
+        temp.put("TTUHSC","33.589127, -101.891924");
+        temp.put("TVRDST","33.581256, -101.889199");
+        temp.put("UMC","33.588788, -101.891866");
+        temp.put("USA","33.581289, -101.886574");
         temp.put("Administration Building","33.583427, -101.874702");
         temp.put("Administrative Support Center","33.592115, -101.880598");
         temp.put("Agricultural Education & Communication","33.582791, -101.877213");
@@ -23,7 +88,7 @@ class AddressMap
         temp.put("Bayer Plant Science","33.581823, -101.878769");
         temp.put("Biology","33.585114, -101.878141");
         temp.put("Biology Greenhouse","33.584806, -101.878556");
-        temp.put("Biology Auditorium", "33.584775, -101.877846");
+        temp.put("Biology Lecture Hall", "33.584775, -101.877846");
         temp.put("Bledsoe Residence Hall","33.586485, -101.871752");
         temp.put("Bonfire Pit","33.581473, -101.883778");
         temp.put("Burkhardt Center for Autism Education & Research","33.580285, -101.878370");
@@ -46,6 +111,7 @@ class AddressMap
         temp.put("Dairy Barn & Silo","33.581366, -101.878099");
         temp.put("Dan Law Field","33.588779, -101.876793");
         temp.put("Development Office","33.581655, -101.873050");
+        temp.put("Doak Conference Center","33.582733, -101.871628");
         temp.put("Doak Hall","33.582934, -101.872465");
         temp.put("Double T Bench","33.583168, -101.874667");
         temp.put("Drane Hall","33.581609, -101.872313");
@@ -107,7 +173,7 @@ class AddressMap
         temp.put("Moody Planetarium","33.591075, -101.885384");
         temp.put("Murdough Residence Hall","33.583711, -101.880915");
         temp.put("Murray Residence Hall","33.586608, -101.878735");
-        temp.put("Music","2624 18th Street, Lubbock, TX, 79409");
+        temp.put("Music","33.580847, -101.874541");
         temp.put("National Ranching Heritage Center","33.590731, -101.884048");
         temp.put("National Wind Institute","33.585573, -101.875952");
         temp.put("Natural Science Research Laboratory","33.589793, -101.886128");
@@ -143,7 +209,7 @@ class AddressMap
         temp.put("Texas Tech Physicians Medical Pavilion","33.590140, -101.891030");
         temp.put("Texas Tech Plaza","33.577454, -101.870168");
         temp.put("Texas Tech Police Department","33.591777, -101.879786");
-        temp.put("Texas Tech University Health Sciences Center","33.589127, -101.891924");
+        temp.put("Texas Tech University Health Sciences Centre","33.589127, -101.891924");
         temp.put("Texas Tech University System Building","33.581179, -101.892888");
         temp.put("United Supermarkets Arena","33.581289, -101.886574");
         temp.put("University Career Services","33.579398, -101.883801");
@@ -162,9 +228,21 @@ class AddressMap
         Coordinates = Collections.unmodifiableMap(temp);
     }
 
-    static String fetch(String buildingName)
+    /* Use this method in Maps API call to pass coordinates from appropriate key */
+    public static String fetchCoordinates(String buildingName)
     {
         return Coordinates.get(buildingName);
+    }
+
+    /* Returns ArrayList for drop down menu display */
+    public static ArrayList<String> getBuildingArray()
+    {
+        ArrayList buildingArray = new ArrayList();
+        for(String buildingName : Coordinates.keySet())
+        {
+            buildingArray.add(buildingName);
+        }
+        return buildingArray;
     }
 
 }

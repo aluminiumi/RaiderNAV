@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deaftone.tableware.raidernav.AddressMap;
 import com.deaftone.tableware.raidernav.R;
 import com.deaftone.tableware.raidernav.ScheduleEntryList;
 import com.deaftone.tableware.raidernav.ScheduleHandler;
@@ -24,7 +25,7 @@ import com.deaftone.tableware.raidernav.ScheduleSingleEntry;
 public class ScheduleSingleEntryActivity extends AppCompatActivity {
 
     TextView tv;
-    TextView dv;
+    Spinner dv;
     TextView st;
     TextView et;
     CheckBox monday;
@@ -61,7 +62,12 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_single_entry);
         tv = findViewById(R.id.courseName);
+
         dv = findViewById(R.id.buildingName);
+        ArrayAdapter dvAdapter = new ArrayAdapter<String>(this, R.layout.spinner, AddressMap.getBuildingArray());
+        dvAdapter.setDropDownViewResource(R.layout.spinner_item);
+        dv.setAdapter(dvAdapter);
+
         st = findViewById(R.id.startTime);
         et = findViewById(R.id.endTime);
         monday = findViewById(R.id.checkBox_monday);
@@ -86,7 +92,7 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         //getSupportActionBar().setTitle(sel.getName());
 
         tv.setText(sse.getCourseNumber());
-        dv.setText(sse.getBuilding());
+        dv.setSelection(dvAdapter.getPosition(sse.getBuilding()));
         st.setText(sse.getStartTime());
         et.setText(sse.getEndTime());
         boolean days[] = sse.getDays();
@@ -124,7 +130,7 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
 
                 ScheduleSingleEntry newsse = new ScheduleSingleEntry(
                         tv.getText().toString(),
-                        dv.getText().toString(),
+                        dv.getSelectedItem().toString(),
                         st.getText().toString(),
                         et.getText().toString(),
                         newdays

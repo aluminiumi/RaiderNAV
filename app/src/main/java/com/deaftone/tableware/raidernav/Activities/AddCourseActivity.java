@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
@@ -14,12 +15,13 @@ import com.deaftone.tableware.raidernav.R;
 import com.deaftone.tableware.raidernav.ScheduleEntryList;
 import com.deaftone.tableware.raidernav.ScheduleHandler;
 import com.deaftone.tableware.raidernav.ScheduleSingleEntry;
+import com.deaftone.tableware.raidernav.AddressMap;
 
 public class AddCourseActivity extends AppCompatActivity {
     private Button addClassButton;
     private Button finishCreatingButton;
     TextView tv;
-    TextView dv;
+    Spinner dv;
     TextView st;
     TextView et;
     CheckBox monday;
@@ -38,7 +40,12 @@ public class AddCourseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_course);
 
         tv = findViewById(R.id.courseName);
+
         dv = findViewById(R.id.buildingName);
+        ArrayAdapter dvAdapter = new ArrayAdapter<String>(this, R.layout.spinner, AddressMap.getBuildingArray());
+        dvAdapter.setDropDownViewResource(R.layout.spinner_item);
+        dv.setAdapter(dvAdapter);
+
         st = findViewById(R.id.startTime);
         et = findViewById(R.id.endTime);
         monday = findViewById(R.id.checkBox_monday);
@@ -78,7 +85,7 @@ public class AddCourseActivity extends AppCompatActivity {
                 if(saturday.isChecked()) newdays[6] = true;
                 ScheduleSingleEntry newsse = new ScheduleSingleEntry(
                         tv.getText().toString(),
-                        dv.getText().toString(),
+                        dv.getSelectedItem().toString(),
                         st.getText().toString(),
                         et.getText().toString(),
                         newdays
