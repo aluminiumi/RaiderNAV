@@ -2,12 +2,11 @@ package com.deaftone.tableware.raidernav;
 
 import java.util.*;
 
-public class AddressMap
+public final class AddressMap
 {
-    private static final Map<String, String> Coordinates;
-    static
-    {
-        /* Changed to TreeMap so options are listed alphabetically in drop-down menus */
+    private static Map<String, String> Coordinates;
+
+    public static void initialize() {
         TreeMap<String, String> temp = new TreeMap<String, String>();
         temp.put("ADMIN","33.583427, -101.874702");
         temp.put("ADMSPT","33.592115, -101.880598");
@@ -228,12 +227,36 @@ public class AddressMap
         Coordinates = Collections.unmodifiableMap(temp);
     }
 
-    /* Use this method in Maps API call to pass coordinates from appropriate key */
-    public static String fetchCoordinates(String buildingName)
-    {
-        return Coordinates.get(buildingName);
+    public static Set<String> getKeys() {
+        return Coordinates.keySet();
     }
 
+    public static CharSequence[] getKeysAsCharSequence() {
+        Object[] tempkeyset = Coordinates.keySet().toArray();
+        CharSequence[] result = new CharSequence[tempkeyset.length];
+        for(int i = 0; i < tempkeyset.length; i++) {
+            result[i] = (CharSequence) tempkeyset[i];
+        }
+        return result;
+    }
+
+    public static double[] getXY(String buildingName) {
+        String temp = fetch(buildingName);
+        String[] temp2 = temp.split(" ");
+        double xy[] = new double[2];
+        xy[0] = Double.parseDouble(temp2[0]);
+        xy[1] = Double.parseDouble(temp2[1]);
+        return xy;
+    }
+
+    public static double[] parseXY(String destination) {
+        String[] temp2 = destination.split(", ");
+        double xy[] = new double[2];
+        xy[0] = Double.parseDouble(temp2[0]);
+        xy[1] = Double.parseDouble(temp2[1]);
+        return xy;
+    }
+  
     /* Returns ArrayList for drop down menu display */
     public static ArrayList<String> getBuildingArray()
     {
@@ -245,4 +268,14 @@ public class AddressMap
         return buildingArray;
     }
 
+    public static String fetch(String buildingName)
+    {
+        return Coordinates.get(buildingName);
+    }
+
+    /* Use this method in Maps API call to pass coordinates from appropriate key */
+    public static String fetchCoordinates(String buildingName)
+    {
+        return Coordinates.get(buildingName);
+    }
 }
