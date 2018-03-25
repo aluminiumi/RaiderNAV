@@ -50,6 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String singleDestinationName;
     LocationManager locationManager;
     String bestProvider;
+    boolean pathDrawn = false;
 
     @SuppressLint({"MissingPermissions", "MissingPermission"})
     @Override
@@ -61,12 +62,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if(havePermissions()) {
 
-            singleDestinationName = extras.getString("destinationName");
-            if(singleDestinationName != null) {
-                String destXYstring = AddressMap.fetch(singleDestinationName); //looks like "33.593170, -101.897627"
-                System.out.println("onCreate: destXYstring: "+destXYstring);
-                double[] dests = AddressMap.parseXY(destXYstring);
-                singleDestination = new LatLng(dests[0], dests[1]);
+            try {
+                singleDestinationName = extras.getString("destinationName");
+                if (singleDestinationName != null) {
+                    String destXYstring = AddressMap.fetch(singleDestinationName); //looks like "33.593170, -101.897627"
+                    System.out.println("onCreate: destXYstring: " + destXYstring);
+                    double[] dests = AddressMap.parseXY(destXYstring);
+                    singleDestination = new LatLng(dests[0], dests[1]);
+                }
+            }catch(NullPointerException e) {
+                e.printStackTrace();
             }
 
 
@@ -97,7 +102,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch (requestCode) {
             case LOCATION_REQUEST:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mMap.setMyLocationEnabled(true);
+                    if(mMap != null)
+                        mMap.setMyLocationEnabled(true);
 
                 }
                 break;
@@ -111,6 +117,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public boolean onMyLocationButtonClick() {
+        pathDrawn = false;
         if(havePermissions()) {
             myLocation = getLastKnownLocation();
             System.out.println("onMyLocationButtonClick(): Last known location: " + myLocation);
@@ -119,9 +126,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //onLocationChanged(myLocation);
             if (myLocation != null) {
                 onLocationChanged(myLocation);
-                if(mMap != null) {
-                    doPathToSingleDestination();
-                }
             }
 
         }
@@ -132,9 +136,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void onLocationChanged(Location location) {
-        Toast.makeText(this, "location changed: "+location, Toast.LENGTH_SHORT).show();
-        System.out.println("location changed: "+location);
+        //Toast.makeText(this, "location changed: "+location, Toast.LENGTH_SHORT).show();
+        //System.out.println("location changed: "+location);
         myLocation = location;
+        if(myLocation != null && mMap != null && singleDestination != null) {
+            doPathToSingleDestination();
+        }
     }
 
     @Override
@@ -151,9 +158,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onStatusChanged(String s, int i, Bundle b) {
-        System.out.println("Status changed: "+s+" "+i);
+        //System.out.println("Status changed: "+s+" "+i); //this is spammy
+
     }
 
+    private void initializeMap() {
+
+
+    }
 
     /**
      * Manipulates the map once available.
@@ -213,11 +225,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void doPathToSingleDestination() {
         if(singleDestination != null) {
-            System.out.println("Creating oneshot destination");
+
             LatLng ttu = new LatLng(33.584468, -101.874658);
 
             //simple line from source to destination; replace with actual directions
-            mMap.addPolyline(new PolylineOptions()
+            /*mMap.addPolyline(new PolylineOptions()
                     .add(ttu, singleDestination)
                     .width(INITIAL_STROKE_WIDTH_PX)
                     .color(Color.BLUE)
@@ -226,38 +238,43 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
             mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));*/
 
             final String serverKey = getApplicationContext().getString(R.string.directions_key);
             if(myLocation != null) {
-                LatLng origin = new LatLng(myLocation.getLatitude(), myLocation.getLongitude()); //ttu;
-                LatLng destination = singleDestination;
-                GoogleDirection.withServerKey(serverKey)
-                        .from(origin)
-                        .to(destination)
-                        .transportMode(TransportMode.WALKING)
-                        .execute(new DirectionCallback() {
-                            @Override
-                            public void onDirectionSuccess(Direction direction, String rawBody) {
-                                System.out.println("Direction success: " + rawBody);
-                                Route route = direction.getRouteList().get(0);
-                                Leg leg = route.getLegList().get(0);
-                                ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
-                                PolylineOptions polylineOptions = DirectionConverter.createPolyline(getApplicationContext(), directionPositionList, 5, Color.RED);
-                                mMap.addPolyline(polylineOptions);
-                            }
+                if(pathDrawn == false) {
+                    System.out.println("Creating oneshot destination");
+                    LatLng origin = new LatLng(myLocation.getLatitude(), myLocation.getLongitude()); //ttu;
+                    LatLng destination = singleDestination;
+                    GoogleDirection.withServerKey(serverKey)
+                            .from(origin)
+                            .to(destination)
+                            .transportMode(TransportMode.WALKING)
+                            .execute(new DirectionCallback() {
+                                @Override
+                                public void onDirectionSuccess(Direction direction, String rawBody) {
+                                    System.out.println("Direction success: " + rawBody);
+                                    Route route = direction.getRouteList().get(0);
+                                    Leg leg = route.getLegList().get(0);
+                                    ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
+                                    PolylineOptions polylineOptions = DirectionConverter.createPolyline(getApplicationContext(), directionPositionList, 5, Color.RED);
+                                    mMap.addPolyline(polylineOptions);
+                                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(myLocation.getLatitude(), myLocation.getLongitude()), 15));
+                                }
 
-                            @Override
-                            public void onDirectionFailure(Throwable t) {
-                                System.out.println(t);
-                            }
-                        });
+                                @Override
+                                public void onDirectionFailure(Throwable t) {
+                                    System.out.println(t);
+                                }
+                            });
+                    pathDrawn = true;
+                }
             } else {
                 Toast.makeText(this, "No location; aborted directions", 5).show();
 
             }
         } else {
-            System.out.println("Do not have oneshot destination");
+            //System.out.println("Do not have oneshot destination");
         }
     }
 
