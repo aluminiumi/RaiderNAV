@@ -51,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationManager locationManager;
     String bestProvider;
     boolean pathDrawn = false;
+    boolean isLoneDestination = false;
 
     @SuppressLint({"MissingPermissions", "MissingPermission"})
     @Override
@@ -62,6 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if(havePermissions()) {
             try {
+                isLoneDestination = extras.getBoolean("isLoneDestination");
+            } catch(NullPointerException e) { //this will happen if extras.getString has no 'destinationName' key
+                e.printStackTrace();
+            }
+
+            if(isLoneDestination) { //user clicked compass icon on main screen
                 singleDestinationName = extras.getString("destinationName");
                 if (singleDestinationName != null) {
                     //String destXYstring = AddressMap.fetch(singleDestinationName); //looks like "33.593170, -101.897627"
@@ -70,10 +77,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     //singleDestination = new LatLng(dests[0], dests[1]);
                     singleDestination = AddressMap.getLatLng(singleDestinationName);
                 }
-            } catch(NullPointerException e) { //this will happen if extras.getString has no 'destinationName' key
-                e.printStackTrace();
-            }
+            } else { //user clicked map icon on main screen
 
+
+            }
 
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -140,8 +147,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Toast.makeText(this, "location changed: "+location, Toast.LENGTH_SHORT).show();
         //System.out.println("location changed: "+location);
         myLocation = location;
-        if(myLocation != null && mMap != null && singleDestination != null) {
-            doPathToSingleDestination();
+        if(myLocation != null && mMap != null) {
+            if (isLoneDestination && singleDestination != null) { //handle single destination
+                doPathToSingleDestination();
+            } else { //handle schedule-based waypoints
+
+            }
         }
     }
 
