@@ -108,9 +108,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch (requestCode) {
             case LOCATION_REQUEST:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(mMap != null)
+                    if(mMap != null) {
                         mMap.setMyLocationEnabled(true);
-
+                    }
                 }
                 break;
         }
@@ -131,10 +131,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             //onLocationChanged(myLocation);
             if (myLocation != null) {
-                onLocationChanged(myLocation);
+
             } else {
                 Toast.makeText(this, "Unable to determine your location.", Toast.LENGTH_SHORT).show();
             }
+            onLocationChanged(myLocation);
 
         }
 
@@ -147,7 +148,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Toast.makeText(this, "location changed: "+location, Toast.LENGTH_SHORT).show();
         //System.out.println("location changed: "+location);
         myLocation = location;
-        if(myLocation != null && mMap != null) {
+        if(mMap != null) {
             if (isLoneDestination && singleDestination != null) { //handle single destination
                 doPathToSingleDestination();
             } else { //handle schedule-based waypoints
@@ -194,8 +195,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng ttu = new LatLng(33.584468, -101.874658);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));
 
-
         mMap.getUiSettings().setZoomControlsEnabled(true); //Yong 03082018
+
+        drawDestination();
 
         if(havePermissions()) {
 
@@ -231,6 +233,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
      }
 
+     private void drawDestination() {
+        if(isLoneDestination) {
+            mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(singleDestination, 15));
+        } else { //draw waypoint destination
+
+        }
+     }
+
     private void doPathToSingleDestination() {
         if(singleDestination != null) {
 
@@ -246,15 +257,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             */
             //mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
 
-            mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(singleDestination, 15));
+            drawDestination();
 
-            final String serverKey = getApplicationContext().getString(R.string.directions_key);
             if(myLocation != null) {
                 if(!pathDrawn) {
                     System.out.println("Creating oneshot destination");
                     LatLng origin = new LatLng(myLocation.getLatitude(), myLocation.getLongitude()); //ttu;
                     LatLng destination = singleDestination;
+                    final String serverKey = getApplicationContext().getString(R.string.directions_key);
                     GoogleDirection.withServerKey(serverKey)
                             .from(origin)
                             .to(destination)
