@@ -1,11 +1,17 @@
 package com.deaftone.tableware.raidernav;
 
 import java.util.*;
+import com.google.android.gms.maps.model.LatLng;
+
 
 public final class AddressMap
 {
     private static Map<String, String> Coordinates;
 
+    //TODO: This could be made cleaner by having the data within a JSON file
+    //Consider loading all the data and then using our Gson library to
+    //format everything, then write it out to a file and add it to our res folder.
+    //Doing so would require a mention in the SRS (change the relevant requirement)
     public static void initialize() {
         TreeMap<String, String> temp = new TreeMap<String, String>();
         temp.put("ADMIN","33.583427, -101.874702");
@@ -242,7 +248,7 @@ public final class AddressMap
 
     public static double[] getXY(String buildingName) {
         String temp = fetch(buildingName);
-        String[] temp2 = temp.split(" ");
+        String[] temp2 = temp.split(", ");
         double xy[] = new double[2];
         xy[0] = Double.parseDouble(temp2[0]);
         xy[1] = Double.parseDouble(temp2[1]);
@@ -255,6 +261,11 @@ public final class AddressMap
         xy[0] = Double.parseDouble(temp2[0]);
         xy[1] = Double.parseDouble(temp2[1]);
         return xy;
+    }
+
+    public static LatLng getLatLng(String buildingName) {
+        String[] temp2 = fetch(buildingName).split(", ");
+        return new LatLng(Double.parseDouble(temp2[0]), Double.parseDouble(temp2[1]));
     }
   
     /* Returns ArrayList for drop down menu display */

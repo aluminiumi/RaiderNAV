@@ -55,10 +55,13 @@ public class MainActivity extends AppCompatActivity {
                 CharSequence[] destinations = AddressMap.getKeysAsCharSequence();
                 ArrayAdapter<CharSequence> adapter =
                         new ArrayAdapter<CharSequence>
-                                (getApplicationContext(), android.R.layout.simple_spinner_item, destinations);
+                                (getApplicationContext(), R.layout.spinner_contents_layout, destinations);
+                                //(getApplicationContext(), android.R.layout.simple_spinner_item, destinations);
 
                 // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                adapter.setDropDownViewResource(R.layout.spinner_contents_layout);
+
 
                 // Apply the adapter to the spinner
                 destSpinner.setAdapter(adapter);
@@ -95,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                                         // edit text
                                         if (getParent() == null) {
                                             startActivity(new Intent(MainActivity.this,MapsActivity.class)
+                                                    .putExtra("isLoneDestination", true)
                                                     .putExtra("destinationName", destination));
                                             //setResult(Activity.RESULT_OK, getIntent());
                                         } else {
@@ -117,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
 
                 // show it
                 alertDialog.show();
+                //alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                //alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             }
         });
 
@@ -125,7 +131,8 @@ public class MainActivity extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,MapsActivity.class));
+                startActivity(new Intent(MainActivity.this,MapsActivity.class)
+                    .putExtra("isLoneDestination", false));
             }
         });
 

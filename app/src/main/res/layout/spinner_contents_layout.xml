@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/label"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_toLeftOf="@+id/check"
+    android:layout_toStartOf="@+id/check"
+    android:background="@color/colorBackground"
+    android:text=" "
+    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+    android:textColor="@color/colorFont"
+    android:visibility="visible" />
+
+

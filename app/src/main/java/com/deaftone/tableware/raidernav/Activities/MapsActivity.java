@@ -43,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int LOCATION_REQUEST = 500;
     ArrayList<LatLng> listPoints;
 
-    private static final int INITIAL_STROKE_WIDTH_PX = 10;
+    //private static final int INITIAL_STROKE_WIDTH_PX = 10;
 
     Location myLocation;
     LatLng singleDestination; //gps coordinates for destination
@@ -51,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationManager locationManager;
     String bestProvider;
     boolean pathDrawn = false;
+    boolean isLoneDestination = false;
 
     @SuppressLint({"MissingPermissions", "MissingPermission"})
     @Override
@@ -61,19 +62,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Bundle extras = getIntent().getExtras();
 
         if(havePermissions()) {
-
             try {
-                singleDestinationName = extras.getString("destinationName");
-                if (singleDestinationName != null) {
-                    String destXYstring = AddressMap.fetch(singleDestinationName); //looks like "33.593170, -101.897627"
-                    System.out.println("onCreate: destXYstring: " + destXYstring);
-                    double[] dests = AddressMap.parseXY(destXYstring);
-                    singleDestination = new LatLng(dests[0], dests[1]);
-                }
-            }catch(NullPointerException e) {
+                isLoneDestination = extras.getBoolean("isLoneDestination");
+            } catch(NullPointerException e) { //this will happen if extras.getString has no 'destinationName' key
                 e.printStackTrace();
             }
 
+            if(isLoneDestination) { //user clicked compass icon on main screen
+                singleDestinationName = extras.getString("destinationName");
+                if (singleDestinationName != null) {
+                    //String destXYstring = AddressMap.fetch(singleDestinationName); //looks like "33.593170, -101.897627"
+                    //System.out.println("onCreate: destXYstring: " + destXYstring);
+                    //double[] dests = AddressMap.parseXY(destXYstring);
+                    //singleDestination = new LatLng(dests[0], dests[1]);
+                    singleDestination = AddressMap.getLatLng(singleDestinationName);
+                }
+            } else { //user clicked map icon on main screen
+
+
+            }
 
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -91,7 +98,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (myLocation != null) {
                 onLocationChanged(myLocation);
             }
-
         }
     }
 
@@ -102,9 +108,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch (requestCode) {
             case LOCATION_REQUEST:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    if(mMap != null)
+                    if(mMap != null) {
                         mMap.setMyLocationEnabled(true);
-
+                    }
                 }
                 break;
         }
@@ -121,12 +127,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(havePermissions()) {
             myLocation = getLastKnownLocation();
             System.out.println("onMyLocationButtonClick(): Last known location: " + myLocation);
-            Toast.makeText(this, "Last known location: "+myLocation, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Last known location: "+myLocation, Toast.LENGTH_SHORT).show();
 
             //onLocationChanged(myLocation);
             if (myLocation != null) {
-                onLocationChanged(myLocation);
+
+            } else {
+                Toast.makeText(this, "Unable to determine your location.", Toast.LENGTH_SHORT).show();
             }
+            onLocationChanged(myLocation);
 
         }
 
@@ -139,8 +148,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //Toast.makeText(this, "location changed: "+location, Toast.LENGTH_SHORT).show();
         //System.out.println("location changed: "+location);
         myLocation = location;
-        if(myLocation != null && mMap != null && singleDestination != null) {
-            doPathToSingleDestination();
+        if(mMap != null) {
+            if (isLoneDestination && singleDestination != null) { //handle single destination
+                doPathToSingleDestination();
+            } else { //handle schedule-based waypoints
+
+            }
         }
     }
 
@@ -162,11 +175,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    private void initializeMap() {
-
-
-    }
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -182,12 +190,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
 
-
+        //By default, show the map zoomed in on Memorial Circle until
+        //we know what the user wants to do
         LatLng ttu = new LatLng(33.584468, -101.874658);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));
 
-
         mMap.getUiSettings().setZoomControlsEnabled(true); //Yong 03082018
+
+        drawDestination();
 
         if(havePermissions()) {
 
@@ -223,10 +233,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
      }
 
+     private void drawDestination() {
+        if(isLoneDestination) {
+            mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(singleDestination, 15));
+        } else { //draw waypoint destination
+
+        }
+     }
+
     private void doPathToSingleDestination() {
         if(singleDestination != null) {
 
-            LatLng ttu = new LatLng(33.584468, -101.874658);
+            //LatLng ttu = new LatLng(33.584468, -101.874658);
 
             //simple line from source to destination; replace with actual directions
             /*mMap.addPolyline(new PolylineOptions()
@@ -235,17 +254,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .color(Color.BLUE)
                     .geodesic(true)
                     .clickable(false));
+            */
+            //mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
 
-            mMap.addMarker(new MarkerOptions().position(ttu).title("Texas Tech Memorial Circle"));
-            mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));*/
+            drawDestination();
 
-            final String serverKey = getApplicationContext().getString(R.string.directions_key);
             if(myLocation != null) {
-                if(pathDrawn == false) {
+                if(!pathDrawn) {
                     System.out.println("Creating oneshot destination");
                     LatLng origin = new LatLng(myLocation.getLatitude(), myLocation.getLongitude()); //ttu;
                     LatLng destination = singleDestination;
+                    final String serverKey = getApplicationContext().getString(R.string.directions_key);
                     GoogleDirection.withServerKey(serverKey)
                             .from(origin)
                             .to(destination)
@@ -270,8 +289,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     pathDrawn = true;
                 }
             } else {
+                //this should not happen
                 Toast.makeText(this, "No location; aborted directions", 5).show();
-
             }
         } else {
             //System.out.println("Do not have oneshot destination");
@@ -284,21 +303,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if(havePermissions()) {
             locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
-            List<String> providers = locationManager.getProviders(true);
-            Location bestLocation = null;
-            for (String provider : providers) {
-                Location l = locationManager.getLastKnownLocation(provider);
-                if (l == null) {
-                    System.out.println("getLastKnownLocation(): Location from provider " + provider + ": null");
-                    continue;
+            try {
+                List<String> providers = locationManager.getProviders(true);
+                if (providers != null) {
+                    Location bestLocation = null;
+                    for (String provider : providers) {
+                        Location l = locationManager.getLastKnownLocation(provider);
+                        if (l == null) {
+                            System.out.println("getLastKnownLocation(): Location from provider " + provider + ": null");
+                            continue;
+                        }
+                        System.out.println("getLastKnownLocation(): Location from provider " + provider + ": " + l);
+                        if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                            // Found best last known location: %s", l);
+                            bestLocation = l;
+                        }
+                    }
+                    return bestLocation;
                 }
-                System.out.println("getLastKnownLocation(): Location from provider " + provider + ": " + l);
-                if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                    // Found best last known location: %s", l);
-                    bestLocation = l;
-                }
+            } catch (NullPointerException e) { //locationManager.getProviders was null
+                e.printStackTrace();
             }
-            return bestLocation;
         }
         return null;
     }
@@ -307,13 +332,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             System.out.println("getPermissions(): Permission to GPS denied.");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
-            return false;
-        }
-        /*else if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //return false;
+        } else if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             System.out.println("getPermissions(): Permission to coarse location denied.");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST);
             return false;
-        }*/
+        }
         return true;
     }
 
