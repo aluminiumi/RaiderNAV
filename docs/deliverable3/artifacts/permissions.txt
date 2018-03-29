@@ -1,0 +1,43 @@
+Identification: /proc/meminfo
+		SERIAL
+
+Internet: Purpose: To download directions from Google
+	Connectivity.getActiveNetworkInfo
+	NetworkInfo.isConnected
+	inet
+	
+Location: Purpose:To provide starting point in directions
+	MapV2.setOnMapLongClickListener (
+		ACCESS_COARSE_LOCATION
+		ACCESS_FINE_LOCATION
+	)
+	getAllProviders
+		ACCESS_COARSE_LOCATION
+		ACCESS_FINE_LOCATION
+	getBestProvider
+		ACCESS_COARSE_LOCATION
+		ACCESS_FINE_LOCATION
+	getProviders
+		ACCESS_COARSE_LOCATION
+		ACCESS_FINE_LOCATION
+	requestLocationUpdates	
+		ACCESS_COARSE_LOCATION
+		ACCESS_FINE_LOCATION
+
+Phone: Purpose: ?
+ 	Configuration.MCC
+	Configuration.MNC
+	getSimCountryIso
+
+Shell: Purpose: To access cached maps
+	exec
+
+Storage: Purpose: To read/write schedules
+	getExternalStorageState
+	content:/com.google.android.gms.chimera/api/1521148419000
+	
+Email: Purpose: Presumably to parse 'content provider' style handling of Google directions API
+	GMailProvider(content://com.google.android.gms.chimera/api_force_staging/com.google.android.gms.googlecertificates)
+	com.google.android.gm.permission.READ_CONTENT_PROVIDER
+
+
