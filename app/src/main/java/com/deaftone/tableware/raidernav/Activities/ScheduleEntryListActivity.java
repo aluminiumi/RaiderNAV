@@ -16,6 +16,12 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View.OnClickListener;
+
+
 import com.deaftone.tableware.raidernav.InteractiveSELArrayAdapter;
 import com.deaftone.tableware.raidernav.R;
 import com.deaftone.tableware.raidernav.ScheduleEntryList;
@@ -41,14 +47,14 @@ public class ScheduleEntryListActivity extends Activity implements AdapterView.O
         Bundle extras = getIntent().getExtras();
         final int index = extras.getInt("index");
         sh = new ScheduleHandler(getApplicationContext());
-        System.out.println("SELActivity: onCreate: index is "+index);
+        System.out.println("SELActivity: onCreate: index is " + index);
         final ScheduleEntryList sel = sh.getMasterList().get(index);
         Toolbar tb = (Toolbar) findViewById(R.id.toolbar);
-        if(tb != null) {
+        if (tb != null) {
             tb.setTitle(sel.getName());
         }
-        System.out.println("SELActivity: onCreate: sel is "+sel);
-        System.out.println("SELActivity: onCreate: sel has "+sel.getEntryCount()+" entries.");
+        System.out.println("SELActivity: onCreate: sel is " + sel);
+        System.out.println("SELActivity: onCreate: sel has " + sel.getEntryCount() + " entries.");
 
         lv = findViewById(R.id.courses_list_view);
         adapter = new InteractiveSELArrayAdapter(this, sel);
@@ -110,7 +116,7 @@ public class ScheduleEntryListActivity extends Activity implements AdapterView.O
                         .setCancelable(false)
                         .setPositiveButton("OK",
                                 new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
+                                    public void onClick(DialogInterface dialog, int id) {
                                         // get user input and set it to result
                                         // edit text
                                         updateScheduleName(index, userInput.getText().toString(), sel);
@@ -142,21 +148,42 @@ public class ScheduleEntryListActivity extends Activity implements AdapterView.O
         Button deletebutton = (Button) findViewById(R.id.deleteButton);
         deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
-                deleteSchedule(index, sel);
-                if (getParent() == null) {
-                    setResult(Activity.RESULT_OK, getIntent());
-                } else {
-                    getParent().setResult(Activity.RESULT_OK, getIntent());
-                }
-                finish();
-                //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
-                //tv.setText(fh.readFile());
-                //tv.setText(fileContents);
+                AlertDialog.Builder alertDialogBuilder2 = new AlertDialog.Builder(ScheduleEntryListActivity.this);
+                alertDialogBuilder2.setTitle("Delete Schedule");
+                alertDialogBuilder2.setMessage("Delete this schedule?")
+                        .setCancelable(false)
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                deleteSchedule(index, sel);
+                                if (getParent() == null) {
+                                    setResult(Activity.RESULT_OK, getIntent());
+                                } else {
+                                    getParent().setResult(Activity.RESULT_OK, getIntent());
+                                }
+                                finish();
+                                //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
+                                //tv.setText(fh.readFile());
+                                //tv.setText(fileContents);
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                AlertDialog alertDialog = alertDialogBuilder2.create();
+
+                System.out.println("SELActivity: alertDialog created");
+
+                // show it
+                alertDialog.show();
             }
         });
     }
-
     private void deleteSchedule(int index, ScheduleEntryList sel) {
         sh.removeScheduleFromMasterList(index);
     }
