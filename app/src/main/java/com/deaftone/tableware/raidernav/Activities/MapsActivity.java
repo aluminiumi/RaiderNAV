@@ -121,6 +121,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(ttu));
     }
 
+
+
     @Override
     public boolean onMyLocationButtonClick() {
         pathDrawn = false;
