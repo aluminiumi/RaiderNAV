@@ -162,8 +162,8 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
             @Override
             public void onClick(View argo) {
                 AlertDialog.Builder alerDialogBuilder = new AlertDialog.Builder(context);
-                alerDialogBuilder.setTitle("Delete Schedule");
-                alerDialogBuilder.setMessage("Delete this schedule?")
+                alerDialogBuilder.setTitle("Delete Course");
+                alerDialogBuilder.setMessage("Delete this course?")
                         .setCancelable(false)
                         .setPositiveButton("YES", new DialogInterface.OnClickListener(){
                             public void onClick(DialogInterface dialog, int id) {
