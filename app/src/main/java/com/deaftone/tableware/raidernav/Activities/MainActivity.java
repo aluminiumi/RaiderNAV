@@ -3,6 +3,7 @@ package com.deaftone.tableware.raidernav.Activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("firstStart", true);
+
+        if (firstStart) {
+            showStartDialog();
+        }
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -56,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 ArrayAdapter<CharSequence> adapter =
                         new ArrayAdapter<CharSequence>
                                 (getApplicationContext(), R.layout.spinner_contents_layout, destinations);
-                                //(getApplicationContext(), android.R.layout.simple_spinner_item, destinations);
+                //(getApplicationContext(), android.R.layout.simple_spinner_item, destinations);
 
                 // Specify the layout to use when the list of choices appears
                 //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 //set spinner behavior for selections
                 destSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
-                     public void onItemSelected(AdapterView<?> parent, View view,
-                    int pos, long id) {
+                    public void onItemSelected(AdapterView<?> parent, View view,
+                                               int pos, long id) {
                         // An item was selected. You can retrieve the selected item using
                         // parent.getItemAtPosition(pos)
                         //System.out.println(pos);
@@ -132,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,MapsActivity.class)
-                    .putExtra("isLoneDestination", false));
+                        .putExtra("isLoneDestination", false));
             }
         });
 
@@ -174,6 +186,26 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
     }
+    private void showStartDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Privacy Policy")
+                .setMessage("privacy implications of using this app goes here")
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+       SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor= prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+    }
+
+
+
+
     /*public void openCreateScheduleScreen(){
         Intent intent = new Intent(this,AddCourseActivity.class);
         startActivity(intent);
