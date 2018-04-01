@@ -30,10 +30,12 @@ public final class AddressMap
         temp.put("CHEM","33.583898, -101.876273");
         temp.put("CHEME","33.587339, -101.876316");
         temp.put("CIVILE","33.586529, -101.873942");
+        temp.put("CIVENG","33.586529, -101.873942");
         temp.put("CRMVST","33.588083, -101.872752");
         temp.put("DOAK","33.582733, -101.871628");
         temp.put("EDUC","33.580196, -101.879180");
         temp.put("ELECE","33.586641, -101.875401");
+        temp.put("ECE","33.586641, -101.875401");
         temp.put("ENGCTR","33.587275, -101.875771");
         temp.put("ENGPHL","33.581556, -101.879243");
         temp.put("ETLAB","33.587246, -101.873858");
