@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>8</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
+      <x>182</x>
       <y>56</y>
-      <w>392</w>
-      <h>152</h>
+      <w>343</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 ScheduleEntryListActivity
@@ -25,9 +25,9 @@ Responsibilities
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>320</y>
-      <w>208</w>
-      <h>128</h>
+      <y>287</y>
+      <w>182</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 InteractiveArrayAdapter
@@ -43,10 +43,10 @@ are made</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>224</x>
-      <y>336</y>
-      <w>168</w>
-      <h>88</h>
+      <x>917</x>
+      <y>133</y>
+      <w>147</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 SettingsActivity
@@ -58,10 +58,10 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>752</x>
-      <y>152</y>
-      <w>552</w>
-      <h>328</h>
+      <x>602</x>
+      <y>217</y>
+      <w>483</w>
+      <h>287</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 MapsActivity
@@ -94,13 +94,19 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>128</x>
-      <y>496</y>
-      <w>184</w>
-      <h>96</h>
+      <x>0</x>
+      <y>406</y>
+      <w>322</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 MainActivity
+--
+-destination: String
+--
+-showStartDialog(): void
+-setDestination(String): void
+onActivityResult(requestCode: int, resultCode: int, Intent): void
 --
 Responsibilities
 -- Code for Main view</panel_attributes>
@@ -111,8 +117,8 @@ Responsibilities
     <coordinates>
       <x>0</x>
       <y>56</y>
-      <w>168</w>
-      <h>152</h>
+      <w>147</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 ScheduleActivity
@@ -126,10 +132,10 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>72</x>
-      <y>200</y>
-      <w>56</w>
-      <h>136</h>
+      <x>63</x>
+      <y>182</y>
+      <w>49</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
@@ -140,21 +146,21 @@ uses v</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>296</x>
-      <y>288</y>
-      <w>24</w>
-      <h>64</h>
+      <x>980</x>
+      <y>98</y>
+      <w>21</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>208</x>
-      <y>224</y>
-      <w>192</w>
-      <h>72</h>
+      <x>903</x>
+      <y>56</y>
+      <w>168</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 /AppCompatPreferenceActivity/
@@ -165,10 +171,10 @@ uses v</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>424</x>
-      <y>496</y>
-      <w>400</w>
-      <h>152</h>
+      <x>196</x>
+      <y>217</y>
+      <w>350</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 ScheduleSingleEntryActivity
@@ -182,16 +188,16 @@ ScheduleSingleEntryActivity
 +onItemSelected(AdapterView, View, position: int, id: long): void
 --
 Responsibilities
--- Code for Maps view</panel_attributes>
+-- Screen used to display a schedule and its list of courses</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>416</x>
-      <y>232</y>
-      <w>288</w>
-      <h>152</h>
+      <x>336</x>
+      <y>385</y>
+      <w>252</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 AddCourseActivity
@@ -202,16 +208,16 @@ AddCourseActivity
 -addEntry(index: int, ScheduleSingleEntry): void
 --
 Responsibilities
--- Code for Maps view</panel_attributes>
+-- Screen used to add a new course to a schedule</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
+      <x>546</x>
       <y>56</y>
-      <w>192</w>
-      <h>72</h>
+      <w>168</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 /AppCompatActivity/
@@ -222,32 +228,32 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>712</x>
-      <y>120</y>
-      <w>24</w>
-      <h>392</h>
+      <x>525</x>
+      <y>98</y>
+      <w>119</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;470.0</additional_attributes>
+    <additional_attributes>150.0;10.0;150.0;80.0;10.0;80.0;10.0;170.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>584</x>
-      <y>120</y>
-      <w>152</w>
-      <h>128</h>
+      <x>546</x>
+      <y>98</y>
+      <w>98</w>
+      <h>301</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>170.0;10.0;170.0;120.0;10.0;120.0;10.0;140.0</additional_attributes>
+    <additional_attributes>120.0;10.0;120.0;140.0;10.0;140.0;10.0;410.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>824</x>
+      <x>721</x>
       <y>56</y>
-      <w>192</w>
-      <h>72</h>
+      <w>168</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>&lt;&lt;control&gt;&gt;
 /FragmentActivity/
@@ -258,12 +264,12 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
-      <y>120</y>
-      <w>24</w>
-      <h>48</h>
+      <x>777</x>
+      <y>98</y>
+      <w>21</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
   </element>
 </diagram>
