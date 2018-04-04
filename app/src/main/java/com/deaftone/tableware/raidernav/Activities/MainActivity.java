@@ -189,7 +189,16 @@ public class MainActivity extends AppCompatActivity {
     private void showStartDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Privacy Policy")
-                .setMessage("privacy implications of using this app goes here")
+                .setMessage("\t\n" +
+                        "This app will be collecting information from the your device's internet, location, shell, storage, and email.\n" +
+                        "The device's internet will be used to download directions from google, location will be used to provide starting point in directions, shell will be used by Google Maps to access cached maps.\n" +
+                        "The device's storage will be used read/write user schedules to/from device storage and email will be used to presumably to parse 'content provider' style handling of Google Maps Directions API\n" +
+                        "Additionally this application also collects data from your phone such as identification, phone and contacts.\n" +
+                        "The application has no functionality associated with collecting data from these sources. However, it might be Google Maps API that might be collecting those information for internal libraries.\n" +
+                        "Please refer to Google Maps API Terms of Service for more information.\n" +
+                        "\n" +
+                        "\n" +
+                        "\n")
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
