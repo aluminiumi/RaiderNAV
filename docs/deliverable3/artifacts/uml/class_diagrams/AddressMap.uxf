@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>110</y>
+      <w>380</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+AddressMap
+--
+-Coordinates: Map&lt;String,String&gt;
+--
++initialize(): void
++getKeys(): Set&lt;String&gt;
++getKeysAsCharSequence(): CharSequence[]
++getXY(destination: String): double[]
++parseXY(destination: String): double[]
++getLatLng(buildingName: String): LatLng
++getBuildingArray(): ArrayList&lt;String&gt;
++fetch(buildingName: String): String
++fetchCoordinates(buildingName: String): String
+--
+Responsibilities
+-- Stores building to coordinates mapping</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

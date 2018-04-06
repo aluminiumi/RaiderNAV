@@ -15,16 +15,25 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
+import com.deaftone.tableware.raidernav.AddressMap;
 import com.deaftone.tableware.raidernav.R;
 import com.deaftone.tableware.raidernav.ScheduleEntryList;
 import com.deaftone.tableware.raidernav.ScheduleHandler;
 import com.deaftone.tableware.raidernav.ScheduleSingleEntry;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View.OnClickListener;
+
+
 public class ScheduleSingleEntryActivity extends AppCompatActivity {
 
     TextView tv;
-    TextView dv;
+    Spinner dv;
     TextView st;
     TextView et;
     CheckBox monday;
@@ -38,6 +47,7 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
     ScheduleHandler sh;
     ScheduleEntryList sel;
 
+    final Context context=this;
 
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +71,12 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule_single_entry);
         tv = findViewById(R.id.courseName);
+
         dv = findViewById(R.id.buildingName);
+        ArrayAdapter dvAdapter = new ArrayAdapter<String>(this, R.layout.spinner, AddressMap.getBuildingArray());
+        dvAdapter.setDropDownViewResource(R.layout.spinner_item);
+        dv.setAdapter(dvAdapter);
+
         st = findViewById(R.id.startTime);
         et = findViewById(R.id.endTime);
         monday = findViewById(R.id.checkBox_monday);
@@ -86,7 +101,7 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
         //getSupportActionBar().setTitle(sel.getName());
 
         tv.setText(sse.getCourseNumber());
-        dv.setText(sse.getBuilding());
+        dv.setSelection(dvAdapter.getPosition(sse.getBuilding()));
         st.setText(sse.getStartTime());
         et.setText(sse.getEndTime());
         boolean days[] = sse.getDays();
@@ -124,7 +139,7 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
 
                 ScheduleSingleEntry newsse = new ScheduleSingleEntry(
                         tv.getText().toString(),
-                        dv.getText().toString(),
+                        dv.getSelectedItem().toString(),
                         st.getText().toString(),
                         et.getText().toString(),
                         newdays
@@ -141,17 +156,37 @@ public class ScheduleSingleEntryActivity extends AppCompatActivity {
             }
         });
 
+
         Button deletebutton = (Button) findViewById(R.id.deleteButton);
         deletebutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                deleteCourse(index, entryindex);
-                if (getParent() == null) {
-                    setResult(Activity.RESULT_OK, getIntent());
-                } else {
-                    getParent().setResult(Activity.RESULT_OK, getIntent());
-                }
-                finish();
+            public void onClick(View argo) {
+                AlertDialog.Builder alerDialogBuilder = new AlertDialog.Builder(context);
+                alerDialogBuilder.setTitle("Delete Course");
+                alerDialogBuilder.setMessage("Delete this course?")
+                        .setCancelable(false)
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener(){
+                            public void onClick(DialogInterface dialog, int id) {
+                                deleteCourse(index, entryindex);
+                                if (getParent() == null) {
+                                    setResult(Activity.RESULT_OK, getIntent());
+                                } else {
+                                    getParent().setResult(Activity.RESULT_OK, getIntent());
+                                }
+                                finish();
+                            }
+                        });
+
+                alerDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alertDialog =alerDialogBuilder.create();
+                alertDialog.show();
+
+
                 //startActivity(new Intent(MainActivity.this,ScheduleActivity.class));
                 //tv.setText(fh.readFile());
                 //tv.setText(fileContents);
