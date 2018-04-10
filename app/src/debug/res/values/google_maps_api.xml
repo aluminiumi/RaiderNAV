@@ -1,0 +1,24 @@
+<resources>
+    <!--
+    To get a Google Maps API key,
+    follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=61:28:DF:91:95:92:81:28:62:EA:C2:A1:DC:2A:47:AB:4F:A8:FD:DF%3Bcom.deaftone.tableware.raidernav
+
+    You can also add your credentials to an existing key, using these values:
+
+    Package name:
+    61:28:DF:91:95:92:81:28:62:EA:C2:A1:DC:2A:47:AB:4F:A8:FD:DF
+
+    SHA-1 certificate fingerprint:
+    61:28:DF:91:95:92:81:28:62:EA:C2:A1:DC:2A:47:AB:4F:A8:FD:DF
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAoEB-siN9KvZrDYHwhCQnd8ixgS5SG3as</string>
+    <string name="directions_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBPv46SlN7xdVRr62stX4roZi_2Afb65u0</string>
+</resources>
