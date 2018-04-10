@@ -188,28 +188,46 @@ public class MainActivity extends AppCompatActivity {
     }
     private void showStartDialog() {
         new AlertDialog.Builder(this)
-                .setTitle("Privacy Policy")
+                .setTitle("Privacy and Permissions")
                 .setMessage("\t\n" +
-                        "This app will be collecting information from the your device's internet, location, shell, storage, and email.\n" +
-                        "The device's internet will be used to download directions from google, location will be used to provide starting point in directions, shell will be used by Google Maps to access cached maps.\n" +
-                        "The device's storage will be used read/write user schedules to/from device storage and email will be used to presumably to parse 'content provider' style handling of Google Maps Directions API\n" +
-                        "Additionally this application also collects data from your phone such as identification, phone and contacts.\n" +
-                        "The application has no functionality associated with collecting data from these sources. However, it might be Google Maps API that might be collecting those information for internal libraries.\n" +
-                        "Please refer to Google Maps API Terms of Service for more information.\n" +
+                        "This dialog serves to notify you of our data collection practices and explain the permissions required by this app.\n\n" +
+                        "This app requests the following permissions: Identification, Internet, Location, Phone, Shell, Storage, Contacts, Email.\n\n\n" +
+
+                        "The Internet permission is used by this app to download navigation directions to your device.\n\n\n" +
+
+                        "The Location permission is used by this app to determine your starting location to generate accurate directions to destinations.\n\n" +
+                        "This permission involves both coarse (network) location and fine (GPS) location. The most accurate available location source is used.\n\n\n" +
+
+                        "If you will not be using the navigation features, you do not need to allow the Location or Internet permissions.\n\n\n" +
+
+                        "The storage permission is used to save and restore schedules locally on your device.\n\n" +
+                        "If you will not be using the schedules feature, you do not need to allow the storage permission.\n\n" +
+
+                        "The following permissions are not requested in the code of this app and appear to be permissions required by underlying libraries used by this app (Google Maps and Google Directions):\n\n\n" +
+
+                        "1. Identification. Access is requested for /proc/meminfo and SERIAL. The purpose of this permission is unknown. It is presumed safe to disallow this permission.\n\n" +
+                        "2. Phone. Access is requested for Configuration.MCC, Configuration.MNC, and getSimCountryIso. The purpose of this permission is unknown. It is presumed safe to disallow this permission.\n\n" +
+                        "3. Shell. Access is requested for exec. This is used by Google Maps to access cached maps. If you will not be using navigation features, you do not need to allow this permission.\n\n" +
+                        "4. Contacts. Access is requested for both READ_CONTACTS and WRITE_CONTACTS. The purpose of this permission is unknown, though appears to associated with keyboard entry fields and may be related to text-completion. It is presumed safe to disallow this permission.\n\n" +
+                        "5. Email. Access is requested to determine your GMail provider. This appears to be a consequence of Android's handling of custom URIs (such as \"content://com.google...\"). It may be necessary to enable this permission if you intend to generate navigation directions.\n\n\n" +
+
+                        "For more information about the above five permissions and how they are used, it is advisable to refer to the privacy policies for the Google Maps API and Google Directions.\n\n" +
+
                         "\n" +
                         "\n" +
                         "\n")
-                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 })
                 .create().show();
-       SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor= prefs.edit();
-        editor.putBoolean("firstStart", false);
-        editor.apply();
+
+        //SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = getSharedPreferences("prefs", MODE_PRIVATE).edit();
+        editor.putBoolean("firstStart", false).apply();
+        //editor.apply();
     }
 
 
