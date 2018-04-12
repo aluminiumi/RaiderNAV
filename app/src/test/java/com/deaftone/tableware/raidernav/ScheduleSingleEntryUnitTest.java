@@ -31,5 +31,64 @@ public class ScheduleSingleEntryUnitTest {
 
     }
 
+    @Test
+    public void setCourseNumber_isCorrect() {
+
+    }
+
+    @Test
+    public void getBuilding_isCorrect() {
+
+    }
+
+    @Test
+    public void setBuilding_isCorrect() {
+
+    }
+
+    @Test
+    public void getStartTime_isCorrect() {
+
+    }
+
+    @Test
+    public void setStartTime_isCorrect() {
+
+    }
+
+    @Test
+    public void getEndTime_isCorrect() {
+
+    }
+
+    @Test
+    public void setEndTime_isCorrect() {
+
+    }
+
+    @Test
+    public void getDays_isCorrect() {
+
+    }
+
+    @Test
+    public void setDays_isCorrect() {
+
+    }
+
+    @Test
+    public void setActiveOnDay_isCorrect() {
+
+    }
+
+    @Test
+    public void setInactiveOnDay_isCorrect() {
+
+    }
+
+    @Test
+    public void isActiveOnDay_isCorrect() {
+
+    }
 
 }
