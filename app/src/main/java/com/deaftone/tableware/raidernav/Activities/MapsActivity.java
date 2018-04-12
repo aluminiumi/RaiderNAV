@@ -200,7 +200,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true); //Yong 03082018
 
         drawDestination();
-
+//shows route between two points selected by long click by yongwu 04092018 starting
         if(havePermissions()) {
 
             mMap.setMyLocationEnabled(true);   //Yong 03082018
@@ -226,13 +226,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         }
                         mMap.addMarker(markerOptions);
                         //TODO get direction url
+                        if (listPoints.size() == 2) {
 
+
+                        if(!pathDrawn) { //yong 04090145added begin
+                            System.out.println("Creating oneshot destination");
+                            LatLng origin = listPoints.get(0);
+                            LatLng destination = listPoints.get(1);
+                            final String serverKey = getApplicationContext().getString(R.string.directions_key);
+                            GoogleDirection.withServerKey(serverKey)
+                                    .from(origin)
+                                    .to(destination)
+                                    .transportMode(TransportMode.WALKING)
+                                    .execute(new DirectionCallback() {
+                                        @Override
+                                        public void onDirectionSuccess(Direction direction, String rawBody) {
+                                            System.out.println("Direction success: " + rawBody);
+                                            Route route = direction.getRouteList().get(0);
+                                            Leg leg = route.getLegList().get(0);
+                                            ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
+                                            PolylineOptions polylineOptions = DirectionConverter.createPolyline(getApplicationContext(), directionPositionList, 5, Color.RED);
+                                            mMap.addPolyline(polylineOptions);
+                                            mMap.moveCamera(CameraUpdateFactory.zoomIn());
+                                        }
+
+                                        @Override
+                                        public void onDirectionFailure(Throwable t) {
+                                            System.out.println(t);
+                                        }
+                                    });
+                            pathDrawn = true;
+                        } //yong 04090145added end
+                                                        }
                     }
                 }
 
             });
         }
-
+//shows route between two points selected by long click by yongwu 04092018 end
      }
 
      private void drawDestination() {
