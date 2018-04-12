@@ -16,18 +16,23 @@ public class ScheduleSingleEntryUnitTest {
         assertEquals(4, 2 + 2);
     }*/
 
-    ScheduleSingleEntry sse;
+    private ScheduleSingleEntry sse;
+    private final String coursenumber = "RUSN 1502";
+    private final String building = "Foreign Language";
+    private final String starttime = "0900";
+    private final String endtime = "0950";
+    private boolean[] days = {false, true, true, true, true, true, false};
 
     @Before
     public void initialize() {
-        boolean[] days = {false, true, true, true, true, true, false};
+
         sse = new ScheduleSingleEntry(
-                "RUSN 1502", "Foreign Language", "0900", "0950", days);
+                coursenumber, building, starttime, endtime, days);
     }
 
     @Test
     public void getCourseNumber_isCorrect() {
-        assertEquals("RUSN 1502", sse.getCourseNumber());
+        assertEquals(coursenumber, sse.getCourseNumber());
 
     }
 
@@ -38,7 +43,7 @@ public class ScheduleSingleEntryUnitTest {
 
     @Test
     public void getBuilding_isCorrect() {
-
+        assertEquals(building, sse.getBuilding());
     }
 
     @Test
@@ -48,7 +53,7 @@ public class ScheduleSingleEntryUnitTest {
 
     @Test
     public void getStartTime_isCorrect() {
-
+        assertEquals(starttime, sse.getStartTime());
     }
 
     @Test
@@ -58,7 +63,7 @@ public class ScheduleSingleEntryUnitTest {
 
     @Test
     public void getEndTime_isCorrect() {
-
+        assertEquals(endtime, sse.getEndTime());
     }
 
     @Test
