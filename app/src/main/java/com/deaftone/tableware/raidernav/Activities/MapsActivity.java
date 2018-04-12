@@ -228,7 +228,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         //TODO get direction url
                         if (listPoints.size() == 2) {
 
-
                         if(!pathDrawn) { //yong 04090145added begin
                             System.out.println("Creating oneshot destination");
                             LatLng origin = listPoints.get(0);
