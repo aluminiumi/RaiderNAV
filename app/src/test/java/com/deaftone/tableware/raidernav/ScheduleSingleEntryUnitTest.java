@@ -11,10 +11,6 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ScheduleSingleEntryUnitTest {
-    /*@Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }*/
 
     private ScheduleSingleEntry sse;
     private final String coursenumber = "RUSN 1502";
@@ -38,7 +34,8 @@ public class ScheduleSingleEntryUnitTest {
 
     @Test
     public void setCourseNumber_isCorrect() {
-
+        sse.setCourseNumber("CS 4352");
+        assertEquals("CS 4352", sse.getCourseNumber());
     }
 
     @Test
@@ -48,7 +45,8 @@ public class ScheduleSingleEntryUnitTest {
 
     @Test
     public void setBuilding_isCorrect() {
-
+        sse.setBuilding("Holden Hall");
+        assertEquals("Holden Hall", sse.getBuilding());
     }
 
     @Test
@@ -58,7 +56,8 @@ public class ScheduleSingleEntryUnitTest {
 
     @Test
     public void setStartTime_isCorrect() {
-
+        sse.setStartTime("0300");
+        assertEquals("0300", sse.getStartTime());
     }
 
     @Test
@@ -68,33 +67,46 @@ public class ScheduleSingleEntryUnitTest {
 
     @Test
     public void setEndTime_isCorrect() {
-
+        sse.setEndTime("0400");
+        assertEquals("0400", sse.getEndTime());
     }
 
     @Test
     public void getDays_isCorrect() {
-
+        assertEquals(false, sse.getDays()[0]);
+        assertEquals(true, sse.getDays()[1]);
     }
 
     @Test
     public void setDays_isCorrect() {
-
+        boolean[] newdays = {true, false, true, true, true, true, false};
+        sse.setDays(newdays);
+        assertEquals(true, sse.getDays()[0]);
+        assertEquals(false, sse.getDays()[1]);
     }
 
     @Test
     public void setActiveOnDay_isCorrect() {
-
-
+        sse.setActiveOnDay(0);
+        assertEquals(true, sse.getDays()[0]);
+        sse.setActiveOnDay(1);
+        assertEquals(true, sse.getDays()[1]);
     }
 
     @Test
     public void setInactiveOnDay_isCorrect() {
-
+        sse.setInactiveOnDay(0);
+        assertEquals(false, sse.getDays()[0]);
+        sse.setInactiveOnDay(1);
+        assertEquals(false, sse.getDays()[1]);
     }
 
     @Test
     public void isActiveOnDay_isCorrect() {
-
+        sse.setActiveOnDay(0);
+        sse.setInactiveOnDay(1);
+        assertEquals(true, sse.isActiveOnDay(0));
+        assertEquals(false, sse.isActiveOnDay(1));
     }
 
 }
