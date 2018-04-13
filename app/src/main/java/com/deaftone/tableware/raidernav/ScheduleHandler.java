@@ -22,6 +22,12 @@ public class ScheduleHandler {
     List<ScheduleEntryList> masterList;
     ScheduleFileHandler filehandler;
 
+    //This class is only used for unit tests; not in the application proper
+    /*public ScheduleHandler() {
+        builder = new GsonBuilder();
+        gson = builder.create();
+    }*/
+
     public ScheduleHandler(Context c) {
         builder = new GsonBuilder();
         gson = builder.create();

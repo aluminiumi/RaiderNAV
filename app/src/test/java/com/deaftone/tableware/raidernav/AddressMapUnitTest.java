@@ -12,10 +12,6 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class AddressMapUnitTest {
-    /*@Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }*/
 
     @Before
     public void initialize() {
@@ -31,26 +27,32 @@ public class AddressMapUnitTest {
 
     @Test
     public void getKeysAsCharSeouence_isCorrect() {
+        assertEquals("AGRI",AddressMap.getKeysAsCharSequence()[4]);
 
     }
 
     @Test
     public void getXY_isCorrect() {
+        assertEquals(-101.874702,AddressMap.getXY("ADMIN")[1],.1);
 
     }
 
     @Test
     public void parseXY_isCorrect() {
+        assertEquals(33.583427,AddressMap.parseXY("33.583427, -101.874702")[0],.1);
 
     }
 
     @Test
     public void getLatLng_isCorrect() {
+        assertEquals(33.587275,AddressMap.getLatLng("ENGCTR").latitude,.1);
 
     }
 
     @Test
     public void getBuildingArray_isCorrect() {
+        assertEquals("ADMIN",AddressMap.getBuildingArray().iterator().next());
+
 
     }
 
@@ -61,6 +63,8 @@ public class AddressMapUnitTest {
 
     @Test
     public void fetchCoordinates_isCorrect() {
+        assertEquals("33.583427, -101.874702",AddressMap.fetchCoordinates("ADMIN"));
+        assertEquals(null,AddressMap.fetchCoordinates("GARBAGE HALL"));
 
     }
 
