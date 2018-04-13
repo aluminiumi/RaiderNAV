@@ -71,6 +71,7 @@ public class ScheduleEntryListUnitTest {
     @Test
     public void isEnabled_isCorrect() {
 
+
     }
 
     @Test
