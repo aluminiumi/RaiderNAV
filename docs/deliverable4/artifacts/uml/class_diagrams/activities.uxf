@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>182</x>
+      <y>56</y>
+      <w>343</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+ScheduleEntryListActivity
+--
+-sh: ScheduleHandler
+--
+-deleteSchedule(index: int, ScheduleEntryList)
+-updateScheduleName(index: int, name: String, ScheduleEntryList)
+--
+Responsibilities
+-- Code for schedule editing view</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>287</y>
+      <w>182</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+InteractiveArrayAdapter
+--
++list: List&lt;ScheduleEntryList&gt;
+--
+Responsibilities
+-- Updates schedule list displayed 
+on user interface when changes
+are made</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>917</x>
+      <y>133</y>
+      <w>147</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+SettingsActivity
+--
+Responsibilities
+-- Code for Settings view</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>602</x>
+      <y>217</y>
+      <w>483</w>
+      <h>287</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+MapsActivity
+--
+-mMap: GoogleMap
+-myLocation: Location
+-singleDestination: LatLng
+-singleDestinationName: String
+-locationManager: LocationManager
+-pathDrawn: Boolean
+-isLoneDestination: Boolean
+--
++onRequestPermissionsResult(requestCode: int, permissions: int[], grantResults: int[]): void
++onMyLocationButtonClick(): Boolean
++onLocationChanged(location: Location): void
++onProviderEnabled(String): void
++onProviderDisabled(String): void
++onStatusChanged(String, int, Bundle): void
++onMapReady(GoogleMap): void
+-drawDestination(): void
+-doPathToSingleDestination(): void
+-getLastKnownLocation(): Location
+-havePermissions(): Boolean
+
+--
+Responsibilities
+-- Code for Maps view</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>406</y>
+      <w>322</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+MainActivity
+--
+-destination: String
+--
+-showStartDialog(): void
+-setDestination(String): void
+onActivityResult(requestCode: int, resultCode: int, Intent): void
+--
+Responsibilities
+-- Code for Main view</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>56</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+ScheduleActivity
+--
+-sh: ScheduleHandler
+--
+Responsibilities
+-- Code for Schedule view</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>63</x>
+      <y>182</y>
+      <w>49</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+uses v</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>98</y>
+      <w>21</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>903</x>
+      <y>56</y>
+      <w>168</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+/AppCompatPreferenceActivity/
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>196</x>
+      <y>217</y>
+      <w>350</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+ScheduleSingleEntryActivity
+--
+-sh: ScheduleHandler
+-sel: ScheduleEntryList
+--
++onMapReady(GoogleMap): void
+-deleteCourse(index: int, entryindex: int): void
+-replaceEntry(index: int, entryindex: int, ScheduleSingleEntry): void
++onItemSelected(AdapterView, View, position: int, id: long): void
+--
+Responsibilities
+-- Screen used to display a schedule and its list of courses</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>385</y>
+      <w>252</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+AddCourseActivity
+--
+-sh: ScheduleHandler
+-sel: ScheduleEntryList
+--
+-addEntry(index: int, ScheduleSingleEntry): void
+--
+Responsibilities
+-- Screen used to add a new course to a schedule</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>56</y>
+      <w>168</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+/AppCompatActivity/
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>98</y>
+      <w>119</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>150.0;10.0;150.0;80.0;10.0;80.0;10.0;170.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>98</y>
+      <w>98</w>
+      <h>301</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;120.0;140.0;10.0;140.0;10.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>721</x>
+      <y>56</y>
+      <w>168</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;control&gt;&gt;
+/FragmentActivity/
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>777</x>
+      <y>98</y>
+      <w>21</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+</diagram>
