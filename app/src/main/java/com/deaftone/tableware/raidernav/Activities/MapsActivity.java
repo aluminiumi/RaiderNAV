@@ -52,6 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String bestProvider;
     boolean pathDrawn = false;
     boolean isLoneDestination = false;
+    int mapRefreshCount = 0;
 
     @SuppressLint({"MissingPermissions", "MissingPermission"})
     @Override
@@ -60,6 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         Bundle extras = getIntent().getExtras();
+
+        mapRefreshCount = 0;
 
         if(havePermissions()) {
             try {
@@ -92,7 +95,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Criteria criteria = new Criteria();
             bestProvider = locationManager.getBestProvider(criteria, true);
             for (String provider : locationManager.getAllProviders()) {
-                locationManager.requestLocationUpdates(provider, 1000, 0, this);
+                //TODO: crash Caused by: java.lang.SecurityException: "passive" location provider requires ACCESS_FINE_LOCATION permission.
+                try {
+                    locationManager.requestLocationUpdates(provider, 1000, 0, this);
+                } catch (SecurityException e) {
+                  e.printStackTrace();
+                }
             }
             myLocation = getLastKnownLocation();
             if (myLocation != null) {
@@ -195,7 +203,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //By default, show the map zoomed in on Memorial Circle until
         //we know what the user wants to do
         LatLng ttu = new LatLng(33.584468, -101.874658);
+
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));
+
 
         mMap.getUiSettings().setZoomControlsEnabled(true); //Yong 03082018
 
@@ -203,64 +213,68 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //shows route between two points selected by long click by yongwu 04092018 starting
         if(havePermissions()) {
 
-            mMap.setMyLocationEnabled(true);   //Yong 03082018
-            mMap.setOnMyLocationButtonClickListener(this);
+            try {
+                mMap.setMyLocationEnabled(true);   //Yong 03082018
+                mMap.setOnMyLocationButtonClickListener(this);
 
 
-            mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-                @Override
-                public void onMapLongClick(LatLng latLng) {
-                    {
-                        if (listPoints.size() == 2) {
-                            listPoints.clear();
-                            mMap.clear();
+                mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+                    @Override
+                    public void onMapLongClick(LatLng latLng) {
+                        {
+                            if (listPoints.size() == 2) {
+                                listPoints.clear();
+                                mMap.clear();
+                            }
+                            listPoints.add(latLng);
+                            MarkerOptions markerOptions = new MarkerOptions();
+                            markerOptions.position(latLng);
+
+                            if (listPoints.size() == 1) {
+                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                            } else {
+                                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+                            }
+                            mMap.addMarker(markerOptions);
+                            //TODO get direction url
+                            if (listPoints.size() == 2) {
+
+                                if (!pathDrawn) { //yong 04090145added begin
+                                    System.out.println("Creating oneshot destination");
+                                    LatLng origin = listPoints.get(0);
+                                    LatLng destination = listPoints.get(1);
+                                    final String serverKey = getApplicationContext().getString(R.string.directions_key);
+                                    GoogleDirection.withServerKey(serverKey)
+                                            .from(origin)
+                                            .to(destination)
+                                            .transportMode(TransportMode.WALKING)
+                                            .execute(new DirectionCallback() {
+                                                @Override
+                                                public void onDirectionSuccess(Direction direction, String rawBody) {
+                                                    System.out.println("Direction success: " + rawBody);
+                                                    Route route = direction.getRouteList().get(0);
+                                                    Leg leg = route.getLegList().get(0);
+                                                    ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
+                                                    PolylineOptions polylineOptions = DirectionConverter.createPolyline(getApplicationContext(), directionPositionList, 5, Color.RED);
+                                                    mMap.addPolyline(polylineOptions);
+                                                    mMap.moveCamera(CameraUpdateFactory.zoomIn());
+                                                }
+
+                                                @Override
+                                                public void onDirectionFailure(Throwable t) {
+                                                    System.out.println(t);
+                                                }
+                                            });
+                                    pathDrawn = true;
+                                } //yong 04090145added end
+                            }
                         }
-                        listPoints.add(latLng);
-                        MarkerOptions markerOptions = new MarkerOptions();
-                        markerOptions.position(latLng);
-
-                        if (listPoints.size() == 1) {
-                            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                        } else {
-                            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                        }
-                        mMap.addMarker(markerOptions);
-                        //TODO get direction url
-                        if (listPoints.size() == 2) {
-
-                        if(!pathDrawn) { //yong 04090145added begin
-                            System.out.println("Creating oneshot destination");
-                            LatLng origin = listPoints.get(0);
-                            LatLng destination = listPoints.get(1);
-                            final String serverKey = getApplicationContext().getString(R.string.directions_key);
-                            GoogleDirection.withServerKey(serverKey)
-                                    .from(origin)
-                                    .to(destination)
-                                    .transportMode(TransportMode.WALKING)
-                                    .execute(new DirectionCallback() {
-                                        @Override
-                                        public void onDirectionSuccess(Direction direction, String rawBody) {
-                                            System.out.println("Direction success: " + rawBody);
-                                            Route route = direction.getRouteList().get(0);
-                                            Leg leg = route.getLegList().get(0);
-                                            ArrayList<LatLng> directionPositionList = leg.getDirectionPoint();
-                                            PolylineOptions polylineOptions = DirectionConverter.createPolyline(getApplicationContext(), directionPositionList, 5, Color.RED);
-                                            mMap.addPolyline(polylineOptions);
-                                            mMap.moveCamera(CameraUpdateFactory.zoomIn());
-                                        }
-
-                                        @Override
-                                        public void onDirectionFailure(Throwable t) {
-                                            System.out.println(t);
-                                        }
-                                    });
-                            pathDrawn = true;
-                        } //yong 04090145added end
-                                                        }
                     }
-                }
 
-            });
+                });
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            }
         }
 //shows route between two points selected by long click by yongwu 04092018 end
      }
@@ -268,7 +282,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      private void drawDestination() {
         if(isLoneDestination) {
             mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(singleDestination, 15));
+            if(mapRefreshCount < 5) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(singleDestination, 15));
+                mapRefreshCount++;
+            } else {
+                //System.out.println("Map is old; not recentering");
+            }
         } else { //draw waypoint destination
 
         }
@@ -361,11 +380,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private boolean havePermissions() {
+        System.out.println("havePermissions()");
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             System.out.println("getPermissions(): Permission to GPS denied.");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST);
             //return false;
-        } else if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        }
+        else if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             System.out.println("getPermissions(): Permission to coarse location denied.");
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_REQUEST);
             return false;
