@@ -52,6 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String bestProvider;
     boolean pathDrawn = false;
     boolean isLoneDestination = false;
+    int mapRefreshCount = 0;
 
     @SuppressLint({"MissingPermissions", "MissingPermission"})
     @Override
@@ -60,6 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         Bundle extras = getIntent().getExtras();
+
+        mapRefreshCount = 0;
 
         if(havePermissions()) {
             try {
@@ -200,7 +203,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //By default, show the map zoomed in on Memorial Circle until
         //we know what the user wants to do
         LatLng ttu = new LatLng(33.584468, -101.874658);
+
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ttu, 15));
+
 
         mMap.getUiSettings().setZoomControlsEnabled(true); //Yong 03082018
 
@@ -277,7 +282,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      private void drawDestination() {
         if(isLoneDestination) {
             mMap.addMarker(new MarkerOptions().position(singleDestination).title(singleDestinationName));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(singleDestination, 15));
+            if(mapRefreshCount < 5) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(singleDestination, 15));
+                mapRefreshCount++;
+            } else {
+                //System.out.println("Map is old; not recentering");
+            }
         } else { //draw waypoint destination
 
         }
