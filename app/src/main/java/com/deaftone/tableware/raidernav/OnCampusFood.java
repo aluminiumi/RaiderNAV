@@ -3,6 +3,7 @@ package com.deaftone.tableware.raidernav;
 import java.util.*;
 import com.google.android.gms.maps.model.LatLng;
 
+//TODO: This entire class should be refactored back into AddressMap
 public final class OnCampusFood {
     private static Map<String, String> Coords;
 
