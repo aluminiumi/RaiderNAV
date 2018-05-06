@@ -20,6 +20,7 @@ public class AddressMapUnitTest {
 
     @Test
     public void getKeys_isCorrect() {
+        //assertEquals("ADMIN", AddressMap.getKeys().iterator().next());
         assertEquals("ADMIN", AddressMap.getKeys().iterator().next());
 
     }

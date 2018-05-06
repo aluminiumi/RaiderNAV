@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>850</x>
+      <y>120</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Timer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLObject</id>
+    <coordinates>
+      <x>470</x>
+      <y>60</y>
+      <w>320</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>RaiderNAV System
+valign=top</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>520</x>
+      <y>130</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Cull Routing Destinations</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>140</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;130.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>540</x>
+      <y>200</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Notify User
+Running Late</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>180</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;40.0;140.0;10.0</additional_attributes>
+  </element>
+</diagram>
