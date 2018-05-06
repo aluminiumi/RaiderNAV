@@ -12,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.akexorcist.googledirection.DirectionCallback;
@@ -22,6 +23,8 @@ import com.akexorcist.googledirection.model.Leg;
 import com.akexorcist.googledirection.model.Route;
 import com.akexorcist.googledirection.util.DirectionConverter;
 import com.deaftone.tableware.raidernav.AddressMap;
+import com.deaftone.tableware.raidernav.OffCampusFood;
+import com.deaftone.tableware.raidernav.OnCampusFood;
 import com.deaftone.tableware.raidernav.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -50,9 +53,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String singleDestinationName;
     LocationManager locationManager;
     String bestProvider;
+    int destinationType;
     boolean pathDrawn = false;
     boolean isLoneDestination = false;
     int mapRefreshCount = 0;
+
+    private final int CAMPUSBUILDING = 1;
+    private final int ONCAMPUSEATING = 2;
+    private final int OFFCAMPUSEATING = 3;
 
     @SuppressLint({"MissingPermissions", "MissingPermission"})
     @Override
@@ -73,14 +81,47 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             if(isLoneDestination) { //user clicked compass icon on main screen
                 singleDestinationName = extras.getString("destinationName");
-                if (singleDestinationName != null) {
+                destinationType = extras.getInt("destinationType");
+                /*if (singleDestinationName != null) {
                     //String destXYstring = AddressMap.fetch(singleDestinationName); //looks like "33.593170, -101.897627"
                     //System.out.println("onCreate: destXYstring: " + destXYstring);
                     //double[] dests = AddressMap.parseXY(destXYstring);
                     //singleDestination = new LatLng(dests[0], dests[1]);
                     singleDestination = AddressMap.getLatLng(singleDestinationName);
+                }*/
+
+                if (singleDestinationName != null){
+
+                    switch (destinationType){
+                        case CAMPUSBUILDING:
+                            singleDestination = AddressMap.getLatLng(singleDestinationName);
+                            break;
+                        case ONCAMPUSEATING:
+                            singleDestination = OnCampusFood.getLatLng(singleDestinationName);
+                            break;
+                        case OFFCAMPUSEATING:
+                            singleDestination = OffCampusFood.getLatLng(singleDestinationName);
+                            break;
+                    }
                 }
-            } else { //user clicked map icon on main screen
+
+                /*do{
+                   // singleDestination = AddressMap.getLatLng(singleDestinationName);
+                    if (AddressMap.getLatLng(singleDestinationName)!=null){
+                        singleDestination = AddressMap.getLatLng(singleDestinationName);
+                        break;
+                    }
+                   // singleDestination = OnCampusFood.getLatLng(singleDestinationName);
+                    else if (OnCampusFood.getLatLng(singleDestinationName) != null){
+                        singleDestination = OnCampusFood.getLatLng(singleDestinationName);
+                        break;
+                    }
+                  //  singleDestination = OffCampusFood.getLatLng(singleDestinationName);
+                    else if (OffCampusFood.getLatLng(singleDestinationName) != null){
+                        singleDestination = OffCampusFood.getLatLng(singleDestinationName);
+                        break;
+                    }
+                }while (singleDestinationName!= null);*/
 
 
             }
