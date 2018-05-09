@@ -1,0 +1,68 @@
+Identification: 
+	Purpose: Unknown
+	Functions and Resources Used:
+		/proc/meminfo
+		SERIAL
+
+Internet: 
+	Purpose: To download directions from Google
+	Functions and Resources Used:
+		Connectivity.getActiveNetworkInfo
+		InetAddress.getAllByName
+		NetworkInfo.isConnected
+		connect
+		inet
+	
+Location: 
+	Purpose:To provide starting point in directions
+	Functions and Resources Used:
+		MapV2.setOnMapLongClickListener
+			ACCESS_COARSE_LOCATION
+			ACCESS_FINE_LOCATION
+		getAllProviders 
+			ACCESS_COARSE_LOCATION
+			ACCESS_FINE_LOCATION
+		getBestProvider
+			ACCESS_COARSE_LOCATION
+			ACCESS_FINE_LOCATION
+		getProviders
+			ACCESS_COARSE_LOCATION
+			ACCESS_FINE_LOCATION
+		requestLocationUpdates	
+			ACCESS_COARSE_LOCATION
+			ACCESS_FINE_LOCATION
+
+Phone: 
+	Purpose: Unknown
+	Functions and Resources Used:
+ 		Configuration.MCC
+		Configuration.MNC
+		getSimCountryIso
+
+Shell: 
+	Purpose: Used by Google Maps to access cached maps
+	Functions and Resources Used:
+		exec
+
+Storage: 
+	Purpose: To read/write user schedules to/from device storage
+	Functions and Resources Used:
+		openTypedAssetFileDescriptor()
+		openFileDescriptor()
+		openAssetFileDescriptor()
+		getExternalStorageState()
+		content:/com.google.android.gms.chimera/api/1521148419000
+
+Contacts: 
+	Purpose: Unknown; Requested while providing schedule/course name in text field
+	Functions and Resources Used:
+		READ_CONTACTS
+		WRITE_CONTACTS
+	
+Email: 
+	Purpose: Presumably to parse 'content provider' style handling of Google Maps Directions API
+	Functions and Resources Used:
+		GMailProvider(content://com.google.android.gms.chimera/api_force_staging/com.google.android.gms.googlecertificates)
+		com.google.android.gm.permission.READ_CONTENT_PROVIDER
+
+

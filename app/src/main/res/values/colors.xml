@@ -5,8 +5,8 @@
     <color name="colorPrimaryDark">#440000</color>
     <color name="colorAccent">#444444</color>
     <color name="colorBackground">#000000</color>
-    <color name="colorEditText">#222222</color>
+    <color name="colorEditText">#666666</color>
     <color name="colorFont">#aaaaaa</color>
-    <color name="colorButtonFont">#000000</color>
-    <color name="colorButtonBackground">#880000</color>
+    <color name="colorButtonFont">#AAAAAA</color>
+    <color name="colorButtonBackground">#440000</color>
 </resources>
